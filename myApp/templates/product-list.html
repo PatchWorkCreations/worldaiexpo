@@ -1,0 +1,506 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Shop-Eventen
+  </title>
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
+  <!--CSS Plugins-->
+  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
+  <!-- Default CSS-->
+  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
+  <!--Custom CSS-->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+  <!--FontAwesome CSS-->
+  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
+ </head>
+ <body>
+  <!--Header Section start-->
+  {% include 'header.html' %}
+  <!-- Header section ends -->
+  <!-- Bannner section starts -->
+  <section class="banner page-banner position-relative pb-0">
+   <div class="overlay">
+   </div>
+   <div class="container">
+    <div class="page-title text-center position-relative py-11">
+     <h2 class="text-white">
+      Archives: Shop
+     </h2>
+    </div>
+   </div>
+  </section>
+  <!--Banner Section end-->
+  <!--Product List Section start-->
+  <section class="shop">
+   <div class="container">
+    <div class="shop-inner">
+     <div class="row">
+      <div class="col-lg-8">
+       <div class="product-list me-6 m-md-0 pb-6">
+        <div class="product-count-sort d-flex justify-content-between">
+         <div class="product-count">
+          <p>
+           Showing all 6 results
+          </p>
+         </div>
+         <div class="sort-wrapper mb-4">
+          <select class="px-2 py-1 sort border border-1 border-black border-opacity-50 rounded-2 fs-5" id="sort" name="sort">
+           <option value="menu_order">
+            Default sorting
+           </option>
+           <option value="popularity">
+            Sort by popularity
+           </option>
+           <option value="rating">
+            Sort by average rating
+           </option>
+           <option value="date">
+            Sort by latest
+           </option>
+           <option value="price">
+            Sort by price: low to high
+           </option>
+           <option value="price-desc">
+            Sort by price: high to low
+           </option>
+          </select>
+         </div>
+        </div>
+        <div class="product-left text-center">
+         <div class="row gy-4">
+          <div class="col-lg-6 col-md-6">
+           <div class="product-box p-3 pb-4 box-shadow rounded me-1 m-md-0">
+            <div class="product-img mb-5">
+             <a href="{% url 'product_single' %}">
+              <img alt="Bamboo Bucket" class="w-100 rounded" src="{% static 'images/product/1.jpg' %}"/>
+             </a>
+            </div>
+            <div class="product-info mb-3">
+             <h6 class="pb-2">
+              <a class="black" href="{% url 'product_single' %}">
+               Bamboo Bucket
+              </a>
+             </h6>
+             <span class="pink fw-semibold">
+              $32.00
+             </span>
+            </div>
+            <div class="add-to-cart-btn">
+             <a class="btn">
+              Add To Cart
+             </a>
+            </div>
+           </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+           <div class="product-box p-3 pb-4 box-shadow rounded ms-1 m-md-0">
+            <div class="product-img mb-5 position-relative">
+             <span class="position-absolute translate-middle sale bg-blue rounded text-white py-2 px-4 align-self-center">
+              <small>
+               Sale!
+              </small>
+             </span>
+             <a href="{% url 'product_single' %}">
+              <img alt="Bamboo Bucket" class="w-100 rounded" src="{% static 'images/product/2.jpg' %}"/>
+             </a>
+            </div>
+            <div class="product-info mb-3">
+             <h6 class="pb-2">
+              <a class="black" href="{% url 'product_single' %}">
+               Ladies Top
+              </a>
+             </h6>
+             <p class="pink fw-semibold">
+              <span class="text-decoration-line-through opacity-50">
+               $21.00
+              </span>
+              <span class="text-decoration-underline">
+               $18.00
+              </span>
+             </p>
+            </div>
+            <div class="add-to-cart-btn">
+             <a class="btn">
+              Add To Cart
+             </a>
+            </div>
+           </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+           <div class="product-box p-3 pb-4 box-shadow rounded me-1 m-md-0">
+            <div class="product-img mb-5 position-relative">
+             <span class="position-absolute translate-middle sale bg-blue rounded text-white py-2 px-4 align-self-center">
+              <small>
+               Sale!
+              </small>
+             </span>
+             <a href="{% url 'product_single' %}">
+              <img alt="Bamboo Bucket" class="w-100 rounded" src="{% static 'images/product/3.jpg' %}"/>
+             </a>
+            </div>
+            <div class="product-info mb-3">
+             <h6 class="pb-2">
+              <a class="black" href="{% url 'product_single' %}">
+               Leather Bag
+              </a>
+             </h6>
+             <p class="pink fw-semibold">
+              <span class="text-decoration-line-through opacity-50">
+               $45.00
+              </span>
+              <span class="text-decoration-underline">
+               $40.00
+              </span>
+             </p>
+            </div>
+            <div class="add-to-cart-btn">
+             <a class="btn">
+              Add To Cart
+             </a>
+            </div>
+           </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+           <div class="product-box p-3 pb-4 box-shadow rounded ms-1 m-md-0">
+            <div class="product-img mb-5">
+             <a href="{% url 'product_single' %}">
+              <img alt="Bamboo Bucket" class="w-100 rounded" src="{% static 'images/product/4.jpg' %}"/>
+             </a>
+            </div>
+            <div class="product-info mb-3">
+             <h6 class="pb-2">
+              <a class="black" href="{% url 'product_single' %}">
+               Lewis Shirt
+              </a>
+             </h6>
+             <span class="pink fw-semibold">
+              $29.00
+             </span>
+            </div>
+            <div class="add-to-cart-btn">
+             <a class="btn">
+              Add To Cart
+             </a>
+            </div>
+           </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+           <div class="product-box p-3 pb-4 box-shadow rounded me-1 m-md-0">
+            <div class="product-img mb-5">
+             <a href="{% url 'product_single' %}">
+              <img alt="Bamboo Bucket" class="w-100 rounded" src="{% static 'images/product/5.jpg' %}"/>
+             </a>
+            </div>
+            <div class="product-info mb-3">
+             <h6 class="pb-2">
+              <a class="black" href="{% url 'product_single' %}">
+               London T-shirt
+              </a>
+             </h6>
+             <span class="pink fw-semibold">
+              $25.00
+             </span>
+            </div>
+            <div class="add-to-cart-btn">
+             <a class="btn">
+              Add To Cart
+             </a>
+            </div>
+           </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+           <div class="product-box p-3 pb-4 box-shadow rounded ms-1 m-md-0">
+            <div class="product-img mb-5">
+             <a href="{% url 'product_single' %}">
+              <img alt="Bamboo Bucket" class="w-100 rounded" src="{% static 'images/product/6.jpg' %}"/>
+             </a>
+            </div>
+            <div class="product-info mb-3">
+             <h6 class="pb-2">
+              <a class="black" href="{% url 'product_single' %}">
+               Yellow Sofa
+              </a>
+             </h6>
+             <span class="pink fw-semibold">
+              $89.00
+             </span>
+            </div>
+            <div class="add-to-cart-btn">
+             <a class="btn">
+              Add To Cart
+             </a>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-4">
+       <div class="product-right ms-6 m-md-0">
+        <div class="keyword-search p-6 box-shadow rounded mb-6">
+         <h6 class="mb-2">
+          Search Keywords
+         </h6>
+         <div class="sperator mb-5 w-20 border-bottom border-2 border-pink">
+         </div>
+         <div class="searchbar d-flex">
+          <input class="bg-lightgrey border-0 p-3 text-grey w-80 rounded-end-0 m-0" id="form1" placeholder="Search..." type="search"/>
+          <button class="btn rounded-start-0" data-mdb-ripple-init="" type="button">
+           <i class="fa fa-search">
+           </i>
+          </button>
+         </div>
+        </div>
+        <div class="product-gallery p-6 box-shadow rounded mb-6">
+         <h6 class="mb-2">
+          Product Gallery
+         </h6>
+         <div class="sperator m-0 mb-5 w-20 border-bottom border-2 border-pink">
+         </div>
+         <div class="product-gallery-inner">
+          <div class="row g-3" id="selector1">
+           <div class="item col-lg-6 col-md-6 position-relative" data-src="images/product/6.jpg">
+            <a>
+             <div class="image-overlay rounded mx-1">
+             </div>
+             <img alt="Yellow Sofa" class="w-100 rounded position-relative" src="{% static 'images/product/6.jpg' %}"/>
+            </a>
+           </div>
+           <div class="item col-lg-6 col-md-6 position-relative" data-src="images/product/4.jpg">
+            <a>
+             <div class="image-overlay rounded mx-1">
+             </div>
+             <img alt="Lewis Shirt" class="w-100 rounded position-relative" src="{% static 'images/product/4.jpg' %}"/>
+            </a>
+           </div>
+           <div class="item col-lg-6 col-md-6 position-relative" data-src="images/product/5.jpg">
+            <a>
+             <div class="image-overlay rounded mx-1">
+             </div>
+             <img alt="London T-Shirt" class="w-100 rounded position-relative" src="{% static 'images/product/5.jpg' %}"/>
+            </a>
+           </div>
+           <div class="item col-lg-6 col-md-6 position-relative" data-src="images/product/3.jpg">
+            <a>
+             <div class="image-overlay rounded mx-1">
+             </div>
+             <img alt="Leather Bag" class="w-100 rounded position-relative" src="{% static 'images/product/3.jpg' %}"/>
+            </a>
+           </div>
+           <div class="item col-lg-6 col-md-6 position-relative" data-src="images/product/2.jpg">
+            <a>
+             <div class="image-overlay rounded mx-1">
+             </div>
+             <img alt="Ladies Top" class="w-100 rounded position-relative" src="{% static 'images/product/2.jpg' %}"/>
+            </a>
+           </div>
+           <div class="item col-lg-6 col-md-6 position-relative" data-src="images/product/1.jpg">
+            <a>
+             <div class="image-overlay rounded mx-1">
+             </div>
+             <img alt="Bamboo Bucket" class="w-100 rounded position-relative" src="{% static 'images/product/1.jpg' %}"/>
+            </a>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="recent-product-box p-6 pb-2 box-shadow rounded mb-6">
+         <h6 class="mb-2">
+          Recent Products
+         </h6>
+         <div class="sperator m-0 mb-5 w-20 border-bottom border-2 border-pink">
+         </div>
+         <div class="recent-product-list">
+          <div class="row">
+           <div class="col-lg-12 col-md-6">
+            <div class="recent-product d-flex align-items-center mb-3">
+             <div class="product-img">
+              <a href="{% url 'product_single' %}">
+               <img alt="Yellow Sofa" class="rounded me-3" src="{% static 'images/product/6.jpg' %}"/>
+              </a>
+             </div>
+             <div class="product-detail">
+              <a class="black fw-semibold text-uppercase" href="{% url 'product_single' %}">
+               Yellow Sofa
+              </a>
+              <p class="mb-0">
+               <small>
+                April 3, 2023
+               </small>
+              </p>
+             </div>
+            </div>
+           </div>
+           <div class="col-lg-12 col-md-6">
+            <div class="recent-product d-flex align-items-center mb-3">
+             <div class="product-img">
+              <a href="{% url 'product_single' %}">
+               <img alt="Leather Bag" class="rounded me-3" src="{% static 'images/product/3.jpg' %}"/>
+              </a>
+             </div>
+             <div class="product-detail">
+              <a class="black fw-semibold text-uppercase" href="{% url 'product_single' %}">
+               Leather Bag
+              </a>
+              <p class="mb-0">
+               <small>
+                April 3, 2023
+               </small>
+              </p>
+             </div>
+            </div>
+           </div>
+           <div class="col-lg-12 col-md-6">
+            <div class="recent-product d-flex align-items-center mb-4">
+             <div class="product-img">
+              <a href="{% url 'product_single' %}">
+               <img alt="Bamboo Bucket" class="rounded me-3" src="{% static 'images/product/1.jpg' %}"/>
+              </a>
+             </div>
+             <div class="product-detail">
+              <a class="black fw-semibold text-uppercase" href="{% url 'product_single' %}">
+               Bamboo Bucket
+              </a>
+              <p class="mb-0">
+               <small>
+                April 3, 2023
+               </small>
+              </p>
+             </div>
+            </div>
+           </div>
+           <div class="col-lg-12 col-md-6">
+            <div class="recent-product d-flex align-items-center mb-4">
+             <div class="product-img">
+              <a href="{% url 'product_single' %}">
+               <img alt="Lewis Shirt" class="rounded me-3" src="{% static 'images/product/4.jpg' %}"/>
+              </a>
+             </div>
+             <div class="product-detail">
+              <a class="black fw-semibold text-uppercase" href="{% url 'product_single' %}">
+               Lewis Shirt
+              </a>
+              <p class="mb-0">
+               <small>
+                April 3, 2023
+               </small>
+              </p>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="social-media-links">
+         <h6 class="mb-2">
+          Social Media
+         </h6>
+         <div class="sperator m-0 mb-5 w-20 border-bottom border-2 border-pink">
+         </div>
+         <div class="social-media-inner">
+          <div class="row g-3">
+           <div class="col-6">
+            <a class="btn rounded-3 p-2 text-capitalize w-100 text-start">
+             <i aria-hidden="true" class="fa fa-facebook-official rounded mx-2 me-3">
+             </i>
+             Facebook/
+            </a>
+           </div>
+           <div class="col-6">
+            <a class="btn rounded-3 p-2 text-capitalize w-100 text-start">
+             <i aria-hidden="true" class="fa fa-twitter rounded mx-2 me-3">
+             </i>
+             Twitter
+            </a>
+           </div>
+           <div class="col-6">
+            <a class="btn rounded-3 p-2 text-capitalize w-100 text-start">
+             <i aria-hidden="true" class="fa fa-whatsapp rounded mx-2 me-3">
+             </i>
+             WhatsApp
+            </a>
+           </div>
+           <div class="col-6">
+            <a class="btn rounded-3 p-2 text-capitalize w-100 text-start">
+             <i aria-hidden="true" class="fa fa-linkedin-square rounded mx-2 me-3">
+             </i>
+             LinkedIn
+            </a>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Product List Section end-->
+  <!--Subscribe Section start-->
+  <section class="subscribe py-4">
+   <div class="container">
+    <div class="subscribe-content">
+     <div class="row">
+      <div class="col-lg-6 align-self-center">
+       <div class="sub-left text-center text-lg-start py-2">
+        <h4 class="text-white">
+         DON'T MISS OUR FUTURE UPDATES! GET SUBSCRIBED TODAY!
+        </h4>
+       </div>
+      </div>
+      <div class="col-lg-6">
+       <div class="sub-right py-2">
+        <p class="text-white mb-4 text-center text-lg-start">
+         Excepteur sint occaecat cupidatat non proident, sunt
+              in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <div class="row gy-3">
+         <div class="col-lg-8 col-md-8">
+          <div class="sub-email">
+           <input placeholder="Email" required="" type="email"/>
+          </div>
+         </div>
+         <div class="col-lg-4 col-md-4">
+          <div class="sub-button">
+           <button class="btn btn3 w-100">
+            SUBSCRIBE
+           </button>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Subscribe Section end-->
+  <!--Footer Section start-->
+{% include 'footer.html' %}
+  <!--Footer Section end-->
+  <!--Bacl-to-top Button start-->
+  <div id="back-to-top">
+   <a class="bg-pink position-relative align-items-center rounded-circle d-block" href="#">
+   </a>
+  </div>
+  <!--Bacl-to-top Button end-->
+  <script src="{% static 'js/jquery-3.7.1.min.js' %}">
+  </script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}">
+  </script>
+  <script src="{% static 'js/custom-nav.js' %}">
+  </script>
+  <script src="{% static 'js/plugin.js' %}">
+  </script>
+  <script src="{% static 'js/main.js' %}">
+  </script>
+ </body>
+</html>

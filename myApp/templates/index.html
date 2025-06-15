@@ -1,0 +1,1661 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   iRiseUp.AI/WorldExpo
+  </title>
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
+  <!--CSS Plugins-->
+  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
+  <!-- Default CSS-->
+  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
+  <!--Custom CSS-->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+  <!--FontAwesome CSS-->
+  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
+ </head>
+ <body>
+  <!--Header Section start-->
+    {% include 'header.html' %}
+  <!-- Bannner section starts -->
+  <section class="banner position-relative pb-0">
+   <div class="overlay">
+   </div>
+   <div class="container">
+    <div class="inner-banner position-relative text-white">
+     <div class="row">
+      <div class="col-lg-6 order-2 order-lg-1">
+       <div class="banner-left text-center pb-lg-5 p-md-0">
+        <div class="banner-image">
+         <img alt="banner-image" class="w-50" src="{% static 'images/team/robot2.png' %}"/>
+         <br/> <br/> <br/> <br/> <br/>
+        </div>
+        <div class="countdown">
+         <div class="countdown-inner d-flex w-100 bg-white p-2 rounded-5 justify-content-center box-shadow position-relative z-2" id="countdown">
+          <div class="time m-auto py-4">
+           <span class="lh-1 h1 fw-bold" id="days">
+           </span>
+           <br/>
+           <small class="text-secondary">
+            Days
+           </small>
+          </div>
+          <div class="time m-auto py-4">
+           <span class="lh-1 h1 fw-bold" id="hours">
+           </span>
+           <br/>
+           <small class="text-secondary">
+            Hours
+           </small>
+          </div>
+          <div class="time m-auto py-4">
+           <span class="lh-1 h1 fw-bold" id="minutes">
+           </span>
+           <br/>
+           <small class="text-secondary">
+            Minutes
+           </small>
+          </div>
+          <div class="time m-auto py-4">
+           <span class="lh-1 h1 fw-bold" id="seconds">
+           </span>
+           <br/>
+           <small class="text-secondary">
+            Seconds
+           </small>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2">
+       <div class="banner-right ms-2 text-center text-lg-start pb-8">
+        <div class="banner-title pb-3">
+         <h4 class="text-white pb-3">
+          World AI
+          <span class="black">
+           Expo
+          </span>
+          2025 
+          <span class="text-white">
+           by iRiseUp.AI
+          </span>
+         </h4>
+         <h1 class="text-white">
+          Empathy-Driven  
+          <span class="text-blue">
+           Innovation
+          </span>
+          For Smarter World
+         </h1>
+        </div>
+        <div class="banner-event-info pb-3">
+         <ul class="m-0 ps-0 d-sm-flex justify-content-center justify-content-lg-start list-unstyled">
+          <li class="pe-2 border-end border-1 border-lightgrey">
+           <i class="fa fa-calendar-o pe-1">
+           </i>
+           25-26 <br> JANUARY 2026
+          </li>
+          
+          <li class="ps-2">
+           <i class="fa fa-map-marker pe-1">
+           </i>
+           SMX Convention Center Manila, Pasay City, <br>Philippines
+          </li>
+         </ul>
+        </div>
+        <div class="event-discription">
+         <p class="pb-4 m-0">
+          Join global changemakers redefining the future of AI — where human stories meet intelligent solutions.
+         </p>
+         <div class="banner-button">
+          <div class="row">
+           <div class="col-lg-6 col-md-6">
+            <a class="btn me-3 my-1 w-100" href="{% url 'book_now' %}">
+             PURCHASE TICKET
+            </a>
+           </div>
+           <div class="col-lg-6 col-md-6">
+            <a class="btn btn2 my-1 w-100" href="{% url 'event_list' %}">
+             VIEW SCHEDULE
+            </a>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="wave overflow-hidden position-absolute w-100 z-0">
+    <svg class="d-block position-relative" preserveaspectratio="none" viewbox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg">
+     <path class="elementor-shape-fill" d="M790.5,93.1c-59.3-5.3-116.8-18-192.6-50c-29.6-12.7-76.9-31-100.5-35.9c-23.6-4.9-52.6-7.8-75.5-5.3
+          c-10.2,1.1-22.6,1.4-50.1,7.4c-27.2,6.3-58.2,16.6-79.4,24.7c-41.3,15.9-94.9,21.9-134,22.6C72,58.2,0,25.8,0,25.8V100h1000V65.3
+          c0,0-51.5,19.4-106.2,25.7C839.5,97,814.1,95.2,790.5,93.1z">
+     </path>
+    </svg>
+   </div>
+  </section>
+  <!--Banner Section end-->
+  <!--Overview Section start-->
+  <section class="overview pb-0">
+   <div class="container">
+    <div class="inner-overview pb-10 position-relative border-dashed-bottom-2">
+     <div class="row">
+      <div class="col-lg-6">
+       <div class="overview-left text-center text-lg-start">
+        <div class="overview-title pb-4">
+         <p class="mb-1 pink">
+          OVERVIEW
+         </p>
+         <h2 class="mb-2">
+          GET THE LATEST INFO ABOUT
+          <span class="black">
+           WORLD AI EXPO 2025
+          </span>
+         </h2>
+         <p>
+          Step into the future of innovation at World AI Expo 2025 by iRiseUp.AI — where visionaries, developers, 
+          and change-makers unite to explore how empathy and intelligence can shape a smarter, more connected world.
+         </p>
+         <p class="mb-2">
+          Whether you're building tech, leading a startup, or just curious about what’s next, 
+          this is where groundbreaking ideas meet human impact.
+         </p>
+        </div>
+        <div class="overview-event-info pb-6 g-4 text-start position-absolute">
+         <div class="row justify-content-around">
+          <div class="col-lg-6 col-md-6">
+           <a>
+            <div class="event-info-box align-items-center d-flex p-4 rounded bg-white box-shadow my-2">
+             <div class="event-info-icon text-center">
+              <i class="fa fa-map-marker text-white bg-pink rounded-circle me-3">
+              </i>
+             </div>
+             <div class="location-info">
+              <h5 class="mb-1">
+               WHERE
+              </h5>
+              <small>
+               SMX Convention Center Manila, Pasay City, Philippines
+              </small>
+             </div>
+            </div>
+           </a>
+          </div>
+          <div class="col-lg-6 col-md-6">
+           <a>
+            <div class="event-info-box align-items-center d-flex p-4 rounded bg-white box-shadow my-2">
+             <div class="event-info-icon text-center">
+              <i class="fa fa-calendar-o text-white bg-pink rounded-circle me-3">
+              </i>
+             </div>
+             <div class="time-info">
+              <h5 class="mb-1">
+               WHEN
+              </h5>
+              <small>
+               Wednesday To Thursday
+               <br/>
+               Jan, 25-26, 2026
+              </small>
+             </div>
+            </div>
+           </a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-6">
+       <div class="overview-img">
+        <div class="row align-items-center">
+         <div class="col-lg-6 col-md-6 p-0">
+          <div class="container-img-left mb-2">
+           <div class="img-left-1 float-end w-lg-80">
+            <img alt="group-image" class="mb-2 w-100 rounded" src="{% static 'images/group/1.jpg' %}"/>
+           </div>
+           <div class="img-left-2">
+            <img alt="group-image" class="w-100 rounded" src="{% static 'images/group/2.jpg' %}"/>
+           </div>
+          </div>
+         </div>
+         <div class="col-lg-6 col-md-6">
+          <div class="container-img-right w-lg-75">
+           <img alt="group-image" class="w-100 rounded" src="{% static 'images/group/3.jpg' %}"/>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Overview Section end-->
+  <!--Partners Section start-->
+  <section class="partners">
+   <div class="container">
+    <div class="partner-inner">
+     <div class="partner-title text-center pb-6 w-lg-60 m-auto">
+      <p class="mb-1 pink">
+       OUR PARTNERS
+      </p>
+      <h2 class="mb-1">
+       SPONSORS AND
+       <span class="pink">
+        PARTNERS
+       </span>
+      </h2>
+      <p class="m-0">
+       The World AI Expo 2025 is made possible by the brilliant minds and bold brands who share our mission.  
+     From leading tech firms to grassroots innovators, our partners are united by one vision:  
+     to make AI more ethical, inclusive, and impactful for the world.
+      </p>
+     </div>
+     <div class="partner-img pb-6">
+      <div class="row row-cols-1 row-cols-lg-5 row-cols-md-5">
+       <div class="col p-0 border-end border-sm-0">
+        <div class="p-2 partner-img-box text-center">
+         <img alt="partner-img" class="opacity-75 w-lg-75 w-md-100 w-40" src="{% static 'images/icon/1.png' %}"/>
+        </div>
+       </div>
+       <div class="col p-0 border-end border-sm-0">
+        <div class="p-2 partner-img-box text-center">
+         <img alt="partner-img" class="opacity-75 w-lg-75 w-md-100 w-40" src="{% static 'images/icon/2.png' %}"/>
+        </div>
+       </div>
+       <div class="col p-0 border-end border-sm-0">
+        <div class="p-2 partner-img-box text-center">
+         <img alt="partner-img" class="opacity-75 w-lg-75 w-md-100 w-40" src="{% static 'images/icon/3.png' %}"/>
+        </div>
+       </div>
+       <div class="col p-0 border-end border-sm-0">
+        <div class="p-2 partner-img-box text-center">
+         <img alt="partner-img" class="opacity-75 w-lg-75 w-md-100 w-40" src="{% static 'images/icon/4.png' %}"/>
+        </div>
+       </div>
+       <div class="col p-0 border-sm-0">
+        <div class="p-2 partner-img-box text-center">
+         <img alt="partner-img" class="opacity-75 w-lg-75 w-md-100 w-40" src="{% static 'images/icon/5.png' %}"/>
+        </div>
+       </div>
+       <div class="col p-0 border-end border-top border-sm-0">
+        <div class="p-2 partner-img-box text-center">
+         <img alt="partner-img" class="opacity-75 w-lg-75 w-md-100 w-40" src="{% static 'images/icon/3.png' %}"/>
+        </div>
+       </div>
+       <div class="col p-0 border-end border-top border-sm-0">
+        <div class="p-2 partner-img-box text-center">
+         <img alt="partner-img" class="opacity-75 w-lg-75 w-md-100 w-40" src="{% static 'images/icon/4.png' %}"/>
+        </div>
+       </div>
+       <div class="col p-0 border-end border-top border-sm-0">
+        <div class="p-2 partner-img-box text-center">
+         <img alt="partner-img" class="opacity-75 w-lg-75 w-md-100 w-40" src="{% static 'images/icon/5.png' %}"/>
+        </div>
+       </div>
+       <div class="col p-0 border-end border-top border-sm-0">
+        <div class="p-2 partner-img-box text-center">
+         <img alt="partner-img" class="opacity-75 w-lg-75 w-md-100 w-40" src="{% static 'images/icon/1.png' %}"/>
+        </div>
+       </div>
+       <div class="col p-0 border-top border-0 border-sm-0">
+        <div class="p-2 partner-img-box text-center border-sm-0">
+         <img alt="partner-img" class="opacity-75 w-lg-75 w-md-100 w-40" src="{% static 'images/icon/2.png' %}"/>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="partner-button text-center">
+      <a class="btn" href="{% url 'sponsers' %}">
+       VIEW MORE SPONSORS
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Partners Section end-->
+  <!--Features Section start-->
+  <section class="feature text-white position-relative z-0 start-0">
+   <div class="overlay z-n1">
+   </div>
+   <div class="container">
+    <div class="feature-inner">
+     <div class="counter text-center border-bottom border-white border-opacity-25">
+      <div class="inner-counter mb-7">
+       <div class="row">
+        <div class="col-lg-3 col-md-3 p-2">
+         <div class="counter-box p-2 border-end border-white border-opacity-25">
+          <h1 class="text-white m-0">
+           <span class="num" data-val="50">
+           </span>
+           <span>
+            +
+           </span>
+          </h1>
+          <p>
+           Countries
+          </p>
+         </div>
+        </div>
+        <div class="col-lg-3 col-md-3 p-2">
+         <div class="counter-box p-2 border-end border-white border-opacity-25">
+          <h1 class="text-white m-0">
+           <span class="num" data-val="1000">
+           </span>
+           <span>
+            +
+           </span>
+          </h1>
+          <p>
+           Visitors
+          </p>
+         </div>
+        </div>
+        <div class="col-lg-3 col-md-3 p-2">
+         <div class="counter-box p-2 border-end border-white border-opacity-25">
+          <h1 class="text-white m-0">
+           <span class="num" data-val="50">
+           </span>
+           <span>
+            +
+           </span>
+          </h1>
+          <p>
+           Speakers
+          </p>
+         </div>
+        </div>
+        <div class="col-lg-3 col-md-3 p-2">
+         <div class="p-2">
+          <h1 class="text-white m-0">
+           <span class="num" data-val="40">
+           </span>
+           <span>
+            +
+           </span>
+          </h1>
+          <p class="mb-0">
+           Exhibitors
+          </p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="feature-lists pt-8">
+      <div class="row g-4">
+       <div class="col-lg-4 col-md-6">
+        <div class="feature-box py-7 px-6 rounded text bg-black bg-opacity-25">
+         <a>
+          <div class="feature-box-icon mb-4">
+           <i class="fa fa-address-book-o text-white bg-pink rounded-circle text-center">
+           </i>
+          </div>
+          <div class="feature-box-info">
+           <h5 class="text-white mb-2">
+            LIVE STREAMING
+           </h5>
+           <small>
+            Can’t make it in person? No problem. Catch every keynote, panel, and 
+            breakout session from anywhere in the world—live and on-demand. 
+            Innovation has no borders, and neither should your access.
+
+           </small>
+          </div>
+         </a>
+        </div>
+       </div>
+       <div class="col-lg-4 col-md-6">
+        <div class="feature-box py-7 px-6 rounded bg-black bg-opacity-25">
+         <a>
+          <div class="feature-box-icon mb-4">
+           <i class="fa fa-comments text-white bg-pink rounded-circle text-center">
+           </i>
+          </div>
+          <div class="feature-box-info">
+           <h5 class="text-white mb-2">
+            FIRESIDE CHATS
+           </h5>
+           <small>
+            Get real with the minds shaping tomorrow. These intimate, 
+            unplugged conversations reveal the behind-the-scenes truths about AI, 
+            entrepreneurship, and scaling with heart.
+
+           </small>
+          </div>
+         </a>
+        </div>
+       </div>
+       <div class="col-lg-4 col-md-6">
+        <div class="feature-box py-7 px-6 rounded bg-black bg-opacity-25">
+         <a>
+          <div class="feature-box-icon mb-4">
+           <i class="fa fa-desktop text-white bg-pink rounded-circle text-center">
+           </i>
+          </div>
+          <div class="feature-box-info">
+           <h5 class="text-white mb-2">
+            NETWORKING
+           </h5>
+           <small>
+            Meet the future collaborators, investors, clients, and changemakers you’ve been praying for. 
+            Whether you’re shy or social, we create spaces for authentic, strategic connections.
+           </small>
+          </div>
+         </a>
+        </div>
+       </div>
+       <div class="col-lg-4 col-md-6">
+        <div class="feature-box py-7 px-6 rounded bg-black bg-opacity-25">
+         <a>
+          <div class="feature-box-icon mb-4">
+           <i class="fa fa-cogs text-white bg-pink rounded-circle text-center">
+           </i>
+          </div>
+          <div class="feature-box-info">
+           <h5 class="text-white mb-2">
+            HIGH VALUE LEARNING
+           </h5>
+           <small>
+            This isn’t fluff. Every session is packed with applicable insights, frameworks, and case studies to help you apply AI for real-world impact—in business, health, education, and more.
+           </small>
+          </div>
+         </a>
+        </div>
+       </div>
+       <div class="col-lg-4 col-md-6">
+        <div class="feature-box py-7 px-6 rounded bg-black bg-opacity-25">
+         <a>
+          <div class="feature-box-icon mb-4">
+           <i class="fa fa-gift text-white bg-pink rounded-circle text-center">
+           </i>
+          </div>
+          <div class="feature-box-info">
+           <h5 class="text-white mb-2">
+            EXICITING GIVEAWAYS
+           </h5>
+           <small>
+            We love surprises! From tech tools to mentorship sessions and 
+            VIP access—expect curated giveaways that empower you long after the event ends.
+
+           </small>
+          </div>
+         </a>
+        </div>
+       </div>
+       <div class="col-lg-4 col-md-6">
+        <div class="feature-box py-7 px-6 rounded bg-black bg-opacity-25">
+         <a>
+          <div class="feature-box-icon mb-4">
+           <i class="fa fa-graduation-cap text-white bg-pink rounded-circle text-center">
+           </i>
+          </div>
+          <div class="feature-box-info">
+           <h5 class="text-white mb-2">
+            1-ON-1 SESSIONS
+           </h5>
+           <small>
+            Get personal. Schedule dedicated time with mentors, VCs, AI experts, or 
+            wellness guides to receive feedback, clarity, or just a boost of direction for your next bold step.
+
+           </small>
+          </div>
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Features Section end-->
+  <!--Speakers Section Start-->
+  <section class="speakers">
+   <div class="container">
+    <div class="speaker-inner">
+     <div class="speaker-title text-center p-2">
+      <div class="row align-items-center">
+       <div class="col-lg-6">
+        <div class="title-content text-lg-start mb-2">
+         <p class="mb-1 pink">
+          EVENT SPEAKERS
+         </p>
+         <h2 class="mb-1">
+          MEET OUR
+          <span class="pink">
+           SPEAKERS
+          </span>
+         </h2>
+         <p class="m-0">
+          Meet the Minds Behind the Mic
+          Top innovators. Bold thinkers. Global leaders. Discover the voices shaping the future of AI, tech, and beyond.
+         </p>
+        </div>
+       </div>
+       <div class="col-lg-6">
+        <div class="speaker-button text-lg-end">
+         <a class="btn my-2" href="{% url 'speaker_list' %}">
+          VIEW MORE SPEAKERS
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="sepaker-list text-center text-white">
+      <div class="row">
+       <div class="col-lg-3 col-md-6 p-2">
+        <div class="speaker-box position-relative overflow-hidden text-white">
+         <img alt="speaker-image" class="speaker-image rounded w-100" src="{% static 'images/speakers/1.jpg' %}"/>
+         <div class="box-content position-absolute bottom-0 z-1">
+          <h6 class="speaker-title d-block text-white pb-1">
+           <a href="{% url 'speaker_detail' %}">
+            GERARDO AMBROSE
+           </a>
+          </h6>
+          <span class="speaker-post d-block pb-2">
+           Marketing Expert
+          </span>
+          <ul class="social-link pb-2 ps-0">
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href="#">
+             <i class="fa fa-facebook">
+             </i>
+            </a>
+           </li>
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href="#">
+             <i class="fa fa-twitter">
+             </i>
+            </a>
+           </li>
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href="#">
+             <i class="fa fa-pinterest-p">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6 p-2">
+        <div class="speaker-box position-relative overflow-hidden">
+         <img alt="speaker-image" class="speaker-image rounded w-100" src="{% static 'images/speakers/2.JPG' %}"/>
+         <div class="box-content position-absolute bottom-0 z-1">
+          <h6 class="speaker-title d-block text-white pb-1">
+           <a href="{% url 'speaker_detail' %}">
+            GERARDO AMBROSE
+           </a>
+          </h6>
+          <span class="speaker-post d-block pb-2">
+           Marketing Expert
+          </span>
+          <ul class="social-link pb-2 ps-0 position-relative">
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href="#">
+             <i class="fa fa-facebook">
+             </i>
+            </a>
+           </li>
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href="#">
+             <i class="fa fa-twitter">
+             </i>
+            </a>
+           </li>
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href="#">
+             <i class="fa fa-pinterest-p">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6 p-2">
+        <div class="speaker-box position-relative overflow-hidden">
+         <img alt="speaker-image" class="speaker-image rounded w-100" src="{% static 'images/speakers/3.jpg' %}"/>
+         <div class="box-content position-absolute bottom-0 z-1">
+          <h6 class="speaker-title d-block text-white pb-1">
+           <a href="{% url 'speaker_detail' %}">
+            GERARDO AMBROSE
+           </a>
+          </h6>
+          <span class="speaker-post d-block pb-2">
+           Marketing Expert
+          </span>
+          <ul class="social-link pb-2 ps-0">
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href=" ">
+             <i class="fa fa-facebook">
+             </i>
+            </a>
+           </li>
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href=" ">
+             <i class="fa fa-twitter">
+             </i>
+            </a>
+           </li>
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href=" ">
+             <i class="fa fa-pinterest-p">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6 p-2">
+        <div class="speaker-box position-relative overflow-hidden">
+         <img alt="speaker-image" class="speaker-image rounded w-100" src="{% static 'images/speakers/4.jpg' %}"/>
+         <div class="box-content position-absolute bottom-0 z-1">
+          <h6 class="speaker-title d-block text-white pb-1">
+           <a href="{% url 'speaker_detail' %}">
+            GERARDO AMBROSE
+           </a>
+          </h6>
+          <span class="speaker-post d-block pb-2">
+           Marketing Expert
+          </span>
+          <ul class="social-link pb-2 ps-0">
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href="#">
+             <i class="fa fa-facebook">
+             </i>
+            </a>
+           </li>
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href="#">
+             <i class="fa fa-twitter">
+             </i>
+            </a>
+           </li>
+           <li class="d-inline-block">
+            <a class="rounded d-block me-1" href="#">
+             <i class="fa fa-pinterest-p">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Speakers Section end-->
+  <!--Ticketbook Section start-->
+  <section class="ticket position-relative">
+   <div class="overlay">
+   </div>
+   <div class="container">
+    <div class="ticket-inner w-lg-75 mx-auto text-center position-relative text-white">
+     <div class="ticket-title">
+      <h5 class="text-white mb-1">
+       LET'S DO IT HURRY
+      </h5>
+      <h1 class="text-white mb-2">
+       HAVEN'T BOOKED YOUR SEAT YET?
+       <span class="spin pink d-inline-block">
+        G
+       </span>
+       <span class="spin pink d-inline-block">
+        E
+       </span>
+       <span class="spin pink d-inline-block">
+        T
+       </span>
+       <span class="spin pink d-inline-block">
+        T
+       </span>
+       <span class="spin pink d-inline-block">
+        I
+       </span>
+       <span class="spin pink d-inline-block">
+        C
+       </span>
+       <span class="spin pink d-inline-block">
+        K
+       </span>
+       <span class="spin pink d-inline-block">
+        E
+       </span>
+       <span class="spin pink d-inline-block">
+        T
+       </span>
+      </h1>
+     </div>
+     <div class="ticket-info">
+      <p>
+       Time is ticking and seats are flying! Join thousands of visionaries, creators, and innovators at the
+ <strong>World AI Expo 2025</strong>. Don’t miss your chance to be part of history in the making.
+      </p>
+      <div class="ticket-button">
+       <a class="btn btn1" href="{% url 'book_now' %}">
+        GET TICKETS NOW
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Ticketbook Section end-->
+  <!--Schedules Section start-->
+  <section class="schedules">
+   <div class="container">
+    <div class="schedule-inner">
+     <div class="schedule-title text-center mb-6 w-lg-60 mx-auto">
+      <p class="mb-1 pink">
+       OUR SCHEDULES
+      </p>
+      <h2 class="mb-1">
+       FOLLOW
+       <span class="pink">
+        EVENT
+       </span>
+       SCHEDULES
+      </h2>
+      <p class="m-0">
+       Get ready to explore a lineup filled with innovation, insight, and inspiration. 
+       Our schedule is designed to guide you through 
+       a seamless experience. Mark your calendars and don’t miss a moment that matters.
+      </p>
+     </div>
+     <div class="schedule-list-outer">
+      <div class="schedule-list-top mb-7">
+       <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4">
+         <div class="schedule-day text-center text-sm-start py-6 position-relative ps-2 z-1">
+          <h4 class="pink mb-2">
+           1ST DAY
+          </h4>
+          <h6 class="mb-2">
+           JANUARY 26, 2026
+          </h6>
+          <p>
+           The Rise of Human-Centered AI
+           <br/>
+           SMX Convention
+          </p>
+         </div>
+        </div>
+        <div class="col-lg-9 col-md-8">
+         <div class="schedule-list text-center text-sm-start">
+          <div class="schedule-list-box bg-lightgrey border border-white border-2 rounded px-6 py-4 mb-5">
+           <div class="schedule-box-title">
+            <h5 class="mb-2">
+             <a class="black" href="{% url 'event_detail' %}">
+              REGISTRATION &amp; BREAKFAST
+             </a>
+            </h5>
+           </div>
+           <div class="schedule-box-info">
+            <p class="mb-2">
+             <small>
+               Fuel up, meet fellow attendees, and get your welcome kit.
+                Opening Ceremony & Cultural Welcome 
+             </small>
+            </p>
+            <ul class="mb-2 p-0">
+             <li class="d-inline">
+              <i aria-hidden="true" class="fa fa-clock-o pink me-2">
+              </i>
+              <small>
+               8:00 AM – 10:15 AM
+              </small>
+             </li>
+             <li class="d-inline">
+              <i aria-hidden="true" class="fa fa-thumb-tack pink mx-2">
+              </i>
+              <small>
+               Comvention
+              </small>
+             </li>
+            </ul>
+           </div>
+           <div class="schedule-box-bio d-md-flex">
+            <div class="schedule-bio-image">
+             <img alt="team-image" class="me-2 rounded-circle" src="{% static 'images/team/1.jpg' %}"/>
+            </div>
+            <div class="schedule-bio-info">
+             <p class="mt-1 mb-0">
+              <a class="pink" href="{% url 'speaker_detail' %}">
+               Julia Marie Victorio
+              </a>
+             </p>
+             <small>
+              Host &amp; Speaker
+             </small>
+            </div>
+           </div>
+          </div>
+          <div class="schedule-list-box bg-white border-lightgrey border border-2 rounded px-6 py-4">
+           <div class="schedule-box-title">
+            <h5 class="mb-2">
+             <a class="black" href="{% url 'event_detail' %}">
+              Lunch + Fireside Corners
+             </a>
+            </h5>
+           </div>
+           <div class="schedule-box-info">
+            <p class="mb-2">
+             <small>
+              AI Roundtables, Real-world issues. Real solutions. Co-created. <br> 
+              Investor Panel + Startup Finale Pitch<br>
+               - Creative AI Showcase <br>
+               - Global Voices: Lightning Talks <br>
+               - Closing Ceremony: “Built to Rise” <br>
+             </small>
+            </p>
+            <ul class="mb-2 p-0">
+             <li class="d-inline">
+              <i aria-hidden="true" class="fa fa-clock-o pink me-2">
+              </i>
+              <small>
+               08:30 - 09:30 AM
+              </small>
+             </li>
+             <li class="d-inline">
+              <i aria-hidden="true" class="fa fa-thumb-tack pink mx-2">
+              </i>
+              <small>
+               Convention
+              </small>
+             </li>
+            </ul>
+           </div>
+           <div class="schedule-box-bio d-md-flex">
+            <div class="schedule-bio-image">
+             <img alt="team-image" class="me-2 rounded-circle" src="{% static 'images/team/2.jpg' %}"/>
+            </div>
+            <div class="schedule-bio-info">
+             <p class="mt-1 mb-0">
+              <a class="pink" href="{% url 'speaker_detail' %}">
+               Marife Enrique
+              </a>
+             </p>
+             <small>
+              Host &amp; Speaker
+             </small>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="schedule-title-bottom">
+       <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4">
+         <div class="schedule-day text-center position-relative text-sm-start py-6 ps-2 z-1">
+          <h4 class="pink mb-2">
+           2ND DAY
+          </h4>
+          <h6 class="mb-2">
+           APRIL 24, 2024
+          </h6>
+          <p>
+           William Mathew Theater
+           <br/>
+           2390 NW 2nd Ave, Miami, FL 33127
+          </p>
+         </div>
+        </div>
+        <div class="col-lg-9 col-md-8">
+         <div class="schedule-list text-center text-sm-start">
+          <div class="schedule-list-box bg-lightgrey border border-white border-2 rounded px-6 py-4 mb-5">
+           <div class="schedule-box-title">
+            <h5 class="mb-2">
+             <a class="black" href="{% url 'event_detail' %}">
+              REGISTRATION &amp; BREAKFAST
+             </a>
+            </h5>
+           </div>
+           <div class="schedule-box-info">
+            <p class="mb-2">
+             <small>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
+                          luctus nec ullamcorper mattis, pulvinar dapibus leo, luctus nec ullamcorper mattis, pulvinar
+                          dapibus leo.
+             </small>
+            </p>
+            <ul class="mb-2 p-0">
+             <li class="d-inline">
+              <i aria-hidden="true" class="fa fa-clock-o pink me-2">
+              </i>
+              <small>
+               08:30 -
+                            09:30 AM
+              </small>
+             </li>
+             <li class="d-inline">
+              <i aria-hidden="true" class="fa fa-thumb-tack pink mx-2">
+              </i>
+              <small>
+               Exploration Hall
+              </small>
+             </li>
+            </ul>
+           </div>
+           <div class="schedule-box-bio d-md-flex">
+            <div class="schedule-bio-image">
+             <img alt="team-image" class="me-2 rounded-circle" src="{% static 'images/team/3.jpg' %}"/>
+            </div>
+            <div class="schedule-bio-info">
+             <p class="mt-1 mb-0">
+              <a class="pink" href="{% url 'speaker_detail' %}">
+               PEELRS HELM
+              </a>
+             </p>
+             <small>
+              Host &amp; Speaker
+             </small>
+            </div>
+           </div>
+          </div>
+          <div class="schedule-list-box bg-white border-lightgrey border border-2 rounded px-6 py-4 mb-5">
+           <div class="schedule-box-title">
+            <h5 class="mb-2">
+             <a class="black" href="{% url 'event_detail' %}">
+              EXPLORATIONS OF NEW APPROACHES
+             </a>
+            </h5>
+           </div>
+           <div class="schedule-box-info">
+            <p class="mb-2">
+             <small>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
+                          luctus nec ullamcorper mattis, pulvinar dapibus leo, luctus nec ullamcorper mattis, pulvinar
+                          dapibus leo.
+             </small>
+            </p>
+            <ul class="mb-2 p-0">
+             <li class="d-inline">
+              <i aria-hidden="true" class="fa fa-clock-o pink me-2">
+              </i>
+              <small>
+               08:30 -
+                            09:30 AM
+              </small>
+             </li>
+             <li class="d-inline">
+              <i aria-hidden="true" class="fa fa-thumb-tack pink mx-2">
+              </i>
+              <small>
+               Exploration Hall
+              </small>
+             </li>
+            </ul>
+           </div>
+           <div class="schedule-box-bio d-md-flex">
+            <div class="schedule-bio-image">
+             <img alt="team-image" class="me-2 rounded-circle" src="{% static 'images/team/1.jpg' %}"/>
+            </div>
+            <div class="schedule-bio-info">
+             <p class="mt-1 mb-0 pink">
+              <a class="pink" href="{% url 'speaker_detail' %}">
+               JESUS HOLLAND
+              </a>
+             </p>
+             <small>
+              Host &amp; Speaker
+             </small>
+            </div>
+           </div>
+          </div>
+          <div class="partner-button mt-6">
+           <a class="btn" href="{% url 'event_list' %}">
+            VIEW MORE DETAILS
+           </a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Schedules Section end-->
+  <!--Pricing Section start-->
+  <section class="price bg-lightgrey">
+   <div class="container">
+    <div class="price-inner text-center">
+     <div class="price-title mb-7 w-lg-60 m-auto">
+      <p class="mb-1 pink">
+       TICKET PRICING
+      </p>
+      <h2 class="mb-1">
+       CHOOSE YOUR EXPERIENCE AT THE
+       <span class="pink">
+        WORLD AI EXPO 2025
+       </span>
+      </h2>
+      <p class="m-0">
+       Whether you’re attending to learn, connect, invest, or launch something bold — we’ve got a pass that fits your journey.
+      </p>
+     </div>
+     <div class="price-options g-2 pb-6">
+      <div class="row">
+       <div class="col-lg-4 col-md-6">
+        <div class="ticket-box">
+         <div class="ticket-box-inner bg-white position-relative rounded-bottom-5">
+          <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'images/pattern/1.png' %}"/>
+          <div class="ticket-title">
+           <h4 class="pt-6 mb-1">
+            PROFESSIONAL PASS
+           </h4>
+           <p>
+            Perfect for entrepreneurs, developers, educators, and professionals.
+           </p>
+          </div>
+          <div class="ticket-price bg-white py-6">
+           <div class="ticket-price-inner d-flex justify-content-center align-items-start black fw-bold">
+            <span class="me-1 mb-0 currency">₱</span>
+            <span class="me-1 m-0 dollor">4,950</span>
+            <span class="me-1 mb-0 cents">/ $89 USD</span>
+           </div>
+           <p class="m-0">Per Person</p>
+          </div>
+          <div class="benifit-list bg-white px-5">
+           <ul class="m-auto p-0 list-unstyled">
+            <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>3-day access to all general sessions & panels</small></p></li>
+            <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Expo floor + Innovation Zone access</small></p></li>
+            <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Networking lounge entry</small></p></li>
+            <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Digital welcome kit & program</small></p></li>
+            <li class="pt-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>Certificate of participation</small></p></li>
+           </ul>
+          </div>
+          <div class="ticket-button m-auto p-6">
+           <a class="btn" href="{% url 'pricing' %}">PURCHASE</a>
+           <p class="mt-4"><small>*Please read our terms and conditions before purchasing a ticket</small></p>
+          </div>
+         </div>
+        </div>
+       </div>
+
+       <div class="col-lg-4 col-md-6">
+        <div class="ticket-box-inner bg-white position-relative rounded-bottom-5">
+         <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'images/pattern/2.png' %}"/>
+         <div class="ticket-title py-6 bg-pink text-white">
+          <h4 class="text-white mb-1">
+           STUDENT PASS (LIMITED SLOTS)
+          </h4>
+          <p>For enrolled high school, college, or graduate students (ID required).</p>
+         </div>
+         <div class="ticket-price bg-white py-6">
+          <div class="ticket-price-inner d-flex justify-content-center align-items-start fw-bold">
+           <span class="me-1 mb-0 currency pink">₱</span>
+           <span class="me-1 m-0 dollor pink">1,250</span>
+           <span class="me-1 mb-0 cents pink">/ $23 USD</span>
+          </div>
+          <p class="m-0">Per Student</p>
+         </div>
+         <div class="benifit-list bg-white">
+          <ul class="m-auto p-0 list-unstyled">
+           <li class="pb-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>3-day general access</small></p></li>
+           <li class="py-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>AI Career Track & Youth Innovation Sessions</small></p></li>
+           <li class="py-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>Student networking socials</small></p></li>
+           <li class="py-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>Participation certificate</small></p></li>
+           <li class="pt-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>Free merch item (while supplies last)</small></p></li>
+          </ul>
+         </div>
+         <div class="partner-button m-auto p-6">
+          <a class="btn" href="{% url 'pricing' %}">PURCHASE</a>
+          <p class="mt-4"><small>*Please read our terms and conditions before purchasing a ticket</small></p>
+         </div>
+        </div>
+       </div>
+
+       <div class="col-lg-4 col-md-6">
+        <div class="ticket-box-inner bg-white position-relative rounded-bottom-5">
+         <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'images/pattern/1.png' %}"/>
+         <div class="ticket-title">
+          <h4 class="pt-6 mb-1">
+           VIP ACCESS PASS
+          </h4>
+          <p>
+           For investors, executives, and guests who want the full experience.
+          </p>
+         </div>
+         <div class="ticket-price bg-white py-6">
+          <div class="ticket-price-inner d-flex justify-content-center align-items-start black fw-bold">
+           <span class="me-1 mb-0 currency">₱</span>
+           <span class="me-1 m-0 dollor">18,500</span>
+           <span class="me-1 mb-0 cents">/ $335 USD</span>
+          </div>
+          <p class="m-0">Per Guest</p>
+         </div>
+         <div class="benifit-list bg-white px-5">
+          <ul class="m-auto p-0 list-unstyled">
+           <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>All Professional Pass benefits</small></p></li>
+           <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Reserved front-row seating</small></p></li>
+           <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Access to VIP lounges & investor roundtables</small></p></li>
+           <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>VIP speaker meet & greet</small></p></li>
+           <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Exclusive gala dinner invitation</small></p></li>
+           <li class="pt-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>Premium swag bag</small></p></li>
+          </ul>
+         </div>
+         <div class="partner-button m-auto p-5">
+          <a class="btn" href="{% url 'pricing' %}">PURCHASE</a>
+          <p class="mt-4"><small>*Please read our terms and conditions before purchasing a ticket</small></p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <p class="m-0">
+      Group & school discounts available. Contact us for custom pricing and partner slots.
+      <br/>
+      Registration opens <strong>[Insert Date]</strong> — early bird rates apply to the first 500 sign-ups!
+      <br/>
+      Visit <a class="pink" href="https://www.iriseup.ai/worldaiexpo">www.iriseup.ai/worldaiexpo</a>
+     </p>
+    </div>
+   </div>
+</section>
+
+  <!--Pricing Section end-->
+  <!--Gallery Section end-->
+  <section class="gallery">
+   <div class="container">
+    <div class="galler-inner">
+     <div class="section-title text-center">
+      <div class="row align-items-center">
+       <div class="col-lg-6 pb-2">
+        <div class="title-content text-lg-start">
+         <p class="mb-1 pink">
+          EVENT GALLERY
+         </p>
+         <h2 class="mb-1">
+          WAS AN AMAGING
+          <span class="pink">
+           GALLERY
+          </span>
+         </h2>
+         <p class="m-0">
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                  anim id est laborum.
+         </p>
+        </div>
+       </div>
+       <div class="col-lg-6">
+        <div class="speaker-button text-lg-end">
+         <a class="btn" href="{% url 'gallery' %}">
+          VIEW MORE SHOTS
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="gallerybox pt-4">
+      <div class="grid row" id="selector1">
+       <div class="item grid-item col-lg-4 col-md-6 px-1 mb-2" data-src="images/group/4.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/4.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item grid-item col-lg-4 col-md-6 px-1 mb-2" data-src="images/group/7.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/7.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item grid-item col-lg-4 col-md-6 px-1 mb-2" data-src="images/group/6.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/6.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item grid-item col-lg-4 col-md-6 px-1 mb-2" data-src="images/group/7.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/7.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item grid-item col-lg-4 col-md-6 px-1 mb-2" data-src="images/group/6.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/6.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item grid-item col-lg-4 col-md-6 px-1 mb-2" data-src="images/group/1.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/1.jpg' %}"/>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Gallery Section end-->
+  <!--Testimonials Section start
+  <section class="testimonial bg-lightgrey">
+   <div class="container">
+    <div class="section-title w-lg-60 m-auto text-center pb-5">
+     <p class="mb-1 pink">
+      OUR TESTIMONIALS
+     </p>
+     <h2 class="mb-1">
+      WHAT PEOPLES'S SAYS ABOUT
+      <span class="pink">
+       EVENTEN
+      </span>
+     </h2>
+     <p class="m-0">
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+     </p>
+    </div>
+    <div class="slider testimonial-slide">
+     <div class="box1 mx-4 p-6 rounded bg-white">
+      <div class="testimonial-content position-relative">
+       <i aria-hidden="true" class="fa fa-quote-left position-absolute">
+       </i>
+       <p class="my-6 position-relative w-md-75 m-6">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+              do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+       </p>
+      </div>
+      <div class="testimonial-bio d-flex align-items-center">
+       <img alt="" class="bio-img me-5 rounded-circle float-start" src="{% static 'images/speakers/1.jpg' %}"/>
+       <div>
+        <p class="mb-1 fw-semibold black">
+         DANIEL FRANKIE
+        </p>
+        <p>
+         Manager
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="box2 mx-4 p-6 rounded bg-white">
+      <div class="testimonial-content position-relative">
+       <i aria-hidden="true" class="fa fa-quote-left position-absolute">
+       </i>
+       <p class="my-6 position-relative w-md-75 ms-6">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+              do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+       </p>
+      </div>
+      <div class="testimonial-bio d-flex align-items-center">
+       <img alt="" class="bio-img me-5 rounded-circle float-start" src="{% static 'images/speakers/4.jpg' %}"/>
+       <div>
+        <p class="mb-1 fw-semibold black">
+         EMANUEL KELTON
+        </p>
+        <p>
+         Planner
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="box3 mx-4 p-6 rounded bg-white">
+      <div class="testimonial-content position-relative">
+       <i aria-hidden="true" class="fa fa-quote-left position-absolute">
+       </i>
+       <p class="my-6 position-relative w-md-75 ms-6">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+              do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+       </p>
+      </div>
+      <div class="testimonial-bio d-flex align-items-center">
+       <img alt="" class="bio-img me-5 rounded-circle float-start" src="{% static 'images/speakers/2.jpg' %}"/>
+       <div>
+        <p class="mb-1 fw-semibold black">
+         ROYLOR HENK
+        </p>
+        <p>
+         Director
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  Testimonials Section end-->
+  <!--FAQ Section start-->
+  <section class="faq pb-0 overflow-visible d-block position-relative z-1">
+   <div class="overlay bg-blue opacity-25 z-n1">
+   </div>
+   <div class="container">
+    <div>
+     <div class="row">
+      <div class="col-lg-6 px-4 mb-2">
+       <div class="faq-general">
+        <div class="section-title pb-3 text-center text-lg-start">
+         <p class="mb-1 pink">
+          GENERAL QUESTIONS
+         </p>
+         <h2 class="mb-2 text-white">
+          FREQUENT ASKED
+          <span class="pink">
+           QUESTIONS!!
+          </span>
+         </h2>
+         <p class="text-white">
+          World AI Expo 2025 | Powered by iRiseUp.AI
+         </p>
+        </div>
+        <div class="faq-accordion p-4 mb-5 bg-white rounded">
+         <div class="accordion accordion-faq" id="accordionFlushExample">
+          <div class="accordion-item">
+           <p class="accordion-header p-4">
+            <button aria-controls="flush-collapseOne" aria-expanded="false" class="accordion-button collapsed fw-semibold p-0" data-bs-target="#flush-collapseOne" data-bs-toggle="collapse" type="button">
+             What is the World AI Expo 2025?
+            </button>
+           </p>
+           <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample" id="flush-collapseOne">
+            <div class="accordion-body bg-lightgrey p-6">
+             A global event by iRiseUp.AI that brings together ethical, human-centered innovation. From tech leaders to students—it's where ideas meet purpose.
+            </div>
+           </div>
+          </div>
+          <div class="accordion-item">
+           <p class="accordion-header p-4">
+            <button aria-controls="flush-collapseTwo" aria-expanded="false" class="accordion-button collapsed fw-semibold p-0" data-bs-target="#flush-collapseTwo" data-bs-toggle="collapse" type="button">
+             How can I join or participate?
+            </button>
+           </p>
+           <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample" id="flush-collapseTwo">
+            <div class="accordion-body bg-lightgrey p-6">
+          Register through our official page. Early bird discounts available! Interested in speaking, sponsoring, or exhibiting? Email us at <a href="mailto:hello@iriseup.ai" style="color: brown;">hello@iriseup.ai</a>
+        </div>
+           </div>
+          </div>
+          <div class="accordion-item">
+           <p class="accordion-header p-4">
+            <button aria-controls="flush-collapseThree" aria-expanded="false" class="accordion-button collapsed fw-semibold p-0" data-bs-target="#flush-collapseThree" data-bs-toggle="collapse" type="button">
+             What makes this AI expo different?
+            </button>
+           </p>
+           <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample" id="flush-collapseThree">
+            <div class="accordion-body bg-lightgrey p-6">
+             It’s built around people — not just products. From empowering underdogs to fostering inclusive innovation, we’re redefining what AI means for the real world.
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-6 align-self-center px-4">
+       <div class="faq-form bg-white rounded shadow-lg p-6 mb-mi">
+        <div class="form-title mb-4">
+         <p class="mb-1 pink">
+          TICKET BOOK
+         </p>
+         <h2 class="mb-2">
+          LET'S RESERVE A
+          <span class="pink">
+           SEAT
+          </span>
+         </h2>
+         <p class="m-0">
+          Secure your spot at the World AI Expo 2025. Whether you're here to learn, connect, or lead
+           — your journey starts with one click. Don’t miss the future unfolding live in Manila.
+         </p>
+        </div>
+        <div class="form-content justify-content-between">
+         <form>
+          <input class="mb-5" placeholder="Full Name" type="text"/>
+          <div class="row justify-content-around">
+           <div class="col-lg-6 col-md-6">
+            <div class="phone-no">
+             <input class="mb-5" placeholder="Phone No." type="tel"/>
+            </div>
+           </div>
+           <div class="col-lg-6 col-md-6">
+            <div class="emai">
+             <input class="mb-5" placeholder="Email Address" required="" type="email"/>
+            </div>
+           </div>
+          </div>
+          <textarea class="mb-5" placeholder="How may we help you?" rows="4"></textarea>
+          <button class="btn mb-5" id="sub-btn">
+           SEND MESSAGE
+          </button>
+         </form>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--FAQ Section end-->
+  <!--Direction Section start-->
+  <section class="direction pb-0">
+   <div class="container">
+    <div class="section-title text-center pb-2 w-lg-60 m-auto">
+     <p class="mb-1 pink">
+      REACH US
+     </p>
+     <h2 class="mb-1">
+      GET DIRECTION TO THE
+      <span class="pink">
+       EVENT HALL
+      </span>
+     </h2>
+     <p class="mb-0">
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+          id est laborum.
+     </p>
+    </div>
+    <div class="direction-content">
+     <div class="direction-info">
+      <div class="row">
+       <div class="col-lg-5 col-md-5 px-1">
+        <div class="p-6 d-flex text-white w-100 h-100 rounded bg-pink">
+         <div class="justify-content-center align-self-center ms-6">
+          <h5 class="text-white pb-2">
+           EVENT VENUE:
+          </h5>
+          <p class="pb-5 m-0">
+           SMX Convention Center Manila
+          </p>
+          <h5 class="text-white pb-2">
+           ADDRESS:
+          </h5>
+          <p class="pb-5 m-0">
+           Seaside Blvd, Mall of Asia Complex, Pasay City, Metro Manila, Philippines
+          </p>
+          <h5 class="text-white pb-2">
+           RECEPTION INFO:
+          </h5>
+          <p class="pb-5 m-0">
+           Booking: (+63) 919-192-0202
+          </p>
+          <a>
+           Get Directions
+          </a>
+         </div>
+        </div>
+       </div>
+       <div class="col-lg-7 col-md-7 px-1 py-2">
+        <iframe class="rounded w-100" height="400" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=+(mangal%20bazar)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+        </iframe>
+       </div>
+      </div>
+     </div>
+     <div class="location-gallery">
+      <div class="row pt-1 justify-content-center" id="selector">
+       <div class="item col-lg-4 col-md-6 p-1" data-src="images/group/4.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/4.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item col-lg-4 col-md-6 p-1" data-src="images/group/7.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/7.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item col-lg-4 col-md-6 p-1" data-src="images/group/1.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/1.jpg' %}"/>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Direction Section end-->
+  
+  <!--Subscribe Section start-->
+  <section class="subscribe py-4">
+   <div class="container">
+    <div class="subscribe-content">
+     <div class="row">
+      <div class="col-lg-6 align-self-center">
+       <div class="sub-left text-center text-lg-start py-2">
+       </div>
+      </div>
+      <div class="col-lg-6">
+       <div class="sub-right py-2">
+        <div class="row gy-3">
+         <div class="col-lg-8 col-md-8">
+          <div class="sub-email">
+          </div>
+         </div>
+         <div class="col-lg-4 col-md-4">
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Subscribe Section end-->
+  <!--Footer Section start-->
+  <footer class="pt-9 text-center text-white position-relative z-1">
+   <div class="overlay z-n1 start-0">
+   </div>
+   <div class="container">
+    <div class="footer-content w-lg-50 m-auto">
+     <div class="footer-logo mb-4 pt-1">
+      <a href="{% url 'index' %}">
+       <img alt="footer-logo" class="w-50" src="{% static 'images/logo/ourlogo.png' %}"/>
+      </a>
+     </div>
+     <div class="footer-disciption border-bottom border-white border-opacity-25 m-auto mb-6">
+      <p class="mb-6">
+       Where the future of intelligence begins. Join us as we bring together global innovators, 
+       thought leaders, and tech pioneers to shape what comes next in AI.
+      </p>
+      <div class="footer-socials pb-6">
+       <ul class="m-0 p-0">
+        <li class="d-inline me-2">
+         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
+          <i class="fa fa-facebook">
+          </i>
+         </a>
+        </li>
+        <li class="d-inline me-2">
+         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
+          <i class="fa fa-twitter">
+          </i>
+         </a>
+        </li>
+        <li class="d-inline me-2">
+         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
+          <i class="fa fa-youtube-play">
+          </i>
+         </a>
+        </li>
+        <li class="d-inline me-2">
+         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
+          <i class="fa fa-linkedin">
+          </i>
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+     <div class="footer-menu pb-9">
+      <ul class="p-0 m-0">
+       <li class="d-inline mx-2">
+        <a href="{% url 'about' %}">
+         <small>
+          About Event
+         </small>
+        </a>
+       </li>
+       <li class="d-inline mx-2">
+        <a href="">
+         <small>
+          Services
+         </small>
+        </a>
+       </li>
+       <li class="d-inline mx-2">
+        <a href="{% url 'speaker_list' %}">
+         <small>
+          Speakers
+         </small>
+        </a>
+       </li>
+       <li class="d-inline mx-2">
+        <a href="{% url 'event_list' %}">
+         <small>
+          Schedule
+         </small>
+        </a>
+       </li>
+       <li class="d-inline mx-2">
+        <a href="{% url 'pricing' %}">
+         <small>
+          Ticket Pricing
+         </small>
+        </a>
+       </li>
+       <li class="d-inline mx-2">
+        <a href="{% url 'contact' %}">
+         <small>
+          Contact Us
+         </small>
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="copyright pb-6 pt-1">
+     <small>
+      &copy; 2025 World AI Expo by iRiseUp. All Rights Reserved.
+     </small>
+    </div>
+   </div>
+  </footer>
+  <!--Footer Section end-->
+  <!--Bacl-to-top Button start-->
+  <div id="back-to-top">
+   <a class="bg-pink position-relative align-items-center rounded-circle d-block" href="#">
+   </a>
+  </div>
+  <!--Bacl-to-top Button end-->
+  <script src="{% static 'js/jquery-3.7.1.min.js' %}">
+  </script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}">
+  </script>
+  <script src="{% static 'js/custom-nav.js' %}">
+  </script>
+  <script src="{% static 'js/plugin.js' %}">
+  </script>
+  <script src="{% static 'js/main.js' %}">
+    
+  </script>
+ </body>
+</html>

@@ -1,0 +1,178 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Contact-Eventen
+  </title>
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
+  <!--CSS Plugins-->
+  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
+  <!-- Default CSS-->
+  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
+  <!--Custom CSS-->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+  <!--FontAwesome CSS-->
+  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
+ </head>
+ <body>
+  <!--Header Section start-->
+  
+    {% include 'header.html' %}
+
+  <!-- Bannner section starts -->
+  <section class="banner page-banner position-relative pb-0">
+   <div class="overlay">
+   </div>
+   <div class="container">
+    <div class="page-title text-center position-relative py-11">
+     <h2 class="text-white">
+      Conact Us
+     </h2>
+    </div>
+   </div>
+  </section>
+  <!--Banner Section end-->
+  <!--Contact Section end-->
+  <section class="contact">
+  <div class="container">
+    <div class="contact-inner text-center text-md-start">
+      <div class="row g-md-5 gy-5 align-items-center">
+        <div class="col-lg-4 col-md-5">
+          <div class="contact-event-info p-8 text-white h-100 rounded bg-pink">
+            <div class="event-venue pb-5">
+              <h5 class="text-white pb-2">EVENT VENUE:</h5>
+              <p class="m-0">Galleria mall conference center</p>
+            </div>
+            <div class="address pb-5">
+              <h5 class="text-white pb-2">ADDRESS:</h5>
+              <p class="m-0">19 By Pass NR, Bali, Indonesia, BC 22196</p>
+            </div>
+            <div class="reception-info pb-5">
+              <h5 class="text-white pb-2">RECEPTION INFO:</h5>
+              <p class="m-0">Booking: (+62) 1919-2020</p>
+            </div>
+            <div class="ticket-info pb-5">
+              <h5 class="text-white pb-2">Ticket INFO:</h5>
+              <p class="m-0">Booking: (+62) 1919-2020</p>
+              <p class="m-0">Email: eventen@mail.com</p>
+            </div>
+            <div class="direction-link">
+              <a href="#">Get Directions</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8 col-md-7">
+          <div class="contact-form">
+            <div class="form-title mb-4">
+              <h2 class="mb-1">Drop a <span class="pink">line</span></h2>
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
+            <div class="form">
+              <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-lg-6">
+                    <input class="mb-3" placeholder="Name" type="text" name="name" required />
+                  </div>
+                  <div class="col-lg-6">
+                    <input class="mb-3" placeholder="Email" type="email" name="email" required />
+                  </div>
+                </div>
+                <div class="phone-no">
+                  <input class="mb-3" placeholder="Phone No." type="tel" name="phone" />
+                </div>
+                <div class="subject">
+                  <input class="mb-3" placeholder="Subject" type="text" name="subject" required />
+                </div>
+                <div class="message">
+                  <textarea class="mb-3" placeholder="Message" rows="4" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">
+                  Send Message <i class="fa fa-long-arrow-right ms-3"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-direction mt-5">
+        <iframe
+          class="rounded w-100"
+          height="400"
+          src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=+(mangal%20bazar)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+  <!--Contact Section end-->
+  <!--Subscribe Section start-->
+  <section class="subscribe py-4">
+   <div class="container">
+    <div class="subscribe-content">
+     <div class="row">
+      <div class="col-lg-6 align-self-center">
+       <div class="sub-left text-center text-lg-start py-2">
+        <h4 class="text-white">
+         DON'T MISS OUR FUTURE UPDATES! GET SUBSCRIBED TODAY!
+        </h4>
+       </div>
+      </div>
+      <div class="col-lg-6">
+       <div class="sub-right py-2">
+        <p class="text-white mb-4 text-center text-lg-start">
+         Excepteur sint occaecat cupidatat non proident, sunt
+              in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <div class="row gy-3">
+         <div class="col-lg-8 col-md-8">
+          <div class="sub-email">
+           <input placeholder="Email" required="" type="email"/>
+          </div>
+         </div>
+         <div class="col-lg-4 col-md-4">
+          <div class="sub-button">
+           <button class="btn btn3 w-100">
+            SUBSCRIBE
+           </button>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Subscribe Section end-->
+ {% include 'footer.html' %}
+
+  <!--Footer Section end-->
+  <!--Bacl-to-top Button start-->
+  <div id="back-to-top">
+   <a class="bg-pink position-relative align-items-center rounded-circle d-block" href="#">
+   </a>
+  </div>
+  <!--Bacl-to-top Button end-->
+  <script src="{% static 'js/jquery-3.7.1.min.js' %}">
+  </script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}">
+  </script>
+  <script src="{% static 'js/custom-nav.js' %}">
+  </script>
+  <script src="{% static 'js/plugin.js' %}">
+  </script>
+  <script src="{% static 'js/main.js' %}">
+  </script>
+ </body>
+</html>

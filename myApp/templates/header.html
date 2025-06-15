@@ -1,0 +1,225 @@
+{% load static %}
+  <header class="main_header_area position-absolute w-100">
+   <div class="header-content text-white">
+    <div class="container">
+     <div class="header-content-inner py-2">
+      <div class="row align-items-center">
+       <div class="col-lg-6">
+        <div class="social-links">
+         <ul class="m-0 p-0">
+          <li class="d-inline">
+           <a href="#">
+            <i class="fa fa-facebook border-social rounded-circle text-center">
+            </i>
+           </a>
+          </li>
+          <li class="d-inline">
+           <a href="#">
+            <i class="fa fa-twitter border-social rounded-circle text-center">
+            </i>
+           </a>
+          </li>
+          <li class="d-inline">
+           <a href="#">
+            <i class="fa fa-google border-social rounded-circle text-center">
+            </i>
+           </a>
+          </li>
+          <li class="d-inline">
+           <a href="#">
+            <i class="fa fa-instagram border-social rounded-circle text-center">
+            </i>
+           </a>
+          </li>
+          <li class="d-inline">
+           <a href="#">
+            <i class="fa fa-youtube-play border-social rounded-circle text-center">
+            </i>
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="col-lg-6">
+        <div class="header-event-info text-end">
+         <ul class="m-0 p-0">
+          <li class="px-2 border-end border-lightgrey border-opacity-50 d-inline">
+           <i class="fa fa-phone pe-1">
+           </i>
+           <small>
+            +33 877 554 332
+           </small>
+          </li>
+          <li class="px-2 border-end d-inline border-lightgrey border-opacity-50">
+           <i class="fa fa-envelope-o pe-1">
+           </i>
+           <small>
+            www.iriseup.ai
+           </small>
+          </li>
+          <li class="px-2 d-inline">
+           <i class="fa fa-clock-o pe-1">
+           </i>
+           <small>
+            Mon - Fri: 9:00 - 18:30
+           </small>
+          </li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- Navigation Bar -->
+   <div class="header_menu" id="header_menu">
+    <div class="container">
+     <nav class="navbar navbar-expand-lg py-2">
+      <div class="row">
+       <div class="col-lg-2 col-md-6">
+        <div class="navbar-brand m-0">
+         <img alt="Logo" class="w-100" src="{% static 'images/logo/ourlogo.png' %}"/>
+        </div>
+       </div>
+       <div class="col-lg-7 col-md-6">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <ul class="navbar-nav align-items-center" id="responsive-menu">
+          <li class="nav-item">
+           <a aria-current="page" class="nav-link px-2 my-4 py-0 text-white" href="{% url 'index' %}">
+            Home
+           </a>
+          </li>
+          <li class="nav-item">
+           <a class="nav-link px-2 my-4 py-0 text-white" href="{% url 'about' %}">
+            About
+           </a>
+          </li>
+          <li class="nav-item dropdown">
+           <a aria-expanded="false" class="nav-link dropdown-toggle px-2 my-4 py-0 text-white" data-bs-toggle="dropdown" href="#" role="button">
+            Speaker
+           </a>
+           <ul class="dropdown-menu bg-lightgrey p-0 rounded">
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'speaker_list' %}">
+              Speakers List
+             </a>
+            </li>
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'speaker_detail' %}">
+              Speakers Details
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="nav-item dropdown">
+           <a aria-expanded="false" class="nav-link dropdown-toggle px-2 my-4 py-0 text-white" data-bs-toggle="dropdown" href="#" role="button">
+            Schedule
+           </a>
+           <ul class="dropdown-menu bg-lightgrey p-0 rounded">
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'event_list' %}">
+              Event List
+             </a>
+            </li>
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'event_detail' %}">
+              Event Details
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="nav-item dropdown">
+           <a aria-expanded="false" class="nav-link dropdown-toggle px-2 my-4 py-0 text-white" data-bs-toggle="dropdown" href="#" role="button">
+            Pages
+           </a>
+           <ul class="dropdown-menu bg-lightgrey p-0 rounded">
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'sponsers' %}">
+              Sponsors
+             </a>
+            </li>
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'gallery' %}">
+              Gallery
+             </a>
+            </li>
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'pricing' %}">
+              Pricing
+             </a>
+            </li>
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'faq' %}">
+              Faq
+             </a>
+            </li>
+            <li>
+              <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'testimonial' %}">
+              Testimonials
+             </a>
+            </li>
+            <li> 
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'product_list' %}">
+              Product List
+             </a>
+            </li>
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'product_single' %}">
+              Product Single
+             </a>
+            </li>
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'search_result' %}">
+              Search Result
+             </a>
+            </li>
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'coming_soon' %}">
+              Coming Soon
+             </a>
+            </li>
+           </ul>
+          </li> 
+        
+          <li class="nav-item">
+           <a class="nav-link px-2 my-4 py-0 text-white" href="{% url 'contact' %}">
+            Contact
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="col-lg-3">
+        <div class="menu-search">
+         <a class="mt_search" href="#search1">
+          <i class="fa fa-search fa-lg me-5 text-white">
+          </i>
+         </a>
+         <a class="btn btn3" href="{% url 'book_now' %}">
+          Buy Ticket
+          <i class="fa fa-long-arrow-right ms-4">
+          </i>
+         </a>
+        </div>
+       </div>
+       <div id="slicknav-mobile">
+       </div>
+      </div>
+     </nav>
+    </div>
+    <div id="search1">
+     <button class="close" type="button">
+      &times;
+     </button>
+     <form>
+      <input class="form-control form-control-lg rounded text-white" placeholder="Search..."/>
+     </form>
+     <button class="btn" type="button">
+      <i aria-hidden="true" class="fa fa-search text-white">
+      </i>
+     </button>
+    </div>
+   </div>
+   <!-- Navigation Bar Ends -->
+  </header>
+  <!-- Header section ends -->

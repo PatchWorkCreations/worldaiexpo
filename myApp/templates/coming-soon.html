@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Coming Soon-Eventen
+  </title>
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
+  <!--CSS Plugins-->
+  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
+  <!-- Default CSS-->
+  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
+  <!--Custom CSS-->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+  <!--FontAwesome CSS-->
+  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
+ </head>
+ <body>
+  <section class="text-center coming-soon position-relative vh-100 d-flex align-items-center">
+   <div class="overlay">
+   </div>
+   <div class="container">
+    <div class="coming-soon-inner w-lg-80 m-auto position-relative">
+     <div class="logo">
+      <img alt="Eventen logo" class="w-40 mb-6" src="{% static 'images/logo/1.png' %}"/>
+     </div>
+     <div class="coming-soon-title">
+      <h1 class="text-white mb-6">
+       Something Awesome is coming
+      </h1>
+      <h4 class="text-white mb-2">
+       Keep wating to get more awesome things
+      </h4>
+     </div>
+     <div class="py-2 mb-2">
+      <div class="divider-pattern pt-3">
+      </div>
+     </div>
+     <div class="countdown my-6">
+      <div class="countdown-inner w-100 p-2 rounded-5 justify-content-center box text-white" id="countdown">
+       <div class="row g-4">
+        <div class="col-lg-3 col-md-3 col-6">
+         <div class="time m-auto py-4 d-flex align-items-end justify-content-center">
+          <span class="lh-1 text-white me-1" id="days">
+          </span>
+          <p class="text-uppercase fw-semibold m-0">
+           Days
+          </p>
+         </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6">
+         <div class="time m-auto py-4 d-flex align-items-end justify-content-center">
+          <span class="lh-1 text-white me-1" id="hours">
+          </span>
+          <p class="text-uppercase fw-semibold m-0">
+           Hours
+          </p>
+         </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6">
+         <div class="time m-auto py-4 d-flex align-items-end justify-content-center">
+          <span class="lh-1 text-white me-1" id="minutes">
+          </span>
+          <p class="text-uppercase fw-semibold m-0">
+           Minutes
+          </p>
+         </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6">
+         <div class="time m-auto py-4 d-flex align-items-end justify-content-center">
+          <span class="lh-1 text-white me-1" id="seconds">
+          </span>
+          <p class="text-uppercase fw-semibold m-0">
+           Seconds
+          </p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="footer-socials pb-5">
+      <ul class="m-0 p-0">
+       <li class="d-inline me-2">
+        <a class="d-inline-block rounded-circle text-center align-middle bg-white bg-opacity-25">
+         <i class="fa fa-facebook">
+         </i>
+        </a>
+       </li>
+       <li class="d-inline me-2">
+        <a class="d-inline-block rounded-circle text-center align-middle bg-white bg-opacity-25">
+         <i class="fa fa-twitter">
+         </i>
+        </a>
+       </li>
+       <li class="d-inline me-2">
+        <a class="d-inline-block rounded-circle text-center align-middle bg-white bg-opacity-25">
+         <i class="fa fa-linkedin">
+         </i>
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="copyright pt-4">
+      <p class="text-white">
+       Copyright &copy;2024 Eventen. All Rights Reserved Copyright
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <script src="{% static 'js/jquery-3.7.1.min.js' %}">
+  </script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}">
+  </script>
+  <script src="{% static 'js/custom-nav.js' %}">
+  </script>
+  <script src="{% static 'js/plugin.js' %}">
+  </script>
+  <script src="{% static 'js/main.js' %}">
+  </script>
+ </body>
+</html>

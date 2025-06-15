@@ -1,0 +1,266 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Gallery-Eventen
+  </title>
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
+  <!--CSS Plugins-->
+  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
+  <!-- Default CSS-->
+  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
+  <!--Custom CSS-->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+  <!--FontAwesome CSS-->
+  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
+ </head>
+ <body>
+  <!--Header Section start-->
+  <header class="main_header_area position-absolute w-100">
+   <div class="header-content text-white">
+    <div class="container">
+     <div class="header-content-inner py-2">
+      <div class="row align-items-center">
+       <div class="col-lg-6">
+        <div class="social-links">
+         <ul class="m-0 p-0">
+          <li class="d-inline">
+           <a href="#">
+            <i class="fa fa-facebook border-social rounded-circle text-center">
+            </i>
+           </a>
+          </li>
+          <li class="d-inline">
+           <a href="#">
+            <i class="fa fa-twitter border-social rounded-circle text-center">
+            </i>
+           </a>
+          </li>
+          <li class="d-inline">
+           <a href="#">
+            <i class="fa fa-google border-social rounded-circle text-center">
+            </i>
+           </a>
+          </li>
+          <li class="d-inline">
+           <a href="#">
+            <i class="fa fa-instagram border-social rounded-circle text-center">
+            </i>
+           </a>
+          </li>
+          <li class="d-inline">
+           <a href="#">
+            <i class="fa fa-youtube-play border-social rounded-circle text-center">
+            </i>
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="col-lg-6">
+        <div class="header-event-info text-end">
+         <ul class="m-0 p-0">
+          <li class="px-2 border-end border-lightgrey border-opacity-50 d-inline">
+           <i class="fa fa-phone pe-1">
+           </i>
+           <small>
+            +33 877 554 332
+           </small>
+          </li>
+          <li class="px-2 border-end d-inline border-lightgrey border-opacity-50">
+           <i class="fa fa-envelope-o pe-1">
+           </i>
+           <small>
+            www.iriseup.ai
+           </small>
+          </li>
+          <li class="px-2 d-inline">
+           <i class="fa fa-clock-o pe-1">
+           </i>
+           <small>
+            Mon - Fri: 9:00 - 18:30
+           </small>
+          </li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  <!-- Bannner section starts -->
+  <section class="banner page-banner position-relative pb-0">
+   <div class="overlay">
+   </div>
+   <div class="container">
+    <div class="page-title text-center position-relative py-11">
+     <h2 class="text-white">
+      Gallery
+     </h2>
+    </div>
+   </div>
+  </section>
+  <!--Banner Section end-->
+  <!--Gallery Section end-->
+  <div class="gallery py-10">
+   <div class="container">
+    <div class="galler-inner">
+     <div class="gallerybox">
+      <div class="grid row" id="selector1">
+       <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/4.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/4.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/7.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/7.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/6.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/6.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/7.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/7.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/6.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/6.jpg' %}"/>
+        </a>
+       </div>
+       <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/1.jpg">
+        <a>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/1.jpg' %}"/>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!--Gallery Section end-->
+  <!--Ticketbook Section start-->
+  <section class="ticket1 position-relative bg-lightgrey">
+   <div class="container">
+    <div class="ticket-inner text-center position-relative">
+     <div class="ticket-title w-lg-55 mx-auto">
+      <p class="mb-1 pink">
+       LET'S DO IT HURRY
+      </p>
+      <h2 class="mb-2">
+       HAVEN'T BOOKED YOUR SEAT YET?
+       <span class="spin pink d-inline-block">
+        G
+       </span>
+       <span class="spin pink d-inline-block">
+        E
+       </span>
+       <span class="spin pink d-inline-block">
+        T
+       </span>
+       <span class="spin pink d-inline-block">
+        T
+       </span>
+       <span class="spin pink d-inline-block">
+        I
+       </span>
+       <span class="spin pink d-inline-block">
+        C
+       </span>
+       <span class="spin pink d-inline-block">
+        K
+       </span>
+       <span class="spin pink d-inline-block">
+        E
+       </span>
+       <span class="spin pink d-inline-block">
+        T
+       </span>
+      </h2>
+     </div>
+     <div class="ticket-info w-lg-55 mx-auto">
+      <p>
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+      </p>
+      <p class="mb-5">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+      </p>
+      <div class="ticket-button">
+       <a class="btn" href="{% url 'book_now' %}">
+        Buy TICKETS NOW
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Ticketbook Section end-->
+  <!--Subscribe Section start-->
+  <section class="subscribe py-4">
+   <div class="container">
+    <div class="subscribe-content">
+     <div class="row">
+      <div class="col-lg-6 align-self-center">
+       <div class="sub-left text-center text-lg-start py-2">
+        <h4 class="text-white">
+         DON'T MISS OUR FUTURE UPDATES! GET SUBSCRIBED TODAY!
+        </h4>
+       </div>
+      </div>
+      <div class="col-lg-6">
+       <div class="sub-right py-2">
+        <p class="text-white mb-4 text-center text-lg-start">
+         Excepteur sint occaecat cupidatat non proident, sunt
+              in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <div class="row gy-3">
+         <div class="col-lg-8 col-md-8">
+          <div class="sub-email">
+           <input placeholder="Email" required="" type="email"/>
+          </div>
+         </div>
+         <div class="col-lg-4 col-md-4">
+          <div class="sub-button">
+           <button class="btn btn3 w-100">
+            SUBSCRIBE
+           </button>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Subscribe Section end-->
+ {% include 'footer.html' %}
+
+  <!--Footer Section end-->
+  <!--Bacl-to-top Button start-->
+  <div id="back-to-top">
+   <a class="bg-pink position-relative align-items-center rounded-circle d-block" href="#">
+   </a>
+  </div>
+  <!--Bacl-to-top Button end-->
+  <script src="{% static 'js/jquery-3.7.1.min.js' %}">
+  </script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}">
+  </script>
+  <script src="{% static 'js/custom-nav.js' %}">
+  </script>
+  <script src="{% static 'js/plugin.js' %}">
+  </script>
+  <script src="{% static 'js/main.js' %}">
+  </script>
+ </body>
+</html>

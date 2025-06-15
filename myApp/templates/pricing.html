@@ -1,0 +1,297 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Pricing-Eventen
+  </title>
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
+  <!--CSS Plugins-->
+  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
+  <!-- Default CSS-->
+  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
+  <!--Custom CSS-->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+  <!--FontAwesome CSS-->
+  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
+ </head>
+ <body>
+  <!--Header Section start-->
+{% include 'header.html' %}
+  <!-- Header section ends -->
+  <!-- Bannner section starts -->
+  <section class="banner page-banner position-relative pb-0">
+   <div class="overlay">
+   </div>
+   <div class="container">
+    <div class="page-title text-center position-relative py-11">
+     <h2 class="text-white">
+      Our Pricing
+     </h2>
+    </div>
+   </div>
+  </section>
+  <!--Banner Section end-->
+  <!--Pricing Section start-->
+  <section class="price bg-lightgrey">
+   <div class="container">
+    <div class="price-inner text-center">
+     <div class="price-title mb-7 w-lg-60 m-auto">
+      <p class="mb-1 pink">
+       TICKET PRICING
+      </p>
+      <h2 class="mb-1">
+       CHOOSE YOUR EXPERIENCE AT THE
+       <span class="pink">
+        WORLD AI EXPO 2025
+       </span>
+      </h2>
+      <p class="m-0">
+       Whether you’re attending to learn, connect, invest, or launch something bold — we’ve got a pass that fits your journey.
+      </p>
+     </div>
+     <div class="price-options g-2 pb-6">
+      <div class="row">
+       <div class="col-lg-4 col-md-6">
+        <div class="ticket-box">
+         <div class="ticket-box-inner bg-white position-relative rounded-bottom-5">
+          <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'images/pattern/1.png' %}"/>
+          <div class="ticket-title">
+           <h4 class="pt-6 mb-1">
+            PROFESSIONAL PASS
+           </h4>
+           <p>
+            Perfect for entrepreneurs, developers, educators, and professionals.
+           </p>
+          </div>
+          <div class="ticket-price bg-white py-6">
+           <div class="ticket-price-inner d-flex justify-content-center align-items-start black fw-bold">
+            <span class="me-1 mb-0 currency">₱</span>
+            <span class="me-1 m-0 dollor">4,950</span>
+            <span class="me-1 mb-0 cents">/ $89 USD</span>
+           </div>
+           <p class="m-0">Per Person</p>
+          </div>
+          <div class="benifit-list bg-white px-5">
+           <ul class="m-auto p-0 list-unstyled">
+            <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>3-day access to all general sessions & panels</small></p></li>
+            <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Expo floor + Innovation Zone access</small></p></li>
+            <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Networking lounge entry</small></p></li>
+            <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Digital welcome kit & program</small></p></li>
+            <li class="pt-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>Certificate of participation</small></p></li>
+           </ul>
+          </div>
+          <div class="ticket-button m-auto p-6">
+           <a class="btn" href="{% url 'pricing' %}">PURCHASE</a>
+           <p class="mt-4"><small>*Please read our terms and conditions before purchasing a ticket</small></p>
+          </div>
+         </div>
+        </div>
+       </div>
+
+       <div class="col-lg-4 col-md-6">
+        <div class="ticket-box-inner bg-white position-relative rounded-bottom-5">
+         <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'images/pattern/2.png' %}"/>
+         <div class="ticket-title py-6 bg-pink text-white">
+          <h4 class="text-white mb-1">
+           STUDENT PASS (LIMITED SLOTS)
+          </h4>
+          <p>For enrolled high school, college, or graduate students (ID required).</p>
+         </div>
+         <div class="ticket-price bg-white py-6">
+          <div class="ticket-price-inner d-flex justify-content-center align-items-start fw-bold">
+           <span class="me-1 mb-0 currency pink">₱</span>
+           <span class="me-1 m-0 dollor pink">1,250</span>
+           <span class="me-1 mb-0 cents pink">/ $23 USD</span>
+          </div>
+          <p class="m-0">Per Student</p>
+         </div>
+         <div class="benifit-list bg-white">
+          <ul class="m-auto p-0 list-unstyled">
+           <li class="pb-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>3-day general access</small></p></li>
+           <li class="py-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>AI Career Track & Youth Innovation Sessions</small></p></li>
+           <li class="py-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>Student networking socials</small></p></li>
+           <li class="py-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>Participation certificate</small></p></li>
+           <li class="pt-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>Free merch item (while supplies last)</small></p></li>
+          </ul>
+         </div>
+         <div class="partner-button m-auto p-6">
+          <a class="btn" href="{% url 'pricing' %}">PURCHASE</a>
+          <p class="mt-4"><small>*Please read our terms and conditions before purchasing a ticket</small></p>
+         </div>
+        </div>
+       </div>
+
+       <div class="col-lg-4 col-md-6">
+        <div class="ticket-box-inner bg-white position-relative rounded-bottom-5">
+         <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'images/pattern/1.png' %}"/>
+         <div class="ticket-title">
+          <h4 class="pt-6 mb-1">
+           VIP ACCESS PASS
+          </h4>
+          <p>
+           For investors, executives, and guests who want the full experience.
+          </p>
+         </div>
+         <div class="ticket-price bg-white py-6">
+          <div class="ticket-price-inner d-flex justify-content-center align-items-start black fw-bold">
+           <span class="me-1 mb-0 currency">₱</span>
+           <span class="me-1 m-0 dollor">18,500</span>
+           <span class="me-1 mb-0 cents">/ $335 USD</span>
+          </div>
+          <p class="m-0">Per Guest</p>
+         </div>
+         <div class="benifit-list bg-white px-5">
+          <ul class="m-auto p-0 list-unstyled">
+           <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>All Professional Pass benefits</small></p></li>
+           <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Reserved front-row seating</small></p></li>
+           <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Access to VIP lounges & investor roundtables</small></p></li>
+           <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>VIP speaker meet & greet</small></p></li>
+           <li class="py-2 text-capitalize lh-1 border-dashed-bottom-1"><p class="my-1"><small>Exclusive gala dinner invitation</small></p></li>
+           <li class="pt-2 border border-0 text-capitalize lh-1"><p class="my-1"><small>Premium swag bag</small></p></li>
+          </ul>
+         </div>
+         <div class="partner-button m-auto p-5">
+          <a class="btn" href="{% url 'pricing' %}">PURCHASE</a>
+          <p class="mt-4"><small>*Please read our terms and conditions before purchasing a ticket</small></p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <p class="m-0">
+      Group & school discounts available. Contact us for custom pricing and partner slots.
+      <br/>
+      Registration opens <strong>[Insert Date]</strong> — early bird rates apply to the first 500 sign-ups!
+      <br/>
+      Visit <a class="pink" href="https://www.iriseup.ai/worldaiexpo">www.iriseup.ai/worldaiexpo</a>
+     </p>
+    </div>
+   </div>
+</section>
+  <!--Pricing Section end-->
+  <!--Ticketbook Section start-->
+  <section class="ticket2 position-relative pb-0">
+   <div class="container">
+    <div class="ticket-inner text-center position-relative">
+     <div class="row">
+      <div class="col-lg-6">
+       <div class="ticket-left text-lg-start pb-6">
+        <div class="ticket-title">
+         <p class="mb-1 pink">
+          LET'S DO IT HURRY
+         </p>
+         <h2 class="mb-2">
+          HAVEN'T BOOKED YOUR SEAT YET?
+          <span class="spin pink d-inline-block">
+           G
+          </span>
+          <span class="spin pink d-inline-block">
+           E
+          </span>
+          <span class="spin pink d-inline-block">
+           T
+          </span>
+          <span class="spin pink d-inline-block">
+           T
+          </span>
+          <span class="spin pink d-inline-block">
+           I
+          </span>
+          <span class="spin pink d-inline-block">
+           C
+          </span>
+          <span class="spin pink d-inline-block">
+           K
+          </span>
+          <span class="spin pink d-inline-block">
+           E
+          </span>
+          <span class="spin pink d-inline-block">
+           T
+          </span>
+         </h2>
+        </div>
+        <div class="ticket-info">
+         <p>
+          Time is ticking and seats are flying! Join thousands of visionaries, creators, and innovators at the World AI Expo 2025. Don’t miss your chance to be part of history in the making.
+         </p>
+         <div class="ticket-button">
+          <a class="btn" href="{% url 'book_now' %}">
+           GET TICKETS NOW
+          </a>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-6">
+       <div class="ticket-right">
+        <img alt="ticket-img" class="w-50" src="{% static 'images/team/5.png' %}"/>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Ticketbook Section end-->
+  <!--Subscribe Section start-->
+  <section class="subscribe py-4">
+   <div class="container">
+    <div class="subscribe-content">
+     <div class="row">
+      <div class="col-lg-6 align-self-center">
+       <div class="sub-left text-center text-lg-start py-2">
+        <h4 class="text-white">
+         
+        </h4>
+       </div>
+      </div>
+      <div class="col-lg-6">
+       <div class="sub-right py-2">
+        <p class="text-white mb-4 text-center text-lg-start">
+        
+        </p>
+        <div class="row gy-3">
+         <div class="col-lg-8 col-md-8">
+          <div class="sub-email">
+          
+          </div>
+         </div>
+         <div class="col-lg-4 col-md-4">
+        
+           
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!--Subscribe Section end-->
+ {% include 'footer.html' %}
+
+  <!--Footer Section end-->
+  <!--Bacl-to-top Button start-->
+  <div id="back-to-top">
+   <a class="bg-pink position-relative align-items-center rounded-circle d-block" href="#">
+   </a>
+  </div>
+  <!--Bacl-to-top Button end-->
+  <script src="{% static 'js/jquery-3.7.1.min.js' %}">
+  </script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}">
+  </script>
+  <script src="{% static 'js/custom-nav.js' %}">
+  </script>
+  <script src="{% static 'js/plugin.js' %}">
+  </script>
+  <script src="{% static 'js/main.js' %}">
+  </script>
+ </body>
+</html>
