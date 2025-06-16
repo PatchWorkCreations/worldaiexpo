@@ -17,3 +17,5 @@ django-cloudinary-storage==0.3.0
 six==1.17.0
 
 django-countries==7.6.1
+
+python-dotenv>=1.0.0

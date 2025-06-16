@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*&&7-o5drl+bxli04jx9#j8g^gg^se)kl4oc!9y#6ueh(oy!9_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '.devtunnels.ms', '8000', '8080']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '.devtunnels.ms', '8000', '8080', 'worldaiexpo-production.up.railway.app']
 
 
 # Application definition
