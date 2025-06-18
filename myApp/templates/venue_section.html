@@ -1,0 +1,131 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Event Detail-Eventen
+  </title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
+  <!--CSS Plugins-->
+  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
+  <!-- Default CSS-->
+  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
+  <!--Custom CSS-->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+  <!--FontAwesome CSS-->
+  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
+</head>
+ <body>
+<!--Header Section start-->
+  {% include 'header.html' %}
+  <!-- Header section ends -->
+  <!-- Bannner section starts -->
+
+<!-- Venue Section -->
+<style>
+.venue-section {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: rgb(255, 255, 255);
+    padding: 11rem 0; /* increased vertical padding */
+}
+
+.venue-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.venue-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.venue-section h2 {
+    font-size: 3rem;
+    line-height: 1.3;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ffcc00;
+}
+
+.venue-section p.fs-5 {
+    font-size: 1.5rem;
+}
+
+.venue-section .btn {
+    font-size: 1.1rem;
+    padding: 0.9rem 2.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+}
+
+.venue-section .btn-warning {
+    border: 2px solid #ffcc00;
+}
+
+.venue-section a.text-warning {
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+</style>
+
+<!-- Venue Section -->
+<div class="venue-section container-fluid"
+     style="background-image: url('{% static 'images/background/smx1.png' %}');">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8" data-aos="fade-up">
+        <p class="text-white fs-4 fw-bold mb-2" data-aos="fade-right" data-aos-delay="100">📍 Venue Details</p>
+
+        <h2 class="mb-4" data-aos="fade-left" data-aos-delay="200">
+          SMX Convention Center Manila,
+          Philippines
+          <a href="https://goo.gl/maps/your-map-link" class="text-warning text-decoration-none fs-6" target="_blank">
+            [ View Map ]
+          </a>
+        </h2>
+
+        <p class="fs-5 mb-2" data-aos="fade-up" data-aos-delay="300">
+          <i class="bi bi-calendar-check-fill text-warning me-2"></i>
+          <strong>21–Nov–2025</strong> – 10:00 AM to 6:00 PM
+        </p>
+        <p class="fs-5 mb-4" data-aos="fade-up" data-aos-delay="400">
+          <i class="bi bi-calendar-check-fill text-warning me-2"></i>
+          <strong>22–Nov–2025</strong> – 10:00 AM to 6:00 PM
+        </p> <br>
+
+        <div class="d-flex gap-4" data-aos="zoom-in" data-aos-delay="500">
+          <a href="{% url 'become_sponsor' %}" class="btn btn-warning text-white shadow">Become Sponsor</a>
+          <a href="{% url 'exhibit' %}" class="btn btn-primary text-white shadow">Exhibit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
+
+{% include 'footer.html' %}

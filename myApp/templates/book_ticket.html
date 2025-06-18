@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Ticket</title>
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
+  <style>
+    .pricing-table th, .pricing-table td {
+      text-align: center;
+      vertical-align: middle;
+    }
+    .highlight { background-color: #fff8c9 !important; }
+    .check { color: #28a745; font-size: 1.4rem; }
+    .cross { color: #dc3545; font-size: 1.4rem; }
+    .note { color: red; font-size: 0.95rem; margin-top: 1rem; }
+    .buy-btn-row td { border-top: none; }
+    .btn-buy { width: 100%; font-weight: 600; }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Ticket Pricing</h2>
+
+  <div class="alert alert-success text-center">
+    Book 4–5 Tickets: <strong>15% OFF</strong> | Book 6–10 Tickets: <strong>20% OFF</strong>
+  </div>
+  <p class="note text-center">NOTE: Prices and inclusions may change without prior notice.</p>
+
+  <div class="table-responsive mt-4">
+    <table class="table table-bordered table-striped pricing-table">
+      <thead class="thead-light">
+        <tr>
+          <th>Inclusions</th>
+          {% for type, price in ticket_columns %}
+            <th class="{% if type == 'Premium' %}highlight{% endif %}">
+              {{ type }}<br/>
+              <strong>{{ price }}</strong>
+            </th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for feature in features %}
+          <tr class="{% if feature.2 %}highlight{% endif %}">
+            <td>{{ feature.0 }}</td>
+            {% for val in feature.1 %}
+              <td>
+                {% if val == '✔' %}
+                  <span class="check">✔</span>
+                {% elif val == '✘' %}
+                  <span class="cross">✘</span>
+                {% else %}
+                  {{ val }}
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+
+        <!-- Buy Now Button Row -->
+        <tr class="buy-btn-row">
+          <td></td>
+          {% for type, price in ticket_columns %}
+            <td class="{% if type == 'Premium' %}highlight{% endif %}">
+              <a href="#" class="btn btn-warning btn-buy">Buy Now</a>
+              </a>
+            </td>
+          {% endfor %}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

@@ -25,4 +25,10 @@ urlpatterns = [
     path('speaker-list/', views.speaker_list, name='speaker_list'),
     path('sponsers/', views.sponsers, name='sponsers'),
     path('testimonial/', views.testimonial, name='testimonial'),
+    path('apply-speaker/', views.apply_speaker_view, name='apply_speaker'),
+    path('thank-you/', views.thank_you_view, name='thank_you'),
+    path('venue/', views.venue_detail, name='venue_detail'),
+    path('sponsor/', views.become_sponsor, name='become_sponsor'),
+    path('exhibit/', views.exhibit, name='exhibit'),
+    path('book-ticket/', views.book_ticket, name='book_ticket'),
 ]
