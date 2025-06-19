@@ -174,3 +174,56 @@ def book_ticket(request):
         "ticket_columns": ticket_columns,
         "features": features,
     })
+
+
+def become_a_sponsor(request):
+    return render(request, 'become_a_sponsor.html')
+
+
+from django.shortcuts import render
+from django import forms
+
+class StartupPitchForm(forms.Form):
+    full_name = forms.CharField(label="Full Name", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    company_name = forms.CharField(label="Company Name", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(label="E-Mail ID", widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    whatsapp = forms.CharField(label="WhatsApp Number", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    website = forms.URLField(label="Company Website", widget=forms.URLInput(attrs={'class': 'form-control'}))
+    country = forms.CharField(label="Company Located", widget=forms.TextInput(attrs={'class': 'form-control'}))
+    package = forms.ChoiceField(label="Package", widget=forms.Select(attrs={'class': 'form-select'}))
+
+def startup_pitching_view(request):
+    package_options = [
+        ("Startup Pitching + 1 Regular Ticket", "$680"),
+        ("Startup + 5 Regular Tickets + Table Top", "$880"),
+        ("Startup Pitching + 5 Regular Tickets", "$860"),
+        ("Startup Pitching + 2 VIP Tickets", "$1,175"),
+        ("Startup Pitching + 3 VIP Tickets", "$1,400"),
+        ("Startup Pitching + 5 VIP Tickets", "$1,679"),
+    ]
+
+    packages = [
+        {"title": "Startup Pitching + 1 Regular Ticket", "price": "680"},
+        {"title": "Startup + 5 Regular Tickets + Table Top", "price": "880", "original_price": "2000", "recommended": True},
+        {"title": "Startup Pitching + 5 Regular Tickets", "price": "860", "original_price": "980"},
+        {"title": "Startup Pitching + 2 VIP Tickets", "price": "1175", "original_price": "1270"},
+        {"title": "Startup Pitching + 3 VIP Tickets", "price": "1400", "original_price": "1565"},
+        {"title": "Startup Pitching + 5 VIP Tickets", "price": "1679", "original_price": "2155"},
+    ]
+
+    submitted = False
+
+    if request.method == 'POST':
+        form = StartupPitchForm(request.POST)
+        form.fields['package'].choices = [(p[0], f"{p[0]} - {p[1]}") for p in package_options]
+        if form.is_valid():
+            submitted = True
+    else:
+        form = StartupPitchForm()
+        form.fields['package'].choices = [(p[0], f"{p[0]} - {p[1]}") for p in package_options]
+
+    return render(request, "startup_pitching.html", {
+        "form": form,
+        "packages": packages,
+        "submitted": submitted,
+    })

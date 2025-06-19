@@ -68,6 +68,41 @@
         .submit-btn:hover {
             background-color: #0056b3;
         }
+
+        @keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-title-wrapper {
+  position: relative;
+}
+
+.animated-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111;
+  animation: fadeInUp 1s ease-out both;
+}
+
+.animated-title span {
+  background: linear-gradient(90deg, #24369C, #C40F4C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sub-text {
+  font-size: 1rem;
+  color: #555;
+  animation: fadeInUp 1.5s ease-out both;
+}
+
     </style>
 </head>
 
@@ -77,7 +112,12 @@
 <body>
 
 <div class="form-container shadow-lg">
-    <h2>Apply for a Speaker – Limited Slots Available !!!</h2>
+    <div class="animated-title-wrapper text-center mb-5">
+  <h2 class="animated-title">
+    <span>🎤 Apply as a Speaker</span><br>
+    <small class="sub-text d-block mt-2">Limited Slots Available – Showcase Your Ideas to the World!</small>
+  </h2>
+</div>
 
     <div class="row mb-4">
         <div class="col-md-6">
@@ -154,20 +194,20 @@
         <div class="mt-4">
             <label class="form-label d-block mb-2">Preferred Speaker Slot *</label>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="slot" id="slot1" value="14 May 2025 10:00am - 2:00pm" required>
-                <label class="form-check-label" for="slot1">14 May 2025 10:00am - 2:00pm</label>
+                <input class="form-check-input" type="radio" name="slot" id="slot1" value="14 May 2026 10:00am - 2:00pm" required>
+                <label class="form-check-label" for="slot1">14 May 2026 10:00am - 2:00pm</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="slot" id="slot2" value="14 May 2025 2:00pm - 6:00pm">
-                <label class="form-check-label" for="slot2">14 May 2025 2:00pm - 6:00pm</label>
+                <input class="form-check-input" type="radio" name="slot" id="slot2" value="14 May 2026 2:00pm - 6:00pm">
+                <label class="form-check-label" for="slot2">14 May 2026 2:00pm - 6:00pm</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="slot" id="slot3" value="15 May 2025 10:00am - 2:00pm">
-                <label class="form-check-label" for="slot3">15 May 2025 10:00am - 2:00pm</label>
+                <input class="form-check-input" type="radio" name="slot" id="slot3" value="15 May 2026 10:00am - 2:00pm">
+                <label class="form-check-label" for="slot3">15 May 2026 10:00am - 2:00pm</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="slot" id="slot4" value="15 May 2025 2:00pm - 6:00pm">
-                <label class="form-check-label" for="slot4">15 May 2025 2:00pm - 6:00pm</label>
+                <input class="form-check-input" type="radio" name="slot" id="slot4" value="15 May 2026 2:00pm - 6:00pm">
+                <label class="form-check-label" for="slot4">15 May 2026 2:00pm - 6:00pm</label>
             </div>
         </div>
 
