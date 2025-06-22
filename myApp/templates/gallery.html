@@ -1,27 +1,8 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block title %}Speakers | World AI Expo{% endblock %}
 
-<!DOCTYPE html>
-<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Gallery-Eventen
-  </title>
-  <!-- Bootstrap CSS -->
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
-  <!--CSS Plugins-->
-  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
-  <!-- Default CSS-->
-  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
-  <!--Custom CSS-->
-  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
-  <!--FontAwesome CSS-->
-  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
- </head>
- <body>
-  <!--Header Section start-->
-  {% include 'header.html' %}
+{% block content %}
   <!-- Bannner section starts -->
   <section class="banner page-banner position-relative pb-0">
    <div class="overlay">
@@ -43,32 +24,32 @@
       <div class="grid row" id="selector1">
        <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/4.jpg">
         <a>
-         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/4.jpg' %}"/>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'expo_images/thumbnail/4.jpg' %}"/>
         </a>
        </div>
        <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/7.jpg">
         <a>
-         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/7.jpg' %}"/>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'expo_images/thumbnail/7.jpg' %}"/>
         </a>
        </div>
        <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/6.jpg">
         <a>
-         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/6.jpg' %}"/>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'expo_images/thumbnail/6.jpg' %}"/>
         </a>
        </div>
        <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/7.jpg">
         <a>
-         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/7.jpg' %}"/>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'expo_images/thumbnail/7.jpg' %}"/>
         </a>
        </div>
        <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/6.jpg">
         <a>
-         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/6.jpg' %}"/>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'expo_images/thumbnail/6.jpg' %}"/>
         </a>
        </div>
        <div class="item grid-item col-lg-4 col-md-4 px-1 mb-2" data-src="images/group/1.jpg">
         <a>
-         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'images/thumbnail/1.jpg' %}"/>
+         <img alt="VR Presentation and conference" class="w-100 rounded" src="{% static 'expo_images/thumbnail/1.jpg' %}"/>
         </a>
        </div>
       </div>
@@ -172,24 +153,4 @@
    </div>
   </section>
   <!--Subscribe Section end-->
- {% include 'footer.html' %}
-
-  <!--Footer Section end-->
-  <!--Bacl-to-top Button start-->
-  <div id="back-to-top">
-   <a class="bg-pink position-relative align-items-center rounded-circle d-block" href="#">
-   </a>
-  </div>
-  <!--Bacl-to-top Button end-->
-  <script src="{% static 'js/jquery-3.7.1.min.js' %}">
-  </script>
-  <script src="{% static 'js/bootstrap.bundle.min.js' %}">
-  </script>
-  <script src="{% static 'js/custom-nav.js' %}">
-  </script>
-  <script src="{% static 'js/plugin.js' %}">
-  </script>
-  <script src="{% static 'js/main.js' %}">
-  </script>
- </body>
-</html>
+{% endblock %}

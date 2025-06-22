@@ -1,102 +1,76 @@
- {% load static %}
- 
-  <!--Footer Section start-->
-  <footer class="pt-9 text-center text-white position-relative z-1">
-   <div class="overlay z-n1 start-0">
-   </div>
-   <div class="container">
-    <div class="footer-content w-lg-50 m-auto">
-     <div class="footer-logo mb-4 pt-1">
-      <a href="{% url 'index' %}">
-       <img alt="footer-logo" class="w-50" src="{% static 'images/logo/ourlogo.png' %}"/>
-      </a>
-     </div>
-     <div class="footer-disciption border-bottom border-white border-opacity-25 m-auto mb-6">
-      <p class="mb-6">
-       Where the future of intelligence begins. Join us as we bring together global innovators, 
-       thought leaders, and tech pioneers to shape what comes next in AI.
-      </p>
-      <div class="footer-socials pb-6">
-       <ul class="m-0 p-0">
-        <li class="d-inline me-2">
-         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
-          <i class="fa fa-facebook">
-          </i>
-         </a>
-        </li>
-        <li class="d-inline me-2">
-         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
-          <i class="fa fa-twitter">
-          </i>
-         </a>
-        </li>
-        <li class="d-inline me-2">
-         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
-          <i class="fa fa-youtube-play">
-          </i>
-         </a>
-        </li>
-        <li class="d-inline me-2">
-         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
-          <i class="fa fa-linkedin">
-          </i>
-         </a>
-        </li>
-       </ul>
+{% load static %}
+
+<!--Footer Section start-->
+<footer class="pt-9 text-center text-white position-relative z-1" style="background-color: #001F3F;">
+  <div class="overlay z-n1 start-0"></div>
+  <div class="container py-5">
+    <div class="row">
+
+      <!-- About Section -->
+      <div class="col-md-4 mb-4 text-md-start text-center">
+        <div class="mb-3 d-flex justify-content-md-start justify-content-center align-items-center">
+          <img src="{% static 'images/logo/ourlogo.png' %}" alt="Logo" style="width: 300px;" />
+        </div>
+        <p class="small text-white">
+          The World AI Expo in Manila stands as the largest and most comprehensive AI exhibition and seminar globally, offering an unparalleled platform for innovation and collaboration.
+        </p>
+        <div class="d-flex justify-content-md-start justify-content-center mt-3">
+          <a href="#" class="me-3 text-white"><i class="fa fa-facebook fa-lg"></i></a>
+          <a href="#" class="me-3 text-white"><i class="fa fa-twitter fa-lg"></i></a>
+          <a href="#" class="me-3 text-white"><i class="fa fa-youtube-play fa-lg"></i></a>
+          <a href="#" class="text-white"><i class="fa fa-linkedin fa-lg"></i></a>
+        </div>
       </div>
-     </div>
-     <div class="footer-menu pb-9">
-      <ul class="p-0 m-0">
-       <li class="d-inline mx-2">
-        <a href="{% url 'about' %}">
-         <small>
-          About Event
-         </small>
-        </a>
-       </li>
-       <li class="d-inline mx-2">
-        <a href="">
-         <small>
-          Services
-         </small>
-        </a>
-       </li>
-       <li class="d-inline mx-2">
-        <a href="{% url 'speaker_list' %}">
-         <small>
-          Speakers
-         </small>
-        </a>
-       </li>
-       <li class="d-inline mx-2">
-        <a href="{% url 'event_list' %}">
-         <small>
-          Schedule
-         </small>
-        </a>
-       </li>
-       <li class="d-inline mx-2">
-        <a href="{% url 'pricing' %}">
-         <small>
-          Ticket Pricing
-         </small>
-        </a>
-       </li>
-       <li class="d-inline mx-2">
-        <a href="{% url 'contact' %}">
-         <small>
-          Contact Us
-         </small>
-        </a>
-       </li>
-      </ul>
-     </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-2 mb-4 text-md-start text-center">
+        <h6 class="text-uppercase fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled small">
+          <li><a href="{% url 'index' %}" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="{% url 'speaker_list' %}" class="text-white text-decoration-none">Speakers</a></li>
+          <li><a href="{% url 'event_list' %}" class="text-white text-decoration-none">Event Details</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Agenda</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Ticket Pricing</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="col-md-3 mb-4 text-md-start text-center">
+        <h6 class="text-uppercase fw-bold mb-3">Legal</h6>
+        <ul class="list-unstyled small">
+          <li><a href="#" class="text-white text-decoration-none">Refund Policy</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Visitor Terms & Conditions</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Sponsorship Terms</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Speaker Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-md-3 mb-4 text-md-start text-center">
+        <h6 class="text-uppercase fw-bold mb-3">Contact Us</h6>
+        <p class="small text-white mb-1">iRiseUp Group of Companies, LLC</p>
+        <p class="small text-white mb-1">9th Floor Office No 903-03</p>
+        <p class="small text-white mb-1">MISA Business Center, Iris Bay, Business Bay – Manila, UAE</p>
+        <p class="small text-white mb-1">📞 +971 5585 72014</p>
+        <p class="small text-white mb-1">📞 +971 5585 62014</p>
+        <p class="small text-white">📧 hello@iriseup.ai</p>
+      </div>
     </div>
-    <div class="copyright pb-6 pt-1">
-     <small>
-      &copy; 2025 World AI Expo by iRiseUp. All Rights Reserved.
-     </small>
+
+    <!-- Disclaimer -->
+    <div class="row">
+      <div class="col-12">
+        <hr class="border-secondary">
+        <p class="small text-white">
+          <strong>Disclaimer:</strong> All information on this website is for illustrative purposes only and may not reflect final pricing, terms, or service guarantees. Official agreements supersede all public-facing content. We reserve the right to change any information without notice.
+        </p>
+      </div>
     </div>
-   </div>
-  </footer>
-  <!--Footer Section end-->
+
+    <!-- Copyright -->
+    <div class="text-center pt-3">
+      <small class="text-white">&copy; 2025 World AI Expo by iRiseUp. All Rights Reserved.</small>
+    </div>
+  </div>
+</footer>
+<!--Footer Section end-->

@@ -142,7 +142,17 @@ def become_sponsor(request):
     return render(request, 'become_sponsor.html')
 
 def exhibit(request):
-    return render(request, 'exhibit.html')
+    reasons = [
+        {"text": "Showcase Your Innovative AI Product to a Worldwide Audience", "color": "#ff6b6b"},
+        {"text": "Visitors from 20+ Countries", "color": "#f8a34e"},
+        {"text": "Key Decision Makers (Entrepreneurs, CEOs, C-Level Executives, etc.)", "color": "#ffd166"},
+        {"text": "Generate High-Quality Leads", "color": "#06d6a0"},
+        {"text": "Launch Your Product to the Global Market", "color": "#1dd3b0"},
+        {"text": "Prefix Appointments with Quality Buyers", "color": "#118ab2"},
+        {"text": "Participate in Awards and Network with Winners", "color": "#73c2fb"},
+    ]
+    return render(request, 'exhibit.html', {'reasons': reasons})
+
 
 def book_ticket(request):
     # Combine types with prices to avoid bracket-access errors in templates
@@ -227,3 +237,44 @@ def startup_pitching_view(request):
         "packages": packages,
         "submitted": submitted,
     })
+
+
+
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail  # optional if you want notifications
+from django.contrib import messages
+
+def register_media_partner(request):
+    if request.method == 'POST':
+        partner_type = request.POST.get('partner_type')
+        events = request.POST.getlist('events')
+        company_name = request.POST.get('company_name')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        whatsapp = request.POST.get('whatsapp')
+        country = request.POST.get('country')
+        address = request.POST.get('address')
+
+        # Process/save/send/store logic here
+        print("Received:", partner_type, events, company_name, name, email, whatsapp, country, address)
+
+        messages.success(request, "Thank you for registering!")
+        return redirect('register_media_partner')
+
+    return render(request, 'media_partner_form.html')
+
+    
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import RegistrationForm
+
+def exhibit_registration(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            # You can process the form here, save to DB or send email
+            messages.success(request, 'Registration submitted successfully!')
+            return redirect('exhibit_registration')
+    else:
+        form = RegistrationForm()
+    return render(request, 'myApp/exhibit_registration.html', {'form': form})

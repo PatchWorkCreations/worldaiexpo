@@ -1,33 +1,15 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block title %}Speakers | World AI Expo{% endblock %}
 
-<!DOCTYPE html>
-<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Coming Soon-Eventen
-  </title>
-  <!-- Bootstrap CSS -->
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
-  <!--CSS Plugins-->
-  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
-  <!-- Default CSS-->
-  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
-  <!--Custom CSS-->
-  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
-  <!--FontAwesome CSS-->
-  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
- </head>
- <body>
-    {% include 'header.html' %}
+{% block content %}
   <section class="text-center coming-soon d-flex">
    <div class="overlay">
    </div>
    <div class="container">
     <div class="coming-soon-inner w-lg-80 m-auto position-relative">
      <div class="logo">
-      <img alt="Eventen logo" class="w-40 mb-6" src="{% static 'images/logo/1.png' %}"/>
+      <img alt="Eventen logo" class="w-40 mb-6" src="{% static 'expo_images/logo/1.png' %}"/>
      </div>
      <div class="coming-soon-title">
       <h1 class="text-white mb-6">
@@ -113,15 +95,4 @@
     </div>
    </div>
   </section>
-  <script src="{% static 'js/jquery-3.7.1.min.js' %}">
-  </script>
-  <script src="{% static 'js/bootstrap.bundle.min.js' %}">
-  </script>
-  <script src="{% static 'js/custom-nav.js' %}">
-  </script>
-  <script src="{% static 'js/plugin.js' %}">
-  </script>
-  <script src="{% static 'js/main.js' %}">
-  </script>
- </body>
-</html>
+{% endblock %}

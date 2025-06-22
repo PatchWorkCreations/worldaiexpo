@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Speakers | World AI Expo{% endblock %}
+
+{% block content %}
+  <style>
+    
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .card-body {
+        background: #fff;
+        color: #000;
+    }
+    .form-label {
+        font-weight: 600;
+    }
+    .section-title {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+
+
+  <section class="banner position-relative pb-5 pt-5 text-white" style="background: linear-gradient(to right, #7b2ff7, #f107a3); overflow: hidden;">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="inner-banner position-relative">
+        <div class="row align-items-center">
+          <!-- Text Section Left on Desktop, Top on Mobile -->
+          <div class="col-lg-6 banner-right text-center text-lg-start order-2 order-lg-1">
+            <div class="banner-title pb-3">
+              <h4 class="text-white pb-2">
+                Media Partnership
+                <span class="black">Opportunity</span>
+              </h4>
+              <h1 class="text-white fw-bold">
+                Free to Join —
+                <span class="text-warning">Limited Time</span>
+              </h1>
+            </div>
+            <div class="banner-event-info pb-3">
+              <ul class="m-0 ps-0 d-sm-flex justify-content-center justify-content-lg-start list-unstyled">
+                <li class="pe-2 border-end border-1 border-lightgrey">
+                  <i class="fa fa-calendar-o pe-1"></i>
+                  25-26 <br> JANUARY 2026
+                </li>
+                <li class="ps-2">
+                  <i class="fa fa-map-marker pe-1"></i>
+                  SMX Convention Center Manila, Pasay City,<br>Philippines
+                </li>
+              </ul>
+            </div>
+            <div class="event-discription">
+              <p class="pb-4 m-0">
+                Partner with us and gain visibility, commissions, and VIP access. It’s free, it’s easy, and it’s your chance to connect with the future of AI.
+              </p>
+              <div class="banner-button">
+                <div class="row">
+                  <div class="col-md-6 my-1">
+                    <a class="btn btn-light fw-bold w-100" href="#media-partner-form">
+                      JOIN AS A PARTNER
+                    </a>
+                  </div>
+                  <div class="col-md-6 my-1">
+                    <a class="btn btn-outline-light fw-bold w-100" href="{% url 'become_a_sponsor' %}">
+                      BECOME A SPONSOR
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Image Right on Desktop -->
+          <div class="col-lg-6 banner-left text-center order-1 order-lg-2">
+            <div class="banner-image">
+              <img alt="robot image" class="w-75 img-fluid" src="{% static 'images/team/robot2.png' %}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  <div class="container">
+    <div class="section-title">MEDIA PARTNERSHIP – FREE TO JOIN FOR A LIMITED TIME</div>
+
+    {% if messages %}
+        <div class="alert alert-success">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="row g-4" id="media-partner-form">
+        <!-- Registration Form -->
+        <div class="col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white fw-bold">Registration Form</div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">I want to be a</label>
+                            <select name="partner_type" class="form-select" required>
+                                <option value="">Select Type</option>
+                                <option value="media">Media Partner</option>
+                                <option value="community">Community Partner</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Select events</label>
+                            <select name="events" class="form-select" multiple required>
+                                <option value="ai_expo">World AI Technology Expo</option>
+                                <option value="tech_awards">World Technology Awards</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Your Company Name</label>
+                            <input type="text" name="company_name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Your Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Your Email ID</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Your WhatsApp Number</label>
+                            <input type="text" name="whatsapp" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Country</label>
+                            <input type="text" name="country" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Company Address</label>
+                            <textarea name="address" rows="2" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- What Organiser Offers -->
+        <div class="col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-header bg-dark text-white fw-bold">What You & The Organiser Get</div>
+                <div class="card-body small">
+                    <h5 class="text-primary fw-bold">Event 1: World AI Technology Expo</h5>
+                    <ul>
+                        <li>✅ Branding on website, magazine, LED wall</li>
+                        <li>✅ Right to use event logo + commissions</li>
+                        <li>✅ 1 Complimentary pass</li>
+                        <li>📢 Media: 2 press releases, event listing</li>
+                    </ul>
+                    <hr/>
+                    <h5 class="text-primary fw-bold">Event 2: World Technology Awards</h5>
+                    <ul>
+                        <li>✅ Free nomination (worth $650)</li>
+                        <li>✅ Branding + ticket commissions</li>
+                        <li>✅ Gala pass (if winner)</li>
+                        <li>📢 Media: 2 press releases + promo listing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+
+{% endblock %}

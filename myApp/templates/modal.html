@@ -173,19 +173,18 @@
 
   </style>
 
-<!-- modal.html -->
+<!-- === REGISTRATION MODAL === -->
 <div class="modal fade" id="registrationModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
       <div class="modal-body d-flex flex-column flex-md-row p-0">
-
         <!-- Promo Section -->
         <div class="modal-left bg-dark text-white text-center">
           <p class="text-warning mb-2 pt-4">Speaker · Exhibit · Sponsor · Partner · Visitor</p>
           <img src="{% static 'images/team/rob.png' %}" class="img-fluid mx-auto" alt="Promo Image" />
         </div>
 
-        <!-- Registration Form Section -->
+        <!-- Form Section -->
         <div class="modal-right w-100">
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           <h4 class="text-danger fw-bold text-center mb-2">Registration Form</h4>
@@ -205,12 +204,10 @@
                   <option>Visitor</option>
                 </select>
               </div>
-
               <div class="col-md-6">
                 <label class="form-label">Your Name *</label>
                 <input type="text" class="form-control" name="name" required>
               </div>
-
               <div class="col-md-6">
                 <label class="form-label">Your WhatsApp Number *</label>
                 <div class="d-flex gap-2">
@@ -225,12 +222,10 @@
                   <input type="text" class="form-control" name="whatsapp_number" placeholder="9123456789" required>
                 </div>
               </div>
-
               <div class="col-md-6">
                 <label class="form-label">Your Email ID *</label>
                 <input type="email" class="form-control" name="email" required>
               </div>
-
               <div class="col-12">
                 <label class="form-label">Company Name *</label>
                 <input type="text" class="form-control" name="company" required>
@@ -242,37 +237,31 @@
             </div>
           </form>
         </div>
-
       </div>
     </div>
   </div>
 </div>
 
-
-<!-- Countdown Script -->
+<!-- === MODAL SCRIPT === -->
 <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Set the countdown to May 15, 2025
-  const targetDate = new Date("May 15, 2025 09:00:00").getTime();
-  startCountdown(targetDate);
-});
+    // Show the modal after 0.5s if not previously closed in this session
+    setTimeout(() => {
+      if (!sessionStorage.getItem('modalClosed')) {
+        modal.show();
+      }
+    }, 500);
 
+    // Mark modal as dismissed in this session
+    document.getElementById('registrationModal').addEventListener('hidden.bs.modal', function () {
+      sessionStorage.setItem('modalClosed', 'true');
+    });
 
-  setTimeout(() => {
-    if (!sessionStorage.getItem('modalClosed')) {
-      const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
-      modal.show();
-    }
-  }, 500); // 2 minutes
-
-  document.getElementById('registrationModal').addEventListener('hidden.bs.modal', function () {
-    sessionStorage.setItem('modalClosed', 'true');
+    // Autofocus on name input when modal opens
+    document.getElementById('registrationModal').addEventListener('shown.bs.modal', function () {
+      this.querySelector('input[name="name"]').focus();
+    });
   });
-
-const modalEl = document.getElementById('registrationModal');
-modalEl.addEventListener('shown.bs.modal', function () {
-  modalEl.querySelector('input[name="name"]').focus();
-});
-
 </script>

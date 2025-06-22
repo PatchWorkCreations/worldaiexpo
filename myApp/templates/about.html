@@ -1,24 +1,8 @@
+{% extends 'base.html' %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   iRiseUp.AI/WorldExpo
-  </title>
-  <!-- Bootstrap CSS -->
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
-  <!--CSS Plugins-->
-  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
-  <!-- Default CSS-->
-  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
-  <!--Custom CSS-->
-  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
-  <!--FontAwesome CSS-->
-  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
- </head>
+{% block title %}Speakers | World AI Expo{% endblock %}
+{% include 'header.html' %}
+{% block content %}
      <style>
 .venue-section {
     position: relative;
@@ -34,12 +18,12 @@
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    z-index: 0;
 }
 
 .venue-section .container {
     position: relative;
-    z-index: 2;
+    z-index: 0;
 }
 
 .venue-section h2 {
@@ -69,24 +53,53 @@
     font-weight: 700;
     letter-spacing: 1.5px;
 }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.8s ease-out forwards;
+  opacity: 0;
+}
+
 </style>
- <body>
-  <!--Header Section start-->
-    {% include 'header.html' %}
+    
   
-
-
 <!-- Venue Section -->
 <div class="venue-section container-fluid"
      style="background-image: url('{% static 'images/background/smx1.png' %}');">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8" data-aos="fade-up">
-        <p class="text-white fs-4 fw-bold mb-2" data-aos="fade-right" data-aos-delay="100">📍 Venue Details</p>
+      <div class="col-lg-8">
+        <p class="text-white fs-4 fw-bold mb-2" data-aos-delay="100">📍 Venue Details</p>
 
         <h2 class="mb-4" data-aos="fade-left" data-aos-delay="200">
           SMX Convention Center Manila,
-          Philippines
+          Philippines <br>
           <a href="https://goo.gl/maps/your-map-link" class="text-warning text-decoration-none fs-6" target="_blank">
             [ View Map ]
           </a>
@@ -102,7 +115,7 @@
         </p> <br>
 
         <div class="d-flex gap-4" data-aos="zoom-in" data-aos-delay="500">
-          <a href="{% url 'become_sponsor' %}" class="btn btn-warning text-white shadow">Become Sponsor</a>
+          <a href="{% url 'become_a_sponsor' %}" class="btn btn-warning text-white shadow">Become Sponsor</a>
           <a href="{% url 'exhibit' %}" class="btn btn-primary text-white shadow">Exhibit</a>
         </div>
       </div>
@@ -110,126 +123,12 @@
   </div>
 </div>
 
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
 
 
-  <!--Subscribe Section end-->
-  <!--Footer Section start-->
-  <footer class="pt-9 text-center text-white position-relative z-1">
-   <div class="overlay z-n1 start-0">
-   </div>
-   <div class="container">
-    <div class="footer-content w-lg-50 m-auto">
-     <div class="footer-logo mb-4 pt-1">
-      <a href="{% url 'index' %}">
-       <img alt="footer-logo" class="w-50" src="{% static 'images/logo/ourlogo.png' %}"/>
-      </a>
-     </div>
-     <div class="footer-disciption border-bottom border-white border-opacity-25 m-auto mb-6">
-      <p class="mb-6">
-       Where the future of intelligence begins. Join us as we bring together global innovators, 
-       thought leaders, and tech pioneers to shape what comes next in AI.
-      </p>
-      <div class="footer-socials pb-6">
-       <ul class="m-0 p-0">
-        <li class="d-inline me-2">
-         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
-          <i class="fa fa-facebook">
-          </i>
-         </a>
-        </li>
-        <li class="d-inline me-2">
-         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
-          <i class="fa fa-twitter">
-          </i>
-         </a>
-        </li>
-        <li class="d-inline me-2">
-         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
-          <i class="fa fa-youtube-play">
-          </i>
-         </a>
-        </li>
-        <li class="d-inline me-2">
-         <a class="d-inline-block rounded-circle bg-white bg-opacity-25">
-          <i class="fa fa-linkedin">
-          </i>
-         </a>
-        </li>
-       </ul>
-      </div>
-     </div>
-     <div class="footer-menu pb-9">
-      <ul class="p-0 m-0">
-       <li class="d-inline mx-2">
-        <a href="{% url 'about' %}">
-         <small>
-          About Event
-         </small>
-        </a>
-       </li>
-       <li class="d-inline mx-2">
-        <a href="">
-         <small>
-          Services
-         </small>
-        </a>
-       </li>
-       <li class="d-inline mx-2">
-        <a href="{% url 'speaker_list' %}">
-         <small>
-          Speakers
-         </small>
-        </a>
-       </li>
-       <li class="d-inline mx-2">
-        <a href="{% url 'event_list' %}">
-         <small>
-          Schedule
-         </small>
-        </a>
-       </li>
-       <li class="d-inline mx-2">
-        <a href="{% url 'pricing' %}">
-         <small>
-          Ticket Pricing
-         </small>
-        </a>
-       </li>
-       <li class="d-inline mx-2">
-        <a href="{% url 'contact' %}">
-         <small>
-          Contact Us
-         </small>
-        </a>
-       </li>
-      </ul>
-     </div>
-    </div>
-    <div class="copyright pb-6 pt-1">
-     <small>
-      &copy; 2025 World AI Expo by iRiseUp. All Rights Reserved.
-     </small>
-    </div>
-   </div>
-  </footer>
-  <!--Footer Section end-->
-  <!--Bacl-to-top Button start-->
-  <div id="back-to-top">
-   <a class="bg-pink position-relative align-items-center rounded-circle d-block" href="#">
-   </a>
-  </div>
-  <!--Bacl-to-top Button end-->
-  <script src="{% static 'js/jquery-3.7.1.min.js' %}">
-  </script>
-  <script src="{% static 'js/bootstrap.bundle.min.js' %}">
-  </script>
-  <script src="{% static 'js/custom-nav.js' %}">
-  </script>
-  <script src="{% static 'js/plugin.js' %}">
-  </script>
-  <script src="{% static 'js/main.js' %}">
-    
-  </script>
- </body>
-</html>
+
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Exhibit | World AI Expo{% endblock %}
+{% block content %}
+
+<style>
+
+    /* Section spacing */
+section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Hero title */
+section .display-5 {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Numbered list style */
+ul.list-unstyled li .rounded-circle {
+  font-size: 1.1rem;
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+/* Registration form */
+.bg-info.bg-opacity-75 {
+  background-color: rgba(13, 110, 253, 0.8) !important;
+}
+
+form .form-label {
+  font-weight: 500;
+}
+
+form .form-control, 
+form .form-select {
+  border-radius: 8px;
+  border: none;
+  padding: 0.75rem 1rem;
+}
+
+form .btn-dark {
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+form .btn-dark:hover {
+  background-color: #000;
+  opacity: 0.85;
+}
+
+/* AOS anims for smooth fade */
+[data-aos] {
+  transition-duration: 0.8s !important;
+  transition-timing-function: ease-in-out !important;
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+  .rounded-circle {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  h2, h4 {
+    font-size: 1.5rem;
+  }
+}
+
+</style>
+<!-- Hero Section -->
+<section class="position-relative text-white py-5" style="background: linear-gradient(to right, #4b00b5, #9300ff);">
+  <div class="container text-center py-5" data-aos="fade-up">
+    <h1 class="display-5 fw-bold text-uppercase">Exhibit at World AI Technology Expo</h1>
+  </div>
+</section>
+
+<!-- Content + Registration Form -->
+<section class="py-5">
+  <div class="container">
+    <div class="row align-items-start">
+      
+      <!-- Left Content -->
+      <div class="col-lg-7 mb-4 mb-lg-0" data-aos="fade-right">
+        <h2 class="fw-bold mb-4">7 Reasons to Exhibit at World AI Technology Expo</h2>
+        <ul class="list-unstyled">
+          {% for reason in reasons %}
+          <li class="d-flex align-items-start mb-4">
+            <div class="rounded-circle text-white fw-bold d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px; background-color: {{ reason.color }}">
+              {{ forloop.counter }}
+            </div>
+            <p class="mb-0 fs-5">{{ reason.text }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Right Form -->
+      <div class="col-lg-5" data-aos="fade-left">
+        <div class="bg-info bg-opacity-75 p-4 rounded-4 shadow">
+          <h4 class="text-white fw-bold mb-3 text-center">Registration Form</h4>
+          <p class="text-white text-center">Please fill the form to complete registration</p>
+          
+          <form method="post" action="{#}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label class="form-label text-white">I want to be a *</label>
+              <select name="type" class="form-select" required>
+                <option value="">Select Type</option>
+                <option value="Exhibitor">Exhibitor</option>
+                <option value="Sponsor">Sponsor</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label text-white">Your Company Name *</label>
+              <input type="text" name="company_name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label text-white">Your Name *</label>
+              <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label text-white">Your WhatsApp Number *</label>
+              <input type="tel" name="whatsapp" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label text-white">Your Email ID *</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-dark rounded-pill py-2">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AOS Init -->
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
+
+{% endblock %}

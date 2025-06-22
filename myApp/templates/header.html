@@ -96,7 +96,7 @@
           </li>
           <li class="nav-item dropdown">
            <a aria-expanded="false" class="nav-link dropdown-toggle px-2 my-4 py-0 text-white" data-bs-toggle="dropdown" href="#" role="button">
-            Speaker
+            Speakers
            </a>
            <ul class="dropdown-menu bg-lightgrey p-0 rounded">
             <li>
@@ -105,14 +105,14 @@
              </a>
             </li>
             <li>
-             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'speaker_detail' %}">
-              Speakers Details
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'apply_speaker' %}">
+              Become a speaker
              </a>
             </li>
            </ul>
           </li>
           <li class="nav-item">
-           <a class="nav-link px-2 my-4 py-0 text-white" href="{% url 'event_detail' %}">
+           <a class="nav-link px-2 my-4 py-0 text-white" href="{% url 'event_list' %}">
             Agenda
            </a>
           </li>
@@ -127,29 +127,35 @@
              </a>
             </li>
             <li>
-             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'gallery' %}">
-              Gallery
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'exhibit' %}">
+              Exhibit
              </a>
             </li>
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'startup_pitch' %}">
+              Startup Pitch
+             </a>
+            </li>
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'become_a_sponsor' %}">
+              Become a Sponsor
+             </a>
+            </li>
+
+            <li>
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'register_media_partner' %}">
+              Media Partner
+             </a>
+            </li>
+
             <li>
              <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'pricing' %}">
               Pricing
              </a>
             </li>
-            <li>
-             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'faq' %}">
-              Faq
-             </a>
-            </li>
 
-            <li> 
-             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'product_list' %}">
-              Product List
-             </a>
-            </li>
-            <li>
-             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'product_single' %}">
-              Product Single
+             <a class="dropdown-item py-3 px-6 text-capitalize black border-0" href="{% url 'faq' %}">
+              FAQs
              </a>
             </li>
             

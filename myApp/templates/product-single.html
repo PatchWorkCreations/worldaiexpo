@@ -1,27 +1,8 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block title %}Speakers | World AI Expo{% endblock %}
 
-<!DOCTYPE html>
-<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Lewis Shirt-Eventen
-  </title>
-  <!-- Bootstrap CSS -->
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
-  <!--CSS Plugins-->
-  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
-  <!-- Default CSS-->
-  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
-  <!--Custom CSS-->
-  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
-  <!--FontAwesome CSS-->
-  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
- </head>
- <body>
-  <!--Header Section start-->
-  {% include 'header.html' %}
+{% block content %}
   <!-- Bannner section starts -->
   <section class="banner page-banner position-relative pb-0">
    <div class="overlay">
@@ -45,30 +26,30 @@
         <div class="">
          <div class="slider slider-for pb-1">
           <div class="product-img">
-           <img alt="Lewis Shirt" class="w-100 rounded" src="{% static 'images/product/4.jpg' %}"/>
+           <img alt="Lewis Shirt" class="w-100 rounded" src="{% static 'expo_images/product/4.jpg' %}"/>
           </div>
           <div class="product-img">
-           <img alt="London T-shirt" class="w-100 rounded" src="{% static 'images/product/5.jpg' %}"/>
+           <img alt="London T-shirt" class="w-100 rounded" src="{% static 'expo_images/product/5.jpg' %}"/>
           </div>
           <div class="product-img">
-           <img alt="Ladies Top" class="w-100 rounded" src="{% static 'images/product/2.jpg' %}"/>
+           <img alt="Ladies Top" class="w-100 rounded" src="{% static 'expo_images/product/2.jpg' %}"/>
           </div>
           <div class="product-img">
-           <img alt="Yellow Sofa" class="w-100 rounded" src="{% static 'images/product/6.jpg' %}"/>
+           <img alt="Yellow Sofa" class="w-100 rounded" src="{% static 'expo_images/product/6.jpg' %}"/>
           </div>
          </div>
          <div class="slider slider-nav justify-content-md-center justify-content-start">
           <div class="product-img-nav me-1">
-           <img alt="Lewis Shirt" class="rounded opacity-50" src="{% static 'images/product/4.jpg' %}"/>
+           <img alt="Lewis Shirt" class="rounded opacity-50" src="{% static 'expo_images/product/4.jpg' %}"/>
           </div>
           <div class="product-img-nav me-1">
-           <img alt="London T-shirt" class="rounded opacity-50" src="{% static 'images/product/5.jpg' %}"/>
+           <img alt="London T-shirt" class="rounded opacity-50" src="{% static 'expo_images/product/5.jpg' %}"/>
           </div>
           <div class="product-img-nav me-1">
-           <img alt="Ladies Top" class="rounded opacity-50" src="{% static 'images/product/2.jpg' %}"/>
+           <img alt="Ladies Top" class="rounded opacity-50" src="{% static 'expo_images/product/2.jpg' %}"/>
           </div>
           <div class="product-img-nav me-1">
-           <img alt="Yellow Sofa" class="rounded opacity-50" src="{% static 'images/product/6.jpg' %}"/>
+           <img alt="Yellow Sofa" class="rounded opacity-50" src="{% static 'expo_images/product/6.jpg' %}"/>
           </div>
          </div>
         </div>
@@ -149,7 +130,7 @@
              </span>
             </small>
             <a href="{% url 'product_single' %}">
-             <img alt="Bamboo Bucket" class="w-100 rounded" src="{% static 'images/product/2.jpg' %}"/>
+             <img alt="Bamboo Bucket" class="w-100 rounded" src="{% static 'expo_images/product/2.jpg' %}"/>
             </a>
            </div>
            <div class="product-info mb-3">
@@ -178,7 +159,7 @@
           <div class="product-box p-4 pb-4 box-shadow rounded me-1 m-md-0">
            <div class="product-img mb-5">
             <a href="{% url 'product_single' %}">
-             <img alt="Bamboo Bucket" class="w-100 rounded" src="{% static 'images/product/5.jpg' %}"/>
+             <img alt="Bamboo Bucket" class="w-100 rounded" src="{% static 'expo_images/product/5.jpg' %}"/>
             </a>
            </div>
            <div class="product-info mb-3">
@@ -328,24 +309,4 @@
    </div>
   </section>
   <!--Subscribe Section end-->
- {% include 'footer.html' %}
-
-  <!--Footer Section end-->
-  <!--Bacl-to-top Button start-->
-  <div id="back-to-top">
-   <a class="bg-pink position-relative align-items-center rounded-circle d-block" href="#">
-   </a>
-  </div>
-  <!--Bacl-to-top Button end-->
-  <script src="{% static 'js/jquery-3.7.1.min.js' %}">
-  </script>
-  <script src="{% static 'js/bootstrap.bundle.min.js' %}">
-  </script>
-  <script src="{% static 'js/custom-nav.js' %}">
-  </script>
-  <script src="{% static 'js/plugin.js' %}">
-  </script>
-  <script src="{% static 'js/main.js' %}">
-  </script>
- </body>
-</html>
+{% endblock %}

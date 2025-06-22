@@ -1,27 +1,8 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block title %}Speakers | World AI Expo{% endblock %}
 
-<!DOCTYPE html>
-<html lang="zxx" xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Pricing-Eventen
-  </title>
-  <!-- Bootstrap CSS -->
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
-  <!--CSS Plugins-->
-  <link href="{% static 'css/plugin.css' %}" rel="stylesheet"/>
-  <!-- Default CSS-->
-  <link href="{% static 'css/default.css' %}" rel="stylesheet"/>
-  <!--Custom CSS-->
-  <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
-  <!--FontAwesome CSS-->
-  <link href="{% static 'icons/font-awesome.min.css' %}" rel="stylesheet"/>
- </head>
- <body>
-  <!--Header Section start-->
-{% include 'header.html' %}
+{% block content %}
   <!-- Header section ends -->
   <!-- Bannner section starts -->
   <section class="banner page-banner position-relative pb-0">
@@ -59,7 +40,7 @@
        <div class="col-lg-4 col-md-6">
         <div class="ticket-box">
          <div class="ticket-box-inner bg-white position-relative rounded-bottom-5">
-          <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'images/pattern/1.png' %}"/>
+          <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'expo_images/pattern/1.png' %}"/>
           <div class="ticket-title">
            <h4 class="pt-6 mb-1">
             PROFESSIONAL PASS
@@ -95,7 +76,7 @@
 
        <div class="col-lg-4 col-md-6">
         <div class="ticket-box-inner bg-white position-relative rounded-bottom-5">
-         <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'images/pattern/2.png' %}"/>
+         <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'expo_images/pattern/2.png' %}"/>
          <div class="ticket-title py-6 bg-pink text-white">
           <h4 class="text-white mb-1">
            STUDENT PASS (LIMITED SLOTS)
@@ -128,7 +109,7 @@
 
        <div class="col-lg-4 col-md-6">
         <div class="ticket-box-inner bg-white position-relative rounded-bottom-5">
-         <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'images/pattern/1.png' %}"/>
+         <img alt="pattern" class="w-100 pattern position-absolute rounded-top" src="{% static 'expo_images/pattern/1.png' %}"/>
          <div class="ticket-title">
           <h4 class="pt-6 mb-1">
            VIP ACCESS PASS
@@ -230,7 +211,7 @@
       </div>
       <div class="col-lg-6">
        <div class="ticket-right">
-        <img alt="ticket-img" class="w-50" src="{% static 'images/team/5.png' %}"/>
+        <img alt="ticket-img" class="w-50" src="{% static 'expo_images/team/5.png' %}"/>
        </div>
       </div>
      </div>
@@ -274,24 +255,4 @@
    </div>
   </section>
   <!--Subscribe Section end-->
- {% include 'footer.html' %}
-
-  <!--Footer Section end-->
-  <!--Bacl-to-top Button start-->
-  <div id="back-to-top">
-   <a class="bg-pink position-relative align-items-center rounded-circle d-block" href="#">
-   </a>
-  </div>
-  <!--Bacl-to-top Button end-->
-  <script src="{% static 'js/jquery-3.7.1.min.js' %}">
-  </script>
-  <script src="{% static 'js/bootstrap.bundle.min.js' %}">
-  </script>
-  <script src="{% static 'js/custom-nav.js' %}">
-  </script>
-  <script src="{% static 'js/plugin.js' %}">
-  </script>
-  <script src="{% static 'js/main.js' %}">
-  </script>
- </body>
-</html>
+{% endblock %}

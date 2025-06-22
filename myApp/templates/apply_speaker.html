@@ -1,11 +1,8 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Apply for a Speaker | World AI Expo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+{% block title %}Speakers | World AI Expo{% endblock %}
+
+{% block content %}
 
     <style>
 
@@ -44,6 +41,8 @@
             max-width: 1100px;
             margin: 4rem auto;
         }
+
+        
         .form-container h2 {
             color: red;
             font-weight: 700;
@@ -103,119 +102,158 @@
   animation: fadeInUp 1.5s ease-out both;
 }
 
-    </style>
-</head>
+<style>
+/* Fix Select2 dropdown breaking layout and overlapping header */
+.select2-container {
+  width: 100% !important;
+}
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+.select2-container--default .select2-selection--single {
+  height: 38px;
+  padding: 6px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  background-color: #fff;
+}
 
-<body>
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 24px;
+}
 
-<div class="form-container shadow-lg">
-    <div class="animated-title-wrapper text-center mb-5">
-  <h2 class="animated-title">
-    <span>🎤 Apply as a Speaker</span><br>
-    <small class="sub-text d-block mt-2">Limited Slots Available – Showcase Your Ideas to the World!</small>
-  </h2>
-</div>
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 100%;
+  top: 0px;
+  right: 8px;
+}
 
-    <div class="row mb-4">
-        <div class="col-md-6">
-            <ul>
-                <li>15 Mins Speaker or 30 Mins Panel Discussion</li>
-                <li>1 VIP Ticket to attend the expo for 2 Full Days</li>
-                <li>Networking Lunch with Participants & VIP guests</li>
-                <li>Branding Your Photo as a Speaker on Expo Website</li>
-                <li>Branding on all Marketing & Promotional Materials</li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <ul>
-                <li>Branding during the Expo</li>
-                <li>Branding in Email Newsletters & Social Media</li>
-                <li>Cocktail Networking & VIP Networking on 15-May-2025</li>
-                <li>30% Discount on additional tickets</li>
-                <li>F & B Services – Coffee / Tea / Juices & Snacks</li>
-            </ul>
-        </div>
+.select2-dropdown {
+  z-index: 1050 !important; /* Make it appear below header */
+}
+
+/* Fix header text overlapping */
+.animated-title-wrapper h2 {
+  line-height: 1.3;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.content-wrapper-with-header {
+  padding-top: 140px; /* Adjust based on your actual header height */
+}
+
+</style>
+
+
+    
+<div class="content-wrapper-with-header">
+    <div class="form-container shadow-lg mt-5 pt-4">
+
+        <div class="animated-title-wrapper text-center mb-5">
+    <h2 class="animated-title">
+        <span>🎤 Apply as a Speaker</span><br>
+        <small class="sub-text d-block mt-2">Limited Slots Available – Showcase Your Ideas to the World!</small>
+    </h2>
     </div>
 
-    <form method="POST" action="{% url 'apply_speaker' %}">
-        {% csrf_token %}
-        <div class="row g-3">
-            <div class="col-md-4">
-                <label class="form-label" for="your_name">Your Name *</label>
-                <input type="text" name="your_name" class="form-control" required>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label" for="company_name">Company Name *</label>
-                <input type="text" name="company_name" class="form-control" required>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label" for="total_employees">Total Employees *</label>
-                <input type="number" name="total_employees" class="form-control" required>
-            </div>
-
+        <div class="row mb-4">
             <div class="col-md-6">
-                <label class="form-label" for="speaker_name">Speaker's Full Name *</label>
-                <input type="text" name="speaker_name" class="form-control" required>
+                <ul>
+                    <li>15 Mins Speaker or 30 Mins Panel Discussion</li>
+                    <li>1 VIP Ticket to attend the expo for 2 Full Days</li>
+                    <li>Networking Lunch with Participants & VIP guests</li>
+                    <li>Branding Your Photo as a Speaker on Expo Website</li>
+                    <li>Branding on all Marketing & Promotional Materials</li>
+                </ul>
             </div>
             <div class="col-md-6">
-                <label class="form-label" for="email">E-Mail ID *</label>
-                <input type="email" name="email" class="form-control" required>
-            </div>
-
-            <div class="col-md-6">
-            <label class="form-label" for="whatsapp_number">WhatsApp Number *</label>
-            <div class="d-flex gap-2">
-                <select id="isd_code" name="isd_code" class="form-select" required style="max-width: 160px;">
-                <option value="+63" selected>🇵🇭 +63 Philippines</option>
-                <option value="+1">🇺🇸 +1 United States</option>
-                <option value="+44">🇬🇧 +44 United Kingdom</option>
-                <option value="+91">🇮🇳 +91 India</option>
-                <option value="+81">🇯🇵 +81 Japan</option>
-                <option value="+61">🇦🇺 +61 Australia</option>
-                <option value="+49">🇩🇪 +49 Germany</option>
-                <option value="+33">🇫🇷 +33 France</option>
-                <option value="+971">🇦🇪 +971 UAE</option>
-                <!-- Add more as needed -->
-                </select>
-                <input type="text" class="form-control" name="whatsapp_number" placeholder="9123456789" required>
-            </div>
-            </div>
-
-
-            <div class="col-md-6">
-                <label class="form-label" for="linkedin">Speaker's LinkedIn Profile</label>
-                <input type="url" name="linkedin" class="form-control" placeholder="https://www.linkedin.com/in/yourprofile">
+                <ul>
+                    <li>Branding during the Expo</li>
+                    <li>Branding in Email Newsletters & Social Media</li>
+                    <li>Cocktail Networking & VIP Networking on 15-May-2025</li>
+                    <li>30% Discount on additional tickets</li>
+                    <li>F & B Services – Coffee / Tea / Juices & Snacks</li>
+                </ul>
             </div>
         </div>
 
-        <div class="mt-4">
-            <label class="form-label d-block mb-2">Preferred Speaker Slot *</label>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="slot" id="slot1" value="14 May 2026 10:00am - 2:00pm" required>
-                <label class="form-check-label" for="slot1">14 May 2026 10:00am - 2:00pm</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="slot" id="slot2" value="14 May 2026 2:00pm - 6:00pm">
-                <label class="form-check-label" for="slot2">14 May 2026 2:00pm - 6:00pm</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="slot" id="slot3" value="15 May 2026 10:00am - 2:00pm">
-                <label class="form-check-label" for="slot3">15 May 2026 10:00am - 2:00pm</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="slot" id="slot4" value="15 May 2026 2:00pm - 6:00pm">
-                <label class="form-check-label" for="slot4">15 May 2026 2:00pm - 6:00pm</label>
-            </div>
-        </div>
+        <form method="POST" action="{% url 'apply_speaker' %}">
+            {% csrf_token %}
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label" for="your_name">Your Name *</label>
+                    <input type="text" name="your_name" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="company_name">Company Name *</label>
+                    <input type="text" name="company_name" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="total_employees">Total Employees *</label>
+                    <input type="number" name="total_employees" class="form-control" required>
+                </div>
 
-        <div class="mt-4">
-            <button type="submit" class="submit-btn">SUBMIT</button>
-        </div>
-    </form>
+                <div class="col-md-6">
+                    <label class="form-label" for="speaker_name">Speaker's Full Name *</label>
+                    <input type="text" name="speaker_name" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="email">E-Mail ID *</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="col-md-6">
+                <label class="form-label" for="whatsapp_number">WhatsApp Number *</label>
+                <div class="d-flex gap-2">
+                    <select id="isd_code" name="isd_code" class="form-select w-150" required style="max-width: 160px;">
+                    <option value="+63" selected>🇵🇭 +63 Philippines</option>
+                    <option value="+1">🇺🇸 +1 United States</option>
+                    <option value="+44">🇬🇧 +44 United Kingdom</option>
+                    <option value="+91">🇮🇳 +91 India</option>
+                    <option value="+81">🇯🇵 +81 Japan</option>
+                    <option value="+61">🇦🇺 +61 Australia</option>
+                    <option value="+49">🇩🇪 +49 Germany</option>
+                    <option value="+33">🇫🇷 +33 France</option>
+                    <option value="+971">🇦🇪 +971 UAE</option>
+                    <!-- Add more as needed -->
+                    </select>
+                    <input type="text" class="form-control" name="whatsapp_number" placeholder="9123456789" required>
+                </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <label class="form-label" for="linkedin">Speaker's LinkedIn Profile</label>
+                    <input type="url" name="linkedin" class="form-control" placeholder="https://www.linkedin.com/in/yourprofile">
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <label class="form-label d-block mb-2">Preferred Speaker Slot *</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="slot" id="slot1" value="14 May 2026 10:00am - 2:00pm" required>
+                    <label class="form-check-label" for="slot1">14 May 2026 10:00am - 2:00pm</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="slot" id="slot2" value="14 May 2026 2:00pm - 6:00pm">
+                    <label class="form-check-label" for="slot2">14 May 2026 2:00pm - 6:00pm</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="slot" id="slot3" value="15 May 2026 10:00am - 2:00pm">
+                    <label class="form-check-label" for="slot3">15 May 2026 10:00am - 2:00pm</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="slot" id="slot4" value="15 May 2026 2:00pm - 6:00pm">
+                    <label class="form-check-label" for="slot4">15 May 2026 2:00pm - 6:00pm</label>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="submit-btn">SUBMIT</button>
+            </div>
+        </form>
+    </div>
 </div>
+
 
 <script>
   $(document).ready(function() {
@@ -242,5 +280,4 @@
 
 </script>
 
-</body>
-</html>
+{% endblock %}
