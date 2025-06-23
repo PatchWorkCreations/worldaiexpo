@@ -192,6 +192,21 @@
   opacity: 0;
 }
 
+.speaker-img-wrapper {
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+.speaker-img-wrapper img {
+  transition: transform 0.5s ease;
+}
+.speaker-img-wrapper:hover img {
+  transform: scale(1.1);
+}
+.speaker-img-wrapper:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
 
 </style>
 
@@ -816,6 +831,65 @@
     </div>
    </div>
   </section>
+
+  <section class="py-5 px-3" style="background: linear-gradient(to right, #1e0fa1, #2461d3);">
+    <div class="container">
+      <div class="row align-items-center">
+  
+        <!-- Image Grid with Hover -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="speaker-img-wrapper">
+                <img src="{% static 'expo_images/speakers/1.JPG' %}" alt="Speaker 1" class="img-fluid rounded shadow">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="speaker-img-wrapper">
+                <img src="{% static 'expo_images/speakers/1.JPG' %}" alt="Speaker 2" class="img-fluid rounded shadow">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="speaker-img-wrapper">
+                <img src="{% static 'expo_images/speakers/1.JPG' %}" alt="Speaker 3" class="img-fluid rounded shadow">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="speaker-img-wrapper">
+                <img src="{% static 'expo_images/speakers/1.JPG' %}" alt="Speaker 4" class="img-fluid rounded shadow">
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Text and Benefits -->
+        <div class="col-lg-6 text-white">
+          <h2 class="fw-bold mb-3" style="color: #fff;">AI Speaker Session</h2>
+          <p class="mb-4">Step onto the global stage at the World AI Expo and make your voice heard. Connect with top professionals, showcase your vision, and leave a mark on the AI future. Your voice matters—let's make it count.</p>
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-2">✅ Establish Authority</li>
+                <li class="mb-2">✅ Showcase Projects</li>
+                <li class="mb-2">✅ Drive Business Growth</li>
+                <li class="mb-2">✅ Connect with Industry Giants</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-2">✅ Attract Media Attention</li>
+                <li class="mb-2">✅ Global Audience Reach</li>
+                <li class="mb-2">✅ Learn from Experts</li>
+                <li class="mb-2">✅ Build Personal Brand</li>
+              </ul>
+            </div>
+          </div>
+          <a href="#apply-form" class="btn btn-dark mt-4 px-4 py-2 fw-bold">Become a Speaker</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <!--Speakers Section end-->
   <!--Ticketbook Section start-->
   <section class="ticket position-relative">
@@ -1527,25 +1601,24 @@
          </p>
         </div>
         <div class="form-content justify-content-between">
-         <form>
-          <input class="mb-5" placeholder="Full Name" type="text"/>
-          <div class="row justify-content-around">
-           <div class="col-lg-6 col-md-6">
-            <div class="phone-no">
-             <input class="mb-5" placeholder="Phone No." type="tel"/>
+          <form method="POST" action="{% url 'send_message' %}">
+            {% csrf_token %}
+            <input class="mb-4 form-control" placeholder="Full Name" name="name" type="text" required />
+            
+            <div class="row">
+              <div class="col-md-6">
+                <input class="mb-4 form-control" placeholder="Phone No." name="phone" type="tel" />
+              </div>
+              <div class="col-md-6">
+                <input class="mb-4 form-control" placeholder="Email Address" name="email" type="email" required />
+              </div>
             </div>
-           </div>
-           <div class="col-lg-6 col-md-6">
-            <div class="emai">
-             <input class="mb-5" placeholder="Email Address" required="" type="email"/>
-            </div>
-           </div>
-          </div>
-          <textarea class="mb-5" placeholder="How may we help you?" rows="4"></textarea>
-          <button class="btn mb-5" id="sub-btn">
-           SEND MESSAGE
-          </button>
-         </form>
+            
+            <textarea class="mb-4 form-control" placeholder="How may we help you?" name="message" rows="4" required></textarea>
+            
+            <button class="btn btn-primary w-100" id="sub-btn" type="submit">SEND MESSAGE</button>
+          </form>
+          
         </div>
        </div>
       </div>
@@ -1658,13 +1731,39 @@
     </div>
    </div>
   </section>
+
+
+  <div class="modal fade" id="contactSuccessModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center shadow-lg border-0 rounded-4">
+        
+        <div class="modal-header text-white" style="background: linear-gradient(to right, #4b00b5, #9300ff); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+          <h5 class="modal-title w-100 fw-bold">🎉 Thank You!</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+  
+        <div class="modal-body py-4 px-5">
+          {% for message in messages %}
+            <p class="mb-0 text-dark fs-6">{{ message }}</p>
+          {% endfor %}
+        </div>
+  
+        <div class="modal-footer justify-content-center border-0 pb-4">
+          <button class="btn btn-primary px-4 rounded-pill fw-semibold" data-bs-dismiss="modal" style="background-color: #4b00b5;">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  
   <script>
-  AOS.init({
-    duration: 800,
-    once: true,
-  });
-</script>
-
-  <!--Subscribe Section end-->
-
+    document.addEventListener("DOMContentLoaded", function () {
+      {% if messages %}
+        var modal = new bootstrap.Modal(document.getElementById('contactSuccessModal'));
+        modal.show();
+      {% endif %}
+    });
+  </script>
+  
 {% endblock %}

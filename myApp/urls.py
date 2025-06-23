@@ -34,6 +34,7 @@ urlpatterns = [
     path('become-a-sponsor/', views.become_a_sponsor, name='become_a_sponsor'),
     path('startup-pitch/', views.startup_pitching_view, name='startup_pitch'),
     path('register_media_partner/', views.register_media_partner, name='register_media_partner'),
-    path('exhibit/', views.exhibit_registration, name='exhibit_registration'),
+    path('send-message/', views.send_message_view, name='send_message'),
+
     
 ]

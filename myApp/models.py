@@ -82,3 +82,103 @@ class Session(models.Model):
                 counter += 1
             self.slug = slug
         super().save(*args, **kwargs)
+
+
+
+from django.db import models
+
+class ExhibitRegistration(models.Model):
+    EXHIBIT_TYPE_CHOICES = [
+        ('Exhibitor', 'Exhibitor'),
+        ('Sponsor', 'Sponsor'),
+    ]
+
+    type = models.CharField(max_length=50, choices=EXHIBIT_TYPE_CHOICES)
+    company_name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    whatsapp = models.CharField(max_length=50)
+    email = models.EmailField()
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.type})"
+
+
+
+from django.db import models
+
+class StartupPitchApplication(models.Model):
+    PACKAGE_CHOICES = [
+        ("Startup Pitching + 1 Regular Ticket", "Startup Pitching + 1 Regular Ticket"),
+        ("Startup + 5 Regular Tickets + Table Top", "Startup + 5 Regular Tickets + Table Top"),
+        ("Startup Pitching + 5 Regular Tickets", "Startup Pitching + 5 Regular Tickets"),
+        ("Startup Pitching + 2 VIP Tickets", "Startup Pitching + 2 VIP Tickets"),
+        ("Startup Pitching + 3 VIP Tickets", "Startup Pitching + 3 VIP Tickets"),
+        ("Startup Pitching + 5 VIP Tickets", "Startup Pitching + 5 VIP Tickets"),
+    ]
+
+    full_name = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone = models.CharField(max_length=50)
+    company_name = models.CharField(max_length=255)
+    website = models.URLField(blank=True, null=True)
+    package = models.CharField(max_length=255, choices=PACKAGE_CHOICES)
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.full_name} - {self.package}"
+
+
+
+from django.db import models
+
+class MediaPartnerApplication(models.Model):
+    PARTNER_TYPE_CHOICES = [
+        ('media', 'Media Partner'),
+        ('community', 'Community Partner'),
+    ]
+
+    partner_type = models.CharField(max_length=20, choices=PARTNER_TYPE_CHOICES)
+    events = models.CharField(max_length=255)  # Store as CSV
+    company_name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    whatsapp = models.CharField(max_length=50)
+    country = models.CharField(max_length=100)
+    address = models.TextField()
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.company_name}) - {self.partner_type}"
+
+
+from django.db import models
+
+class SponsorInquiry(models.Model):
+    company = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    whatsapp = models.CharField(max_length=50)
+    email = models.EmailField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} from {self.company}"
+
+
+from django.db import models
+
+class SpeakerApplication(models.Model):
+    your_name = models.CharField(max_length=255)
+    company_name = models.CharField(max_length=255)
+    total_employees = models.PositiveIntegerField()
+    speaker_name = models.CharField(max_length=255)
+    email = models.EmailField()
+    isd_code = models.CharField(max_length=10)
+    whatsapp_number = models.CharField(max_length=20)
+    linkedin = models.URLField(blank=True, null=True)
+    slot = models.CharField(max_length=255)
+    date_applied = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.speaker_name} - {self.slot}"

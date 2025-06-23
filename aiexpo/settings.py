@@ -71,15 +71,31 @@ TEMPLATES = [
 WSGI_APPLICATION = 'aiexpo.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+import dj_database_url
+import os
+import environ
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env(DEBUG=(bool, False))
+env_file = "C:\\Users\\ADMIN\\Downloads\\worldaiexpo\\.env"
+
+if os.path.exists(env_file):
+    env.read_env(env_file)
+else:
+    if not os.environ.get("DATABASE_URL"):
+        raise Exception("⚠️ DATABASE_URL is not set in the environment!")
+    else:
+        print("No .env file found. Using system environment variables.")
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": dj_database_url.config(
+        default=env("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
+
 
 
 # Password validation

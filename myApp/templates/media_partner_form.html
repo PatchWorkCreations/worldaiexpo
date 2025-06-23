@@ -98,12 +98,14 @@
     <div class="section-title">MEDIA PARTNERSHIP – FREE TO JOIN FOR A LIMITED TIME</div>
 
     {% if messages %}
-        <div class="alert alert-success">
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-        </div>
-    {% endif %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+  
 
     <div class="row g-4" id="media-partner-form">
         <!-- Registration Form -->
@@ -111,7 +113,7 @@
             <div class="card">
                 <div class="card-header bg-primary text-white fw-bold">Registration Form</div>
                 <div class="card-body">
-                    <form method="POST">
+                    <form method="POST" action="">
                         {% csrf_token %}
                         <div class="mb-3">
                             <label class="form-label">I want to be a</label>

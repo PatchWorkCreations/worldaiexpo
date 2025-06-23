@@ -1,87 +1,83 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Speakers | World AI Expo{% endblock %}
+{% block title %}Startup Pitching | World AI Expo{% endblock %}
 
 {% block content %}
-  <style>
-    body {
-      background: #e8f7fd;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .section-title {
-      color: #e60023;
-      font-weight: bold;
-      font-size: 2.2rem;
-    }
-    .card-package:hover {
-      transform: translateY(-5px);
-      transition: 0.3s ease;
-    }
-    .recommended {
-      background: #fff3f3;
-      border-left: 4px solid #e60023;
-    }
-    .form-floating > label {
-      color: #666;
-    }
-  </style>
+<style>
+  body {
+    background: #e8f7fd;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .section-title {
+    color: #e60023;
+    font-weight: bold;
+    font-size: 2.2rem;
+  }
+  .card-package:hover {
+    transform: translateY(-5px);
+    transition: 0.3s ease;
+  }
+  .recommended {
+    background: #fff3f3;
+    border-left: 4px solid #e60023;
+  }
+  .form-floating > label {
+    color: #666;
+  }
+</style>
 
-
-
-
-  <section class="banner position-relative pb-0">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="inner-banner position-relative text-white">
-        <div class="row">
-          <div class="col-lg-6 order-2 order-lg-1">
-            <div class="banner-left text-center pb-lg-5 p-md-0">
-              <div class="banner-image">
-                <img alt="banner-image" class="w-50" src="{% static 'images/team/robot2.png' %}" />
-                <br/><br/><br/><br/><br/>
-              </div>
+<section class="banner position-relative pb-0">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="inner-banner position-relative text-white">
+      <div class="row">
+        <div class="col-lg-6 order-2 order-lg-1">
+          <div class="banner-left text-center pb-lg-5 p-md-0">
+            <div class="banner-image">
+              <img alt="banner-image" class="w-50" src="{% static 'images/team/robot2.png' %}" />
+              <br/><br/><br/><br/><br/>
             </div>
           </div>
-          <div class="col-lg-6 order-1 order-lg-2">
-            <div class="banner-right ms-2 text-center text-lg-start pb-8">
-              <div class="banner-title pb-3">
-                <h4 class="text-white pb-3">
-                  Startup Pitching 
-                  <span class="black">Opportunity</span>
-                </h4>
-                <h1 class="text-white">
-                  Pitch Your Startup
-                  <span class="text-blue">Live on Stage</span>
-                </h1>
-              </div>
-              <div class="banner-event-info pb-3">
-                <ul class="m-0 ps-0 d-sm-flex justify-content-center justify-content-lg-start list-unstyled">
-                  <li class="pe-2 border-end border-1 border-lightgrey">
-                    <i class="fa fa-calendar-o pe-1"></i>
-                    25-26 <br> JANUARY 2026
-                  </li>
-                  <li class="ps-2">
-                    <i class="fa fa-map-marker pe-1"></i>
-                    SMX Convention Center Manila, Pasay City,<br>Philippines
-                  </li>
-                </ul>
-              </div>
-              <div class="event-discription">
-                <p class="pb-4 m-0">
-                  Take the spotlight in front of global investors and AI innovators. Limited slots available — secure your pitch now.
-                </p>
-                <div class="banner-button">
-                  <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                      <a class="btn me-3 my-1 w-100" href="#startup-pitching-form">
-                        APPLY TO PITCH
-                      </a>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                      <a class="btn btn2 my-1 w-100" href="{% url 'become_a_sponsor' %}">
-                        BECOME A SPONSOR
-                      </a>
-                    </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2">
+          <div class="banner-right ms-2 text-center text-lg-start pb-8">
+            <div class="banner-title pb-3">
+              <h4 class="text-white pb-3">
+                Startup Pitching 
+                <span class="black">Opportunity</span>
+              </h4>
+              <h1 class="text-white">
+                Pitch Your Startup
+                <span class="text-blue">Live on Stage</span>
+              </h1>
+            </div>
+            <div class="banner-event-info pb-3">
+              <ul class="m-0 ps-0 d-sm-flex justify-content-center justify-content-lg-start list-unstyled">
+                <li class="pe-2 border-end border-1 border-lightgrey">
+                  <i class="fa fa-calendar-o pe-1"></i>
+                  25–26 <br> JANUARY 2026
+                </li>
+                <li class="ps-2">
+                  <i class="fa fa-map-marker pe-1"></i>
+                  SMX Convention Center Manila, Pasay City,<br>Philippines
+                </li>
+              </ul>
+            </div>
+            <div class="event-discription">
+              <p class="pb-4 m-0">
+                Take the spotlight in front of global investors and AI innovators. Limited slots available — secure your pitch now.
+              </p>
+              <div class="banner-button">
+                <div class="row">
+                  <div class="col-lg-6 col-md-6">
+                    <a class="btn me-3 my-1 w-100" href="#startup-pitching-form">
+                      APPLY TO PITCH
+                    </a>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                    <a class="btn btn2 my-1 w-100" href="{% url 'become_a_sponsor' %}">
+                      BECOME A SPONSOR
+                    </a>
                   </div>
                 </div>
               </div>
@@ -90,94 +86,98 @@
         </div>
       </div>
     </div>
-  </section>
-  
- 
+  </div>
+</section>
+
 <div class="container py-5">
-    <h2 class="text-center section-title mb-3">Apply for Startup Pitching</h2>
-    <p class="text-center mb-5">Take your startup to the big stage in front of the AI experts</p>
-  
-    <div class="row g-4">
-      <div class="col-lg-6">
-        <h4 class="mb-4">Startup Pitching Inclusions</h4>
-        <ul>
-          <li>5-min pitch on the Main Stage</li>
-          <li>Branding on our website</li>
-          <li>2 Days full access to the Expo</li>
-          <li>Meeting appointments with visitors</li>
-          <li>Featured in Digital Magazine</li>
-        </ul>
-  
-        <div class="row row-cols-1 g-3">
-          {% for pkg in packages %}
-          <div class="col">
-            <div class="card card-package shadow-sm p-3 {% if pkg.recommended %}recommended{% endif %}">
-              <strong>{{ pkg.title }}</strong>
-              <span class="text-muted float-end">
-                {% if pkg.original_price %}<s>${{ pkg.original_price }}</s>{% endif %} <strong>${{ pkg.price }}</strong>
-              </span>
+  <h2 class="text-center section-title mb-3">Apply for Startup Pitching</h2>
+  <p class="text-center mb-5">Take your startup to the big stage in front of AI experts and investors.</p>
+
+  <div class="row g-4">
+    <!-- Package Info -->
+    <div class="col-lg-6">
+      <h4 class="mb-4">Startup Pitching Inclusions</h4>
+      <ul>
+        <li>5-min pitch on the Main Stage</li>
+        <li>Branding on our website</li>
+        <li>2 Days full access to the Expo</li>
+        <li>Meeting appointments with visitors</li>
+        <li>Featured in Digital Magazine</li>
+      </ul>
+
+      <div class="row row-cols-1 g-3">
+        {% for pkg in packages %}
+        <div class="col">
+          <div class="card card-package shadow-sm p-3 {% if pkg.recommended %}recommended{% endif %}">
+            <strong>{{ pkg.title }}</strong>
+            <span class="text-muted float-end">
+              {% if pkg.original_price %}<s>${{ pkg.original_price }}</s>{% endif %}
+              <strong>${{ pkg.price }}</strong>
+            </span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <p class="mt-3 text-muted small">* 5% VAT applies. Startup pitching slots are limited and subject to approval.</p>
+    </div>
+
+    <!-- Form -->
+    <div class="col-lg-6" id="startup-pitching-form">
+      <div class="card shadow p-4">
+        <h5 class="mb-4">Startup Pitching Registration</h5>
+        <form method="post" novalidate>
+          {% csrf_token %}
+          <div class="row g-3">
+            {% for field in form %}
+            <div class="col-12">
+              <div class="form-floating">
+                {{ field }}
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              </div>
+              {% if field.errors %}
+              <div class="text-danger small mt-1">{{ field.errors }}</div>
+              {% endif %}
+            </div>
+            {% endfor %}
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-primary px-4 mt-2">Submit</button>
             </div>
           </div>
-          {% endfor %}
-        </div>
-  
-        <p class="mt-3 text-muted small">* 5% VAT applies. Startup pitching slots are limited and subject to approval.</p>
-      </div>
-  
-      <div class="col-lg-6" id="startup-pitching-form">
-        <div class="card shadow p-4">
-          <h5 class="mb-4">Startup Pitching Registration</h5>
-          <form method="post" novalidate>
-            {% csrf_token %}
-            <div class="row g-3">
-              {% for field in form %}
-              <div class="col-12">
-                <div class="form-floating">
-                  {{ field }}
-                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                </div>
-                {% if field.errors %}<div class="text-danger small">{{ field.errors }}</div>{% endif %}
-              </div>
-              {% endfor %}
-              <div class="col-12 text-center">
-                <button type="submit" class="btn btn-primary px-4 mt-2">Submit</button>
-              </div>
-            </div>
-          </form>
-        </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Thank You Modal -->
+<!-- Thank You Modal -->
 <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-center p-4">
-        <div class="modal-header border-0">
-          <h5 class="modal-title w-100" id="thankYouModalLabel">🎉 Submission Received!</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Thank you for registering for the startup pitch.</p>
-          <p>Our team will get in touch with you shortly!</p>
-        </div>
-        <div class="modal-footer border-0">
-          <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
-        </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <div class="modal-header border-0">
+        <h5 class="modal-title w-100" id="thankYouModalLabel">🎉 Submission Received!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Thank you for registering for the startup pitch.</p>
+        <p>Our team will get in touch with you shortly!</p>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-  
-  <!-- Auto-trigger modal if submitted -->
-  {% if submitted %}
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
-      thankYouModal.show();
-    });
-  </script>
-  {% endif %}
-  
+</div>
 
 
+<!-- Auto-trigger modal -->
+{% if submitted %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
+    thankYouModal.show();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+{% endif %}
 {% endblock %}

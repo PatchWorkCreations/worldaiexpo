@@ -2,6 +2,41 @@ from django.shortcuts import render
 
 def home(request):
     return render(request, 'index.html')
+
+
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.conf import settings
+
+def send_message_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        full_message = f"""
+        Name: {name}
+        Email: {email}
+        Phone: {phone}
+
+        Message:
+        {message}
+        """
+
+        send_mail(
+            subject="New Inquiry from Website",
+            message=full_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.CONTACT_RECEIVER_EMAIL],  # set this in settings.py
+            fail_silently=False,
+        )
+
+        messages.success(request, "Your message has been received! We'll respond as soon as possible.")
+        return redirect('home')
+
+
 from django.shortcuts import render
 
 def about(request):
@@ -100,36 +135,26 @@ def sponsers(request):
 def testimonial(request):
     return render(request, "testimonial.html")
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import SpeakerApplication
+
 def apply_speaker_view(request):
     if request.method == 'POST':
-        your_name = request.POST.get('your_name')
-        company_name = request.POST.get('company_name')
-        total_employees = request.POST.get('total_employees')
-        speaker_name = request.POST.get('speaker_name')
-        email = request.POST.get('email')
-
-        # Updated WhatsApp field
-        isd = request.POST.get('isd_code')
-        number = request.POST.get('whatsapp_number')
-        whatsapp_full = f"{isd}{number}"
-
-        linkedin = request.POST.get('linkedin')
-        slot = request.POST.get('slot')
-
-        print("Speaker Application Received:", {
-            "Your Name": your_name,
-            "Company": company_name,
-            "Employees": total_employees,
-            "Speaker": speaker_name,
-            "Email": email,
-            "WhatsApp": whatsapp_full,
-            "LinkedIn": linkedin,
-            "Slot": slot
-        })
-
-        messages.success(request, "Your speaker application has been received!")
-        return redirect('thank_you')
-
+        data = request.POST
+        SpeakerApplication.objects.create(
+            your_name=data.get('your_name'),
+            company_name=data.get('company_name'),
+            total_employees=data.get('total_employees'),
+            speaker_name=data.get('speaker_name'),
+            email=data.get('email'),
+            isd_code=data.get('isd_code'),
+            whatsapp_number=data.get('whatsapp_number'),
+            linkedin=data.get('linkedin'),
+            slot=data.get('slot')
+        )
+        messages.success(request, "Your application has been received! Our team will get in touch soon.")
+        return redirect('/apply-as-speaker/?success=1')  # Redirect with param for modal
     return render(request, 'apply_speaker.html')
 
 
@@ -138,8 +163,13 @@ def thank_you_view(request):
 
 def venue_detail(request):
     return render(request, 'venue_section.html')
+
 def become_sponsor(request):
     return render(request, 'become_sponsor.html')
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import ExhibitRegistration
 
 def exhibit(request):
     reasons = [
@@ -151,7 +181,27 @@ def exhibit(request):
         {"text": "Prefix Appointments with Quality Buyers", "color": "#118ab2"},
         {"text": "Participate in Awards and Network with Winners", "color": "#73c2fb"},
     ]
+
+    if request.method == 'POST':
+        exhibit_type = request.POST.get('type')
+        company_name = request.POST.get('company_name')
+        name = request.POST.get('name')
+        whatsapp = request.POST.get('whatsapp')
+        email = request.POST.get('email')
+
+        ExhibitRegistration.objects.create(
+            type=exhibit_type,
+            company_name=company_name,
+            name=name,
+            whatsapp=whatsapp,
+            email=email
+        )
+
+        messages.success(request, 'Your registration has been successfully submitted!')
+        return redirect('exhibit')
+
     return render(request, 'exhibit.html', {'reasons': reasons})
+
 
 
 def book_ticket(request):
@@ -186,8 +236,49 @@ def book_ticket(request):
     })
 
 
+from .models import SponsorInquiry  # Import model
+
 def become_a_sponsor(request):
-    return render(request, 'become_a_sponsor.html')
+    if request.method == 'POST':
+        company = request.POST.get('company')
+        name = request.POST.get('name')
+        whatsapp = request.POST.get('whatsapp')
+        email = request.POST.get('email')
+
+        # Save to DB
+        SponsorInquiry.objects.create(
+            company=company,
+            name=name,
+            whatsapp=whatsapp,
+            email=email
+        )
+
+        messages.success(request, "Thank you for submitting your sponsor application!")
+        return redirect('become_a_sponsor')
+
+    reasons = [
+        {"text": "Worldwide Promotions", "icon": "fa-globe"},
+        {"text": "Priority Branding Before the Expo", "icon": "fa-star-half-alt"},
+        {"text": "Priority Branding at the Expo", "icon": "fa-bullhorn"},
+        {"text": "Networking with Industry Leaders", "icon": "fa-handshake"},
+        {"text": "Right Target Audience", "icon": "fa-bullseye"},
+        {"text": "Speaker Opportunity", "icon": "fa-microphone"},
+        {"text": "Participate in Award Programs", "icon": "fa-award"},
+        {"text": "Exhibiting Opportunity", "icon": "fa-store"},
+        {"text": "VIP Lounge Access", "icon": "fa-couch"},
+        {"text": "Network with VVIPs", "icon": "fa-user-tie"},
+        {"text": "Branding After the Expo", "icon": "fa-calendar-check"},
+        {"text": "Branding in Digital Magazine", "icon": "fa-book"},
+        {"text": "Startup Pitch Competition", "icon": "fa-lightbulb"},
+        {"text": "Investor Meetup", "icon": "fa-users"},
+        {"text": "Prefix Appointments Before the Event", "icon": "fa-calendar-alt"},
+    ]
+
+    return render(request, 'become_a_sponsor.html', {
+        "reasons": reasons,
+    })
+
+
 
 
 from django.shortcuts import render
@@ -202,16 +293,11 @@ class StartupPitchForm(forms.Form):
     country = forms.CharField(label="Company Located", widget=forms.TextInput(attrs={'class': 'form-control'}))
     package = forms.ChoiceField(label="Package", widget=forms.Select(attrs={'class': 'form-select'}))
 
-def startup_pitching_view(request):
-    package_options = [
-        ("Startup Pitching + 1 Regular Ticket", "$680"),
-        ("Startup + 5 Regular Tickets + Table Top", "$880"),
-        ("Startup Pitching + 5 Regular Tickets", "$860"),
-        ("Startup Pitching + 2 VIP Tickets", "$1,175"),
-        ("Startup Pitching + 3 VIP Tickets", "$1,400"),
-        ("Startup Pitching + 5 VIP Tickets", "$1,679"),
-    ]
 
+from django.shortcuts import render
+from .forms import StartupPitchForm
+
+def startup_pitching_view(request):
     packages = [
         {"title": "Startup Pitching + 1 Regular Ticket", "price": "680"},
         {"title": "Startup + 5 Regular Tickets + Table Top", "price": "880", "original_price": "2000", "recommended": True},
@@ -225,12 +311,12 @@ def startup_pitching_view(request):
 
     if request.method == 'POST':
         form = StartupPitchForm(request.POST)
-        form.fields['package'].choices = [(p[0], f"{p[0]} - {p[1]}") for p in package_options]
         if form.is_valid():
+            form.save()
             submitted = True
+            form = StartupPitchForm()  # Reset form after save
     else:
         form = StartupPitchForm()
-        form.fields['package'].choices = [(p[0], f"{p[0]} - {p[1]}") for p in package_options]
 
     return render(request, "startup_pitching.html", {
         "form": form,
@@ -241,8 +327,8 @@ def startup_pitching_view(request):
 
 
 from django.shortcuts import render, redirect
-from django.core.mail import send_mail  # optional if you want notifications
 from django.contrib import messages
+from .models import MediaPartnerApplication
 
 def register_media_partner(request):
     if request.method == 'POST':
@@ -255,26 +341,19 @@ def register_media_partner(request):
         country = request.POST.get('country')
         address = request.POST.get('address')
 
-        # Process/save/send/store logic here
-        print("Received:", partner_type, events, company_name, name, email, whatsapp, country, address)
+        # Save to database
+        MediaPartnerApplication.objects.create(
+            partner_type=partner_type,
+            events=", ".join(events),  # store as comma-separated string
+            company_name=company_name,
+            name=name,
+            email=email,
+            whatsapp=whatsapp,
+            country=country,
+            address=address
+        )
 
-        messages.success(request, "Thank you for registering!")
+        messages.success(request, "Thank you for registering as a Media Partner!")
         return redirect('register_media_partner')
 
     return render(request, 'media_partner_form.html')
-
-    
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .forms import RegistrationForm
-
-def exhibit_registration(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            # You can process the form here, save to DB or send email
-            messages.success(request, 'Registration submitted successfully!')
-            return redirect('exhibit_registration')
-    else:
-        form = RegistrationForm()
-    return render(request, 'myApp/exhibit_registration.html', {'form': form})

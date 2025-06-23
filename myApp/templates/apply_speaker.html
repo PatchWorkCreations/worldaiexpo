@@ -137,11 +137,13 @@
   max-width: 100%;
 }
 
-.content-wrapper-with-header {
-  padding-top: 140px; /* Adjust based on your actual header height */
-}
-
 </style>
+
+<section class="position-relative text-white py-5" style="background: linear-gradient(to right, #4b00b5, #9300ff); padding-top: 150px;">
+  <div class="container text-center py-5" data-aos="fade-up">
+    <h1 class="display-5 fw-bold text-uppercase" style="padding-top: 80px;">Apply as a Speaker</h1>
+  </div>
+</section>
 
 
     
@@ -254,6 +256,25 @@
     </div>
 </div>
 
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title w-100 fw-bold" id="successModalLabel">🎉 Application Received!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background: white;"></button>
+      </div>
+      <div class="modal-body">
+        <p>Thank you for applying as a speaker! We'll reach out to you soon.</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <script>
   $(document).ready(function() {
@@ -277,6 +298,21 @@
       $('.select2-search__field').attr('placeholder', 'Search...');
     }, 0);
   });
+
+  // Show modal if ?success=1 is in URL
+$(document).ready(function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('success') === '1') {
+    $('#successModal').modal('show');
+  }
+});
+
+// Optional: remove ?success=1 from URL after showing the modal
+if (window.history.replaceState) {
+  const url = window.location.origin + window.location.pathname;
+  window.history.replaceState({}, document.title, url);
+}
+
 
 </script>
 
