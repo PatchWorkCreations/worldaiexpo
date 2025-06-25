@@ -344,7 +344,7 @@ Change the following styles to modify the appearance of the menu.
     }
     .nav-link:hover
     {
-        background-color: #e91e63;
+        background-color: #0095ff;
         color: white;
     }
     .dropdown-menu>li>a {

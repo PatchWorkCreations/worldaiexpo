@@ -9,6 +9,47 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+import dj_database_url
+import os
+import environ
+from pathlib import Path
+
+from pathlib import Path
+import os
+import environ
+
+# Define base directory
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Initialize environment
+env = environ.Env(DEBUG=(bool, False))
+
+# Point to your .env file explicitly (Mac-style path)
+env_file = BASE_DIR / ".env"  # assuming .env is in the same folder as manage.py
+if env_file.exists():
+    env.read_env(env_file)
+else:
+    if not os.environ.get("DATABASE_URL"):
+        raise Exception("⚠️ DATABASE_URL is not set in the environment!")
+    else:
+        print("⚠️ No .env file found, using system environment variables.")
+
+
+if os.path.exists(env_file):
+    env.read_env(env_file)
+else:
+    if not os.environ.get("DATABASE_URL"):
+        raise Exception("⚠️ DATABASE_URL is not set in the environment!")
+    else:
+        print("No .env file found. Using system environment variables.")
+
+DATABASES = {
+    "default": dj_database_url.config(
+        default=env("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=False  # ✅ Railway requires SSL!
+    )
+}
 
 from pathlib import Path
 
@@ -71,30 +112,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'aiexpo.wsgi.application'
 
 
-import dj_database_url
-import os
-import environ
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-env = environ.Env(DEBUG=(bool, False))
-env_file = "C:\\Users\\ADMIN\\Downloads\\worldaiexpo\\.env"
-
-if os.path.exists(env_file):
-    env.read_env(env_file)
-else:
-    if not os.environ.get("DATABASE_URL"):
-        raise Exception("⚠️ DATABASE_URL is not set in the environment!")
-    else:
-        print("No .env file found. Using system environment variables.")
-
-DATABASES = {
-    "default": dj_database_url.config(
-        default=env("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True
-    )
-}
 
 
 
