@@ -253,41 +253,54 @@
 </style>
 
   <section class="banner position-relative overflow-hidden text-white">
-  <!-- Background Video -->
-  <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-n2">
-    <source src="{% static 'videos/expomanila.mp4' %}" type="video/mp4">
+  <!-- 🌐 Desktop Vimeo Video -->
+  <div class="position-absolute top-0 start-0 w-100 h-100 d-none d-md-block z-n2 overflow-hidden">
+    <div class="w-100 h-100 ratio" style="--bs-aspect-ratio: 56.25%;">
+      <iframe 
+        src="https://player.vimeo.com/video/1096553271?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+        frameborder="2"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        title="Expo Manila"
+        class="position-absolute top-0 start-0 w-100 h-100">
+      </iframe>
+    </div>
+  </div>
 
-    Your browser does not support the video tag.
-  </video>
+  <!-- 📱 Mobile Fallback Image -->
+  <div class="position-absolute top-0 start-0 w-100 h-100 d-block d-md-none z-n2">
+    <img src="{% static 'images/background/smx1.png' %}" alt="Expo Manila" class="w-100 h-100 object-fit-cover">
+  </div>
 
-  <!-- Dark Overlay -->
+  <!-- 🌓 Dark Overlay -->
   <div class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-50 z-0"></div>
 
+  <!-- 🎯 Hero Content -->
   <div class="container h-100 d-flex flex-column justify-content-center align-items-center position-relative z-1 text-center">
-    
+
     <!-- Event Title -->
     <div class="banner-title mb-4 animate-fadeInUp">
-      <h4 class="fw-bold text-warning">World AI   <span class="text-white">Expo 2026 –</span> <span class="text-white"> Manila</span></h4>
+      <h4 class="fw-bold text-warning">World AI <span class="text-white">Expo 2026 –</span> <span class="text-white">Manila</span></h4>
       <h1 class="display-4 fw-bold text-white">Empathy-Driven for a Smarter World</h1>
     </div>
 
-    <!-- Countdown Centered -->
+    <!-- Countdown -->
     <div class="countdown w-75 mb-5 animate-fadeInUp">
       <div class="countdown-inner d-flex flex-wrap justify-content-center bg-white bg-opacity-50 rounded-5 px-4 py-3 shadow-lg" id="countdown">
         <div class="time text-white m-3 text-center">
-          <span class="display-4 fw-bold d-block" id="days">00</span>
+          <span class="display-4 fw-bold d-block" id="days">108</span>
           <small>DAYS</small>
         </div>
         <div class="time text-white m-3 text-center">
-          <span class="display-4 fw-bold d-block" id="hours">00</span>
+          <span class="display-4 fw-bold d-block" id="hours">23</span>
           <small>HOURS</small>
         </div>
         <div class="time text-white m-3 text-center">
-          <span class="display-4 fw-bold d-block" id="minutes">00</span>
+          <span class="display-4 fw-bold d-block" id="minutes">59</span>
           <small>MINUTES</small>
         </div>
         <div class="time text-white m-3 text-center">
-          <span class="display-4 fw-bold d-block" id="seconds">00</span>
+          <span class="display-4 fw-bold d-block" id="seconds">10</span>
           <small>SECONDS</small>
         </div>
       </div>
@@ -307,21 +320,21 @@
       </ul>
     </div>
 
-    <!-- Description and Buttons -->
-    <p class="lead mb-4 px-3 px-md-5 animate-fadeInUp">Join global changemakers redefining the future of AI — where human stories meet intelligent solutions.</p>
+    <!-- Description & Buttons -->
+    <p class="lead mb-4 px-3 px-md-5 animate-fadeInUp">
+      Join global changemakers redefining the future of AI — where human stories meet intelligent solutions.
+    </p>
     <div class="row w-100 justify-content-center px-3 px-md-5">
       <div class="col-12 col-sm-6 col-md-4 mb-2">
-  <a class="btn btn-warning w-100 fw-bold btn-beat" href="{% url 'book_now' %}">
-    Purchase Ticket
-  </a>
-</div>
-
+        <a class="btn btn-warning w-100 fw-bold btn-beat" href="{% url 'book_now' %}">Purchase Ticket</a>
+      </div>
       <div class="col-12 col-sm-6 col-md-4 mb-2">
         <a class="btn btn-outline-light w-100 fw-bold" href="{% url 'event_list' %}">Exhibit</a>
       </div>
     </div>
   </div>
 </section>
+
 
   <!--Banner Section end-->
   <!--Overview Section start-->
@@ -342,7 +355,7 @@
           </span>
          </h1> <br>
          <p>
-          Step into the future of innovation at World AI Expo 2025 by iRiseUp.AI — where visionaries, developers, 
+          Step into the future of innovation at World AI Expo 2026 by iRiseUp.AI — where visionaries, developers, 
           and change-makers unite to explore how empathy and intelligence can shape a smarter, more connected world.
          </p>
          <p class="mb-2">
@@ -435,7 +448,7 @@
        </span>
       </h2>
       <p class="m-0">
-       The World AI Expo 2025 is made possible by the brilliant minds and bold brands who share our mission.  
+       The World AI Expo 2026 is made possible by the brilliant minds and bold brands who share our mission.  
      From leading tech firms to grassroots innovators, our partners are united by one vision:  
      to make AI more ethical, inclusive, and impactful for the world.
       </p>
@@ -981,7 +994,7 @@
      <div class="ticket-info">
       <p>
        Time is ticking and seats are flying! Join thousands of visionaries, creators, and innovators at the
- <strong>World AI Expo 2025</strong>. Don’t miss your chance to be part of history in the making.
+ <strong>World AI Expo 2026</strong>. Don’t miss your chance to be part of history in the making.
       </p>
       <div class="ticket-button">
        <a class="btn btn1" href="{% url 'book_now' %}">
@@ -1281,7 +1294,7 @@
       <h2 class="mb-1">
        CHOOSE YOUR EXPERIENCE AT THE
        <span class="blue">
-        WORLD AI EXPO 2025
+        WORLD AI EXPO 2026
        </span>
       </h2>
       <p class="m-0">
@@ -1574,7 +1587,7 @@
       <div class="col-lg-6 px-4 mb-2">
        <div class="faq-general">
         <div class="section-title pb-3 text-center text-lg-start">
-         <p class="mb-1 blue">
+         <p class="mb-1 white">
           GENERAL QUESTIONS
          </p>
          <h2 class="mb-2 text-white">
@@ -1584,7 +1597,7 @@
           </span>
          </h2>
          <p class="text-white">
-          World AI Expo 2025 | Powered by iRiseUp.AI
+          World AI Expo 2026 | Powered by iRiseUp.AI
          </p>
         </div>
         <div class="faq-accordion p-4 mb-5 bg-white rounded">
@@ -1592,7 +1605,7 @@
           <div class="accordion-item">
            <p class="accordion-header p-4">
             <button aria-controls="flush-collapseOne" aria-expanded="false" class="accordion-button collapsed fw-semibold p-0" data-bs-target="#flush-collapseOne" data-bs-toggle="collapse" type="button">
-             What is the World AI Expo 2025?
+             What is the World AI Expo 2026?
             </button>
            </p>
            <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample" id="flush-collapseOne">
@@ -1642,7 +1655,7 @@
           </span>
          </h2>
          <p class="m-0">
-          Secure your spot at the World AI Expo 2025. Whether you're here to learn, connect, or lead
+          Secure your spot at the World AI Expo 2026. Whether you're here to learn, connect, or lead
            — your journey starts with one click. Don’t miss the future unfolding live in Manila.
          </p>
         </div>
