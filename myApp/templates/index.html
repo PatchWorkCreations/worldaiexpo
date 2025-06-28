@@ -199,8 +199,6 @@
     padding-bottom: 150px; /* added to prevent button cutoff */
   }
 
-  
-
   .banner-title {
     padding-top: 100px;
   }
@@ -249,16 +247,15 @@
   }
 }
 
-
 </style>
 
   <section class="banner position-relative overflow-hidden text-white">
   <!-- 🌐 Desktop Vimeo Video -->
   <div class="position-absolute top-0 start-0 w-100 h-100 d-none d-md-block z-n2 overflow-hidden">
-    <div class="w-100 h-100 ratio" style="--bs-aspect-ratio: 56.25%;">
+    <div class="w-100 h-100 ratio" style="--bs-aspect-ratio: 60.25%;">
       <iframe 
         src="https://player.vimeo.com/video/1096553271?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
-        frameborder="2"
+        frameborder="0"
         allow="autoplay; fullscreen; picture-in-picture"
         allowfullscreen
         title="Expo Manila"
@@ -269,7 +266,7 @@
 
   <!-- 📱 Mobile Fallback Image -->
   <div class="position-absolute top-0 start-0 w-100 h-100 d-block d-md-none z-n2">
-    <img src="{% static 'images/background/smx1.png' %}" alt="Expo Manila" class="w-100 h-100 object-fit-cover">
+    <img src="{% static 'images/background/1.png' %}" alt="Expo Manila" class="w-100 h-100 object-fit-cover">
   </div>
 
   <!-- 🌓 Dark Overlay -->
@@ -960,7 +957,7 @@
       <h5 class="text-white mb-1">
        LET'S DO IT HURRY
       </h5>
-      <h1 class="text-white mb-2">
+      <h1 class="text-white mb-1">
        HAVEN'T BOOKED YOUR SEAT YET?
        <span class="spin blue d-inline-block">
         G
