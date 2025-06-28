@@ -353,7 +353,7 @@
 
 /*Feature CSS*/
 .feature{
-  background-image: url(../images/background/5.jpg);
+  background-image: url(../images/background/1.jpg);
   background-size:auto;
   background-position: top center;
 }
@@ -721,7 +721,7 @@ box-shadow: none;
 /* footer */
 
 footer{
-  background-image: url(../images/background/5.jpg);
+  background-image: url(../images/background/1.jpg);
   background-repeat: no-repeat;
   background-size:auto;
   background-position: top center;
