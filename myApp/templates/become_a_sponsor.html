@@ -16,7 +16,7 @@
   }
 
   .sponsor-section {
-    background: linear-gradient(to right, #4b00b5, #9300ff);
+    background: linear-gradient(to right, #0d4599, #ffffff);
     padding-top: 140px;
   }
 
@@ -76,15 +76,53 @@
       font-size: 2rem;
     }
   }
+
+  .sponsor-section-modern {
+  background: linear-gradient(135deg, #0d47a1, #1976d2);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+}
+
+.sponsor-section-modern .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(12, 12, 12, 0.4); /* Glassy dark overlay */
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+
+.sponsor-section-modern .container {
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .sponsor-section-modern h1 {
+    font-size: 2rem;
+  }
+  .sponsor-section-modern p {
+    font-size: 1rem;
+  }
+}
+
 </style>
 
-<!-- Hero -->
-<section class="sponsor-section text-white text-center">
-  <div class="container py-5" data-aos="fade-up">
-    <h1 class="display-5 fw-bold text-uppercase">Become a Sponsor</h1>
-    <p class="lead">Partner with us to shape the future of AI in Southeast Asia.</p>
+<!-- Hero: Become a Sponsor -->
+<section class="sponsor-section-modern text-white text-center position-relative overflow-hidden">
+  <div class="overlay"></div>
+  <div class="container py-5 position-relative z-1" data-aos="fade-up">
+    <h1 class="display-4 fw-bold text-uppercase mb-3">Become a Sponsor</h1>
+    <p class="lead fw-medium fs-5">Partner with us to shape the future of AI in Southeast Asia.</p>
+    <a href="{% url 'exhibit' %}" class="btn btn-light fw-bold mt-4 px-4 py-2 rounded-pill">View Sponsorship Packages</a>
   </div>
 </section>
+
 
 <!-- Reasons & Form -->
 <section>
