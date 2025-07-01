@@ -1,7 +1,6 @@
 {% load static %}
 
-  <style>
-
+<style>
 /* === MODAL LAYOUT === */
 #registrationModal .modal-content {
   border: none;
@@ -14,28 +13,19 @@
   flex-direction: column;
 }
 
-/* === COUNTDOWN BOXES === */
-#registrationModal .countdown-box {
-  background-color: #e60000;
-  color: white;
-  border-radius: 6px;
-  padding: 0.5rem 0.75rem;
-  min-width: 60px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-#registrationModal .countdown-box div {
-  font-size: 1.25rem;
-}
-
 /* === LEFT COLUMN (Black Section) === */
 #registrationModal .modal-left {
   background-color: #111;
   color: #fff;
   padding: 2rem 1rem;
   text-align: center;
+}
+
+/* Hide robot image on mobile */
+@media (max-width: 767.98px) {
+  #registrationModal .modal-left {
+    display: none;
+  }
 }
 
 #registrationModal .modal-left img {
@@ -108,7 +98,6 @@
     border-radius: 0;
     max-height: 90vh;
     overflow-y: auto;
-    display: flex;
     flex-direction: column;
   }
 
@@ -116,33 +105,13 @@
     flex-direction: column;
   }
 
-  #registrationModal .modal-left {
-    display: block;
-    order: 0;
-    padding: 1rem 1rem;
-    text-align: center;
-  }
-
-  #registrationModal .modal-left img {
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    margin: 0 auto 1rem auto;
-  }
-
   #registrationModal .modal-right {
-    order: 1;
     padding: 1.25rem 1rem;
   }
 
   #registrationModal .btn-close {
     top: 10px;
     right: 10px;
-    z-index: 10;
-  }
-
-  #registrationModal .btn-dark {
-    width: 100%;
   }
 
   #registrationModal .form-select,
@@ -166,19 +135,14 @@
     max-width: 200px;
   }
 }
-
-
-/* === Prevent body scroll behind modal === */
-
-
-  </style>
+</style>
 
 <!-- === REGISTRATION MODAL === -->
 <div class="modal fade" id="registrationModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
       <div class="modal-body d-flex flex-column flex-md-row p-0">
-        <!-- Promo Section -->
+        <!-- Promo Section (Hidden on mobile) -->
         <div class="modal-left bg-dark text-white text-center">
           <p class="text-warning mb-2 pt-4">Speaker · Exhibit · Sponsor · Partner · Visitor</p>
           <img src="{% static 'images/team/rob.png' %}" class="img-fluid mx-auto" alt="Promo Image" />
@@ -212,13 +176,57 @@
                 <label class="form-label">Your WhatsApp Number *</label>
                 <div class="d-flex gap-2">
                   <select class="form-select" name="isd_code" required style="max-width: 100px;">
-                    <option value="+63" selected>🇵🇭 +63</option>
-                    <option value="+1">🇺🇸 +1</option>
-                    <option value="+44">🇬🇧 +44</option>
-                    <option value="+91">🇮🇳 +91</option>
-                    <option value="+81">🇯🇵 +81</option>
-                    <option value="+971">🇦🇪 +971</option>
-                  </select>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+63" selected>🇵🇭 +63</option>
+                  <option value="+91">🇮🇳 +91</option>
+                  <option value="+81">🇯🇵 +81</option>
+                  <option value="+971">🇦🇪 +971</option>
+                  <option value="+61">🇦🇺 +61</option>
+                  <option value="+65">🇸🇬 +65</option>
+                  <option value="+66">🇹🇭 +66</option>
+                  <option value="+62">🇮🇩 +62</option>
+                  <option value="+60">🇲🇾 +60</option>
+                  <option value="+852">🇭🇰 +852</option>
+                  <option value="+86">🇨🇳 +86</option>
+                  <option value="+82">🇰🇷 +82</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+39">🇮🇹 +39</option>
+                  <option value="+34">🇪🇸 +34</option>
+                  <option value="+55">🇧🇷 +55</option>
+                  <option value="+52">🇲🇽 +52</option>
+                  <option value="+234">🇳🇬 +234</option>
+                  <option value="+27">🇿🇦 +27</option>
+                  <option value="+7">🇷🇺 +7</option>
+                  <option value="+20">🇪🇬 +20</option>
+                  <option value="+92">🇵🇰 +92</option>
+                  <option value="+880">🇧🇩 +880</option>
+                  <option value="+974">🇶🇦 +974</option>
+                  <option value="+966">🇸🇦 +966</option>
+                  <option value="+90">🇹🇷 +90</option>
+                  <option value="+962">🇯🇴 +962</option>
+                  <option value="+961">🇱🇧 +961</option>
+                  <option value="+968">🇴🇲 +968</option>
+                  <option value="+964">🇮🇶 +964</option>
+                  <option value="+93">🇦🇫 +93</option>
+                  <option value="+94">🇱🇰 +94</option>
+                  <option value="+998">🇺🇿 +998</option>
+                  <option value="+372">🇪🇪 +372</option>
+                  <option value="+421">🇸🇰 +421</option>
+                  <option value="+420">🇨🇿 +420</option>
+                  <option value="+48">🇵🇱 +48</option>
+                  <option value="+358">🇫🇮 +358</option>
+                  <option value="+46">🇸🇪 +46</option>
+                  <option value="+47">🇳🇴 +47</option>
+                  <option value="+31">🇳🇱 +31</option>
+                  <option value="+32">🇧🇪 +32</option>
+                  <option value="+41">🇨🇭 +41</option>
+                  <option value="+43">🇦🇹 +43</option>
+                  <option value="+36">🇭🇺 +36</option>
+                  <option value="+45">🇩🇰 +45</option>
+                </select>
+
                   <input type="text" class="form-control" name="whatsapp_number" placeholder="9123456789" required>
                 </div>
               </div>
