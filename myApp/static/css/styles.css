@@ -5,6 +5,16 @@
 * Created:        06/26/2024
 -------------------------------------------------------------------*/
 
+/**lazy loading**/
+.lazy-fade {
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+.lazy-fade.loaded {
+  opacity: 1;
+}
+
+
 /**Header content CSS**/
 .main_header_area{
   z-index: 999;

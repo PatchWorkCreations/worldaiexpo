@@ -76,6 +76,12 @@ ALLOWED_HOSTS = [
     'worldaixsummit.com',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://worldaixsummit.com',
+    'https://www.worldaixsummit.com',
+    'https://worldaiexpo-production.up.railway.app',
+]
+
 
 
 # Application definition
