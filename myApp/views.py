@@ -357,3 +357,78 @@ def register_media_partner(request):
         return redirect('register_media_partner')
 
     return render(request, 'media_partner_form.html')
+
+
+# modal
+from django.core.mail import send_mail
+from django.conf import settings
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from .models import GeneralRegistration  # ✅ Make sure this model exists
+
+@csrf_exempt
+@require_POST
+def registration_form(request):
+    role = request.POST.get('role')
+    name = request.POST.get('name')
+    isd_code = request.POST.get('isd_code')
+    whatsapp = request.POST.get('whatsapp_number')
+    email = request.POST.get('email')
+    company = request.POST.get('company')
+
+    # ✅ Save to PostgreSQL via Django ORM
+    GeneralRegistration.objects.create(
+        role=role,
+        name=name,
+        email=email,
+        company=company,
+        isd_code=isd_code,
+        whatsapp_number=whatsapp,
+    )
+
+    # === Email to Admin ===
+    admin_subject = f"[World AI Summit] New {role} Registration: {name}"
+    admin_message = f"""
+New Registration Submitted:
+
+• Name: {name}
+• Email: {email}
+• WhatsApp: {isd_code} {whatsapp}
+• Company: {company}
+• Role: {role}
+"""
+    send_mail(
+        admin_subject,
+        admin_message,
+        settings.DEFAULT_FROM_EMAIL,
+        [settings.CONTACT_RECEIVER_EMAIL],
+        fail_silently=False
+    )
+
+    # === Confirmation Email to User ===
+    user_subject = "✅ You’re registered for World AI Summit 2026!"
+    user_message = f"""
+Hi {name},
+
+Thank you for registering as a {role} at the World AI Summit 2026.
+
+We’ve received your information:
+- Company: {company}
+- Contact: {isd_code} {whatsapp}
+
+We’ll reach out soon with event updates.
+Stay inspired!
+
+Warm regards,  
+iRiseUp Team 🌐 www.worldaixsummit.com
+"""
+    send_mail(
+        user_subject,
+        user_message,
+        settings.DEFAULT_FROM_EMAIL,
+        [email],
+        fail_silently=False
+    )
+
+    return JsonResponse({"status": "ok", "message": "Registration successful."})

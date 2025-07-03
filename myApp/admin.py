@@ -44,3 +44,9 @@ class SpeakerAdmin(admin.ModelAdmin):
 @admin.register(Session)
 class SessionAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
+
+
+#for modal
+from .models import GeneralRegistration
+
+admin.site.register(GeneralRegistration)

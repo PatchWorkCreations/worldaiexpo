@@ -154,7 +154,7 @@
           <h4 class="text-danger fw-bold text-center mb-2">Registration Form</h4>
           <p class="text-center">Please fill the form to complete registration</p>
 
-          <form method="POST" action="#">
+          <form method="POST" id="registrationForm">
             {% csrf_token %}
             <div class="row g-3">
               <div class="col-md-6">
@@ -250,7 +250,9 @@
   </div>
 </div>
 
-<!-- === MODAL SCRIPT === -->
+<!-- SweetAlert2 CDN (outside of <script> block) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
@@ -260,7 +262,7 @@
       if (!sessionStorage.getItem('modalClosed')) {
         modal.show();
       }
-    }, 500);
+    }, 5000);
 
     // Mark modal as dismissed in this session
     document.getElementById('registrationModal').addEventListener('hidden.bs.modal', function () {
@@ -271,5 +273,51 @@
     document.getElementById('registrationModal').addEventListener('shown.bs.modal', function () {
       this.querySelector('input[name="name"]').focus();
     });
+
+    // Handle form submission
+    const form = document.getElementById("registrationForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch("{% url 'submit_registration' %}", {
+
+        method: "POST",
+        headers: {
+          "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Something went wrong!");
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.status === "ok") {
+          Swal.fire({
+            icon: "success",
+            title: "🎉 You're In!",
+            text: "Thanks for registering! A confirmation has been sent to your email.",
+            confirmButtonText: "Great!"
+          });
+
+          form.reset();
+          const modalInstance = bootstrap.Modal.getInstance(document.getElementById("registrationModal"));
+          modalInstance.hide();
+        }
+      })
+      .catch(error => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops!",
+          text: "Something went wrong. Please try again later.",
+        });
+      });
+    });
   });
 </script>
+

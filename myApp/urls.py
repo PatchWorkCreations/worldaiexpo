@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import registration_form
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -35,6 +36,6 @@ urlpatterns = [
     path('startup-pitch/', views.startup_pitching_view, name='startup_pitch'),
     path('register_media_partner/', views.register_media_partner, name='register_media_partner'),
     path('send-message/', views.send_message_view, name='send_message'),
+    path('submit-registration/', registration_form, name='submit_registration'),
 
-    
 ]

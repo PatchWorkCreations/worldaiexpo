@@ -182,3 +182,24 @@ class SpeakerApplication(models.Model):
 
     def __str__(self):
         return f"{self.speaker_name} - {self.slot}"
+
+#for modal
+class GeneralRegistration(models.Model):
+    ROLE_CHOICES = [
+        ('Speaker', 'Speaker'),
+        ('Exhibitor', 'Exhibitor'),
+        ('Sponsor', 'Sponsor'),
+        ('Partner', 'Partner'),
+        ('Visitor', 'Visitor'),
+    ]
+
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    company = models.CharField(max_length=255)
+    isd_code = models.CharField(max_length=10)
+    whatsapp_number = models.CharField(max_length=20)
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.role})"
