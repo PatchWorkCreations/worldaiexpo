@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//World AI Summit//EN
+BEGIN:VEVENT
+UID:worldaisummit2026@iriseup.ai
+DTSTAMP:20250703T080000Z
+DTSTART:20260130T010000Z
+DTEND:20260201T170000Z
+SUMMARY:World AI Summit 2026
+DESCRIPTION:The global summit for AI leaders and innovators.
+LOCATION:SMX Convention Center, Manila
+URL:https://www.worldaixsummit.com
+END:VEVENT
+END:VCALENDAR

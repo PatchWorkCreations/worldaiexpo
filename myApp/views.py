@@ -360,12 +360,13 @@ def register_media_partner(request):
 
 
 # modal
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from .models import GeneralRegistration  # ✅ Make sure this model exists
+from django.template.loader import render_to_string
+from .models import GeneralRegistration
 
 @csrf_exempt
 @require_POST
@@ -377,7 +378,7 @@ def registration_form(request):
     email = request.POST.get('email')
     company = request.POST.get('company')
 
-    # ✅ Save to PostgreSQL via Django ORM
+    # ✅ Save to PostgreSQL
     GeneralRegistration.objects.create(
         role=role,
         name=name,
@@ -387,7 +388,7 @@ def registration_form(request):
         whatsapp_number=whatsapp,
     )
 
-    # === Email to Admin ===
+    # === Admin Notification Email ===
     admin_subject = f"[World AI Summit] New {role} Registration: {name}"
     admin_message = f"""
 New Registration Submitted:
@@ -406,29 +407,23 @@ New Registration Submitted:
         fail_silently=False
     )
 
-    # === Confirmation Email to User ===
-    user_subject = "✅ You’re registered for World AI Summit 2026!"
-    user_message = f"""
-Hi {name},
+    # === Styled Confirmation Email to User ===
+    html_message = render_to_string('emails/registration_confirmation.html', {
+        'name': name,
+        'role': role,
+        'company': company,
+        'isd_code': isd_code,
+        'whatsapp': whatsapp
+    })
 
-Thank you for registering as a {role} at the World AI Summit 2026.
-
-We’ve received your information:
-- Company: {company}
-- Contact: {isd_code} {whatsapp}
-
-We’ll reach out soon with event updates.
-Stay inspired!
-
-Warm regards,  
-iRiseUp Team 🌐 www.worldaixsummit.com
-"""
-    send_mail(
-        user_subject,
-        user_message,
-        settings.DEFAULT_FROM_EMAIL,
-        [email],
-        fail_silently=False
+    confirmation_email = EmailMultiAlternatives(
+        subject="✅ You’re registered for World AI Summit 2026!",
+        body="Thank you for registering.",  # plain text fallback
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[email],
     )
+    confirmation_email.attach_alternative(html_message, "text/html")
+    confirmation_email.send()
 
     return JsonResponse({"status": "ok", "message": "Registration successful."})
+

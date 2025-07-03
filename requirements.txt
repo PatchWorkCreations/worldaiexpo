@@ -1,27 +1,31 @@
-asgiref==3.8.1
-dj-database-url==2.3.0
+# Core Django and related tools
 Django==5.1.2
-django-environ==0.10.0
-gunicorn==20.1.0
-packaging==24.1
-setuptools==75.2.0
+asgiref==3.8.1
 sqlparse==0.5.1
-typing_extensions==4.12.2
-tzdata==2024.2
+dj-database-url==2.3.0
+django-environ==0.10.0
 whitenoise==6.7.0
-#psycopg2==2.9.7
-#psycopg2-binary==2.9.7
+gunicorn==20.1.0
+
+# PostgreSQL drivers (use only one of the below)
+# psycopg2==2.9.7
+# psycopg2-binary==2.9.7
 psycopg==3.1.18
 psycopg-c==3.1.18
 
-
-
+# Optional tools
 requests==2.32.3
 pillow==10.4.0
 cloudinary==1.43.0 
 django-cloudinary-storage==0.3.0 
-six==1.17.0
-
 django-countries==7.6.1
 
+# Utils
+six==1.17.0
+packaging==24.1
+setuptools==75.2.0
+typing_extensions==4.12.2
+tzdata==2024.2
+
+# For loading .env files
 python-dotenv>=1.0.0
