@@ -1,14 +1,13 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-
 <style>
   .chat-toggle {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background-color: #2563eb;
+    bottom: 80px;
+    right: 21px;
+    background-color: #fffb00;
     color: white;
-    font-size: 20px;
+    font-size: 30px;
     width: 56px;
     height: 56px;
     border: none;
@@ -16,6 +15,22 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     z-index: 9999;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .chat-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 251, 0, 0.5); }
+    70% { box-shadow: 0 0 0 12px rgba(255, 251, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 251, 0, 0); }
+  }
+
+  .chat-toggle.pulse {
+    animation: pulse 2.5s infinite;
   }
 
   .chatbox {
@@ -31,10 +46,18 @@
     flex-direction: column;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .chatbox:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .hidden {
-    display: none;
+    display: none !important;
   }
 
   .chatbox-header {
@@ -67,27 +90,26 @@
   }
 
   .message {
-  padding: 8px 12px;
-  border-radius: 16px;
-  max-width: 80%;
-  word-wrap: break-word;
-}
+    padding: 8px 12px;
+    border-radius: 16px;
+    max-width: 80%;
+    word-wrap: break-word;
+  }
 
-.message.ai {
-  background-color: #dbeafe; /* soft blue */
-  color: #1e3a8a;
-  align-self: flex-start;  /* aligns to the left */
-  margin-right: auto;
-}
+  .message.ai {
+    background-color: #dbeafe;
+    color: #1e3a8a;
+    align-self: flex-start;
+    margin-right: auto;
+  }
 
-.message.user {
-  background-color: #bbf7d0; /* soft green */
-  color: #065f46;
-  align-self: flex-end; /* aligns to the right */
-  margin-left: auto;
-  text-align: right;
-}
-
+  .message.user {
+    background-color: #bbf7d0;
+    color: #065f46;
+    align-self: flex-end;
+    margin-left: auto;
+    text-align: right;
+  }
 
   .chatbox-input {
     display: flex;
@@ -113,113 +135,214 @@
   }
 
   .chatbox-title {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: #f3f4f6;
+  }
+
+  .message.ai p {
+    margin-bottom: 10px;
+  }
+
+  .message.ai strong {
+    font-weight: 600;
+    color: #1e3a8a;
+  }
+
+  .typing {
+    width: 100px;
+    font-size: 14px;
+    font-style: italic;
+    padding: 8px 12px;
+    border-radius: 16px;
+    background: #dbeafe;
+    color: #1e3a8a;
+    align-self: flex-start;
+    animation: blink 1.4s infinite;
+  }
+
+  @keyframes blink {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+  }
+
+#chat-preview {
+  position: fixed;
+  bottom: 140px;
+  right: 90px;
+  background-color: #fff;
+  color: #111;
   font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  color: #f3f4f6;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
-.message.ai p {
-  margin-bottom: 10px;
+@keyframes blink {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
 }
-
-.message.ai strong {
-  font-weight: 600;
-  color: #1e3a8a;
-}
-
 
 </style>
 
-
-<!-- Chatbox Container -->
 <!-- Floating Chat Button -->
-<button id="chat-toggle" class="chat-toggle">💬</button>
+<button id="chat-toggle" class="chat-toggle pulse">💬</button>
+
+<!-- Floating Preview Bubble -->
+<div id="chat-preview" style="
+  position: fixed;
+  bottom: 140px;
+  right: 50px;
+  background-color: #fff;
+  color: #111;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+">
+  💬 Need help?
+</div>
 
 <!-- Chatbox Container -->
 <div id="chatbox" class="chatbox hidden">
-  <!-- Header -->
   <div class="chatbox-header">
-  <h2 class="chatbox-title">Ari AI</h2>
-  <button id="chat-close" class="chatbox-close">&times;</button>
-</div>
-
+    <h2 class="chatbox-title">Ari AI</h2>
+    <button id="chat-close" class="chatbox-close">&times;</button>
+  </div>
 
   <!-- Messages -->
   <div id="chat-messages" class="chat-messages">
-    <div class="message ai">Hi there! How can I support you today?</div>
+    <div class="message ai"><strong>Hi there! 👋</strong><br>I'm <em>Ari</em>, your AI assistant. What can I help you with today?</div>
   </div>
 
   <!-- Input -->
   <div class="chatbox-input">
     <input id="chat-input" type="text" placeholder="Type a message..." />
+    <button id="mic-btn" title="Speak to Ari" style="background:none; border:none; font-size: 20px; color: #2563eb; cursor:pointer;">🎤</button>
     <button id="send-btn">➤</button>
   </div>
 </div>
 
-
-<!-- Chat Script -->
 <script>
-    const toggle = document.getElementById('chat-toggle');
-    const chatbox = document.getElementById('chatbox');
-    const close = document.getElementById('chat-close');
-    const send = document.getElementById('send-btn');
-    const input = document.getElementById('chat-input');
-    const messages = document.getElementById('chat-messages');
-  
-    toggle.onclick = () => {
-      chatbox.classList.toggle('hidden');
-    };
-  
-    close.onclick = () => {
-      chatbox.classList.add('hidden');
-    };
-  
-    send.onclick = sendMessage;
-    input.addEventListener('keypress', e => {
-      if (e.key === 'Enter') sendMessage();
-    });
-  
-    function appendMessage(text, type = 'ai') {
-  const msg = document.createElement('div');
-  msg.className = type === 'user' ? 'message user' : 'message ai';
-  msg.innerHTML = marked.parse(text); // 👈 Converts markdown to HTML
-  messages.appendChild(msg);
-  messages.scrollTop = messages.scrollHeight;
-}
+  const toggle = document.getElementById('chat-toggle');
+  const chatbox = document.getElementById('chatbox');
+  const close = document.getElementById('chat-close');
+  const send = document.getElementById('send-btn');
+  const input = document.getElementById('chat-input');
+  const messages = document.getElementById('chat-messages');
+  const micBtn = document.getElementById('mic-btn');
+  const preview = document.getElementById('chat-preview');
 
+  toggle.onclick = () => {
+    chatbox.classList.toggle('hidden');
+    toggle.classList.toggle('pulse');
+    preview.style.opacity = 0;
+  };
 
-  
-    async function sendMessage() {
-      const text = input.value.trim();
-      if (!text) return;
-  
-      appendMessage(text, 'user');
-      input.value = '';
-      appendMessage('Ari is thinking...');
-  
-      try {
-        const response = await fetch('/chatbot-response/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCSRFToken(),
-          },
-          body: JSON.stringify({ message: text })
-        });
-  
-        const data = await response.json();
-        // Remove thinking message
-        messages.lastChild.remove();
-        appendMessage(data.reply || 'Hmm... something went wrong.');
-      } catch (error) {
-        messages.lastChild.remove();
-        appendMessage("Sorry, I couldn't reach Ari 😔");
-      }
+  close.onclick = () => {
+    chatbox.classList.add('hidden');
+    toggle.classList.add('pulse');
+    preview.style.opacity = 1;
+  };
+
+  send.onclick = sendMessage;
+  input.addEventListener('keypress', e => {
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  function appendMessage(text, type = 'ai') {
+    const msg = document.createElement('div');
+    msg.className = type === 'user' ? 'message user' : 'message ai';
+    msg.innerHTML = marked.parse(text);
+    messages.appendChild(msg);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    appendMessage(text, 'user');
+    input.value = '';
+
+    const typing = document.createElement('div');
+    typing.className = 'typing';
+    typing.textContent = 'Ari is thinking...';
+    messages.appendChild(typing);
+    messages.scrollTop = messages.scrollHeight;
+
+    try {
+      const response = await fetch('/chatbot-response/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCSRFToken(),
+        },
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await response.json();
+      typing.remove();
+      appendMessage(data.reply || 'Hmm... something went wrong.');
+    } catch (error) {
+      typing.remove();
+      appendMessage("Sorry, I couldn't reach Ari 😔");
     }
-  
-    function getCSRFToken() {
-      const match = document.cookie.match(/csrftoken=([^;]+)/);
-      return match ? match[1] : '';
+  }
+
+  function getCSRFToken() {
+    const match = document.cookie.match(/csrftoken=([^;]+)/);
+    return match ? match[1] : '';
+  }
+
+  // Voice Input Setup 🎤
+  if ('webkitSpeechRecognition' in window) {
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+
+    micBtn.onclick = () => {
+      recognition.start();
+      micBtn.textContent = '🎙️';
+    };
+
+    recognition.onresult = event => {
+      const transcript = event.results[0][0].transcript;
+      input.value = transcript;
+      micBtn.textContent = '🎤';
+    };
+
+    recognition.onerror = () => {
+      micBtn.textContent = '🎤';
+    };
+
+    recognition.onend = () => {
+      micBtn.textContent = '🎤';
+    };
+  } else {
+    micBtn.style.display = 'none';
+  }
+
+  // Show "Need help?" preview bubble
+  setTimeout(() => {
+    if (chatbox.classList.contains('hidden')) {
+      preview.style.opacity = 1;
     }
-  </script>
+  }, 2000); // show after 2s
+
+  setTimeout(() => {
+    preview.style.opacity = 0;
+  }, 7000); // hide after 7s
+</script>
