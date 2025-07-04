@@ -86,6 +86,25 @@
   opacity: 0;
 }
 
+.btn-sponsor {
+  background-color: #0076fd;       /* Bootstrap warning yellow */
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-sponsor:hover {
+  background-color: #004396;       /* Darker yellow on hover */
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+
 </style>
     
   
@@ -115,8 +134,8 @@
         </p> <br>
 
         <div class="d-flex gap-4" data-aos="zoom-in" data-aos-delay="500">
-          <a href="{% url 'become_a_sponsor' %}" class="btn btn-warning text-white shadow">Become Sponsor</a>
-          <a href="{% url 'exhibit' %}" class="btn btn-primary text-white shadow">Exhibit</a>
+          <a href="{% url 'become_a_sponsor' %}" class="btn btn-sponsor text-white shadow">Become Sponsor</a>
+          <a href="{% url 'exhibit' %}" class="btn btn-sponsor text-white shadow">Exhibit</a>
         </div>
       </div>
     </div>
