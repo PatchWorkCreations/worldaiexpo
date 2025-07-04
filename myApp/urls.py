@@ -45,4 +45,5 @@ urlpatterns = [
     path('legal/exhibitor-conditions/', views.exhibitor_conditions, name='exhibitor_conditions'),
     path('legal/terms-and-conditions/', views.general_terms, name='general_terms'),
 
+    path('chatbot-response/', views.chatbot_response, name='chatbot_response'),
 ]

@@ -446,3 +446,58 @@ def exhibitor_conditions(request):
 
 def general_terms(request):
     return render(request, 'legal/terms_and_conditions.html')
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from openai import OpenAI
+import json
+
+client = OpenAI()
+
+@csrf_exempt
+def chatbot_response(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            prompt = data.get('message', '')
+
+            if not prompt:
+                return JsonResponse({'reply': 'No message provided.'})
+
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": (
+                            "You are Ari – the official AI assistant of the World AI x Summit 2026. "
+                            "Be friendly, clear, and helpful. You assist users by answering questions about the event. "
+                            "Event Details:\n"
+                            "- Name: World AI x Summit 2026\n"
+                            "- Dates: January 29–30, 2026\n"
+                            "- Venue: SMX Convention Center Manila, Pasay City, Philippines\n"
+                            "- Theme: Where AI Rises With PURPOSE\n"
+                            "- Contact: iriseupgroupofcompanies@gmail.com | +1740 583 0770 | +63 96373 86001\n"
+                            "- Website: www.worldaixsummit.com\n"
+                            "Ticket Info: [Click here to view ticket pricing](https://www.worldaixsummit.com/pricing)"
+
+                            "Ticket Pricing:\n"
+                            "1. PROFESSIONAL PASS – ₱4,950 / $89 USD\n"
+                            "2. STUDENT PASS – ₱1,250 / $23 USD (limited slots, ID required)\n"
+                            "3. VIP PASS – ₱18,500 / $335 USD (includes VIP experiences)\n"
+                            "*Please remind users to check the official pricing page and read the terms and refund policy before purchasing."
+                        )
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                temperature=0.8
+            )
+
+            reply = response.choices[0].message.content.strip()
+            return JsonResponse({'reply': reply})
+
+        except Exception as e:
+            return JsonResponse({'reply': f'Sorry, an error occurred: {str(e)}'})

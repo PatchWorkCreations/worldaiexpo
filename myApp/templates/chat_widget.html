@@ -1,0 +1,225 @@
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+<style>
+  .chat-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #2563eb;
+    color: white;
+    font-size: 20px;
+    width: 56px;
+    height: 56px;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 9999;
+  }
+
+  .chatbox {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    width: 320px;
+    height: 400px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .chatbox-header {
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+
+  .chatbox-close {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .chat-messages {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .message {
+  padding: 8px 12px;
+  border-radius: 16px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message.ai {
+  background-color: #dbeafe; /* soft blue */
+  color: #1e3a8a;
+  align-self: flex-start;  /* aligns to the left */
+  margin-right: auto;
+}
+
+.message.user {
+  background-color: #bbf7d0; /* soft green */
+  color: #065f46;
+  align-self: flex-end; /* aligns to the right */
+  margin-left: auto;
+  text-align: right;
+}
+
+
+  .chatbox-input {
+    display: flex;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .chatbox-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-size: 14px;
+    border-bottom-left-radius: 12px;
+    outline: none;
+  }
+
+  .chatbox-input button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+    border-bottom-right-radius: 12px;
+  }
+
+  .chatbox-title {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #f3f4f6;
+}
+
+.message.ai p {
+  margin-bottom: 10px;
+}
+
+.message.ai strong {
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+
+</style>
+
+
+<!-- Chatbox Container -->
+<!-- Floating Chat Button -->
+<button id="chat-toggle" class="chat-toggle">💬</button>
+
+<!-- Chatbox Container -->
+<div id="chatbox" class="chatbox hidden">
+  <!-- Header -->
+  <div class="chatbox-header">
+  <h2 class="chatbox-title">Ari AI</h2>
+  <button id="chat-close" class="chatbox-close">&times;</button>
+</div>
+
+
+  <!-- Messages -->
+  <div id="chat-messages" class="chat-messages">
+    <div class="message ai">Hi there! How can I support you today?</div>
+  </div>
+
+  <!-- Input -->
+  <div class="chatbox-input">
+    <input id="chat-input" type="text" placeholder="Type a message..." />
+    <button id="send-btn">➤</button>
+  </div>
+</div>
+
+
+<!-- Chat Script -->
+<script>
+    const toggle = document.getElementById('chat-toggle');
+    const chatbox = document.getElementById('chatbox');
+    const close = document.getElementById('chat-close');
+    const send = document.getElementById('send-btn');
+    const input = document.getElementById('chat-input');
+    const messages = document.getElementById('chat-messages');
+  
+    toggle.onclick = () => {
+      chatbox.classList.toggle('hidden');
+    };
+  
+    close.onclick = () => {
+      chatbox.classList.add('hidden');
+    };
+  
+    send.onclick = sendMessage;
+    input.addEventListener('keypress', e => {
+      if (e.key === 'Enter') sendMessage();
+    });
+  
+    function appendMessage(text, type = 'ai') {
+  const msg = document.createElement('div');
+  msg.className = type === 'user' ? 'message user' : 'message ai';
+  msg.innerHTML = marked.parse(text); // 👈 Converts markdown to HTML
+  messages.appendChild(msg);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+
+  
+    async function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+  
+      appendMessage(text, 'user');
+      input.value = '';
+      appendMessage('Ari is thinking...');
+  
+      try {
+        const response = await fetch('/chatbot-response/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCSRFToken(),
+          },
+          body: JSON.stringify({ message: text })
+        });
+  
+        const data = await response.json();
+        // Remove thinking message
+        messages.lastChild.remove();
+        appendMessage(data.reply || 'Hmm... something went wrong.');
+      } catch (error) {
+        messages.lastChild.remove();
+        appendMessage("Sorry, I couldn't reach Ari 😔");
+      }
+    }
+  
+    function getCSRFToken() {
+      const match = document.cookie.match(/csrftoken=([^;]+)/);
+      return match ? match[1] : '';
+    }
+  </script>

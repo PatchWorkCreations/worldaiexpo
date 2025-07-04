@@ -18,6 +18,8 @@ from pathlib import Path
 import os
 import environ
 
+
+
 # Define base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,6 +44,12 @@ else:
         raise Exception("⚠️ DATABASE_URL is not set in the environment!")
     else:
         print("No .env file found. Using system environment variables.")
+
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+
 
 DATABASES = {
     "default": dj_database_url.config(
