@@ -176,6 +176,13 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import ExhibitRegistration
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.conf import settings
+from .models import ExhibitRegistration
+
 def exhibit(request):
     reasons = [
         {"text": "Showcase Your Innovative AI Product to a Worldwide Audience", "color": "#ff6b6b"},
@@ -201,6 +208,22 @@ def exhibit(request):
             whatsapp=whatsapp,
             email=email
         )
+
+        # Send email confirmation to user
+        html_message = render_to_string('emails/exhibit_registration_received.html', {
+            'name': name,
+            'company': company_name,
+            'type': exhibit_type
+        })
+
+        email_msg = EmailMultiAlternatives(
+            subject="📥 We've Received Your Exhibit Registration",
+            body="Thank you for your application to exhibit at the World AI Summit 2026.",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[email],
+        )
+        email_msg.attach_alternative(html_message, "text/html")
+        email_msg.send()
 
         messages.success(request, 'Your registration has been successfully submitted!')
         return redirect('exhibit')
@@ -241,6 +264,11 @@ def book_ticket(request):
     })
 
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.conf import settings
 from .models import SponsorInquiry  # Import model
 
 def become_a_sponsor(request):
@@ -257,6 +285,21 @@ def become_a_sponsor(request):
             whatsapp=whatsapp,
             email=email
         )
+
+        # ✅ Send polite confirmation email
+        html_message = render_to_string('emails/sponsor_application_received.html', {
+            'name': name,
+            'company': company,
+        })
+
+        email_msg = EmailMultiAlternatives(
+            subject="📥 We've Received Your Sponsorship Inquiry",
+            body="Thank you for your interest in becoming a sponsor.",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[email],
+        )
+        email_msg.attach_alternative(html_message, "text/html")
+        email_msg.send()
 
         messages.success(request, "Thank you for submitting your sponsor application!")
         return redirect('become_a_sponsor')
@@ -301,6 +344,10 @@ class StartupPitchForm(forms.Form):
 
 from django.shortcuts import render
 from .forms import StartupPitchForm
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.conf import settings
+from .forms import StartupPitchForm
 
 def startup_pitching_view(request):
     packages = [
@@ -317,9 +364,27 @@ def startup_pitching_view(request):
     if request.method == 'POST':
         form = StartupPitchForm(request.POST)
         if form.is_valid():
-            form.save()
+            data = form.cleaned_data
             submitted = True
-            form = StartupPitchForm()  # Reset form after save
+            form = StartupPitchForm()  # Reset form after submission
+
+            # Send confirmation email
+            html_message = render_to_string('emails/startup_pitch_confirmation.html', {
+                'name': data['full_name'],
+                'company': data['company_name'],
+                'email': data['email'],
+                'selected_package': data['package'],
+            })
+
+            email = EmailMultiAlternatives(
+                subject="📥 We've Received Your Startup Pitching Application",
+                body="Thank you for submitting your application to World AI Summit 2026.",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[data['email']],
+            )
+            email.attach_alternative(html_message, "text/html")
+            email.send()
+
     else:
         form = StartupPitchForm()
 
@@ -330,9 +395,11 @@ def startup_pitching_view(request):
     })
 
 
-
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.conf import settings
 from .models import MediaPartnerApplication
 
 def register_media_partner(request):
@@ -349,7 +416,7 @@ def register_media_partner(request):
         # Save to database
         MediaPartnerApplication.objects.create(
             partner_type=partner_type,
-            events=", ".join(events),  # store as comma-separated string
+            events=", ".join(events),
             company_name=company_name,
             name=name,
             email=email,
@@ -357,6 +424,23 @@ def register_media_partner(request):
             country=country,
             address=address
         )
+
+        # === Send Confirmation Email to User ===
+        html_message = render_to_string('emails/media_partner_confirmation.html', {
+            'name': name,
+            'company': company_name,
+            'partner_type': partner_type,
+            'events': ", ".join(events),
+        })
+
+        confirmation_email = EmailMultiAlternatives(
+            subject="✅ Media Partner Registration Received – World AI Summit 2026",
+            body="Thank you for your application.",  # plain text fallback
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[email],
+        )
+        confirmation_email.attach_alternative(html_message, "text/html")
+        confirmation_email.send()
 
         messages.success(request, "Thank you for registering as a Media Partner!")
         return redirect('register_media_partner')
