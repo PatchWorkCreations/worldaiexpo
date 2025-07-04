@@ -11,7 +11,7 @@
 }
 
 .header-content{
-  background-color: #00205b ;
+  background-color: #0084ff ;
 }
 
 .social-links i{
@@ -60,7 +60,7 @@
 }
 
 .fixed-top {
-  background-color: #1c1d66;
+  background-color: #0267ff;
 }
 
 @media (min-width: 992px) {
@@ -727,9 +727,10 @@ footer{
   background-position: top center;
 }
 
-footer .overlay{
-  background-image: linear-gradient(90deg, #001bb3 0%, #00c8ff 100%);
+footer .overlay {
+  background-color: #0077ff;
 }
+
 
 .footer-socials a{
   width:40px;

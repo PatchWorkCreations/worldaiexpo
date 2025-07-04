@@ -3,6 +3,7 @@
 {% block title %}Exhibit | World AI x Summit{% endblock %}
 {% block content %}
 
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
 
     /* Section spacing */
@@ -77,18 +78,25 @@ form .btn-dark:hover {
 
 </style>
 <!-- Hero Section -->
-<section class="position-relative text-white py-5" style="background: linear-gradient(to right, #0d4599, #ffffff); padding-top: 150px;">
-  <div class="container text-center py-5" data-aos="fade-up">
-    <h1 class="display-5 fw-bold text-uppercase" style="padding-top: 80px;">Exhibit at World AI Technology Expo</h1>
-  </div>
-</section>
 
+  <section class="banner position-relative overflow-hidden text-white"></section><div  data-aos="fade-up">
+    <div class="container h-100 d-flex flex-column justify-content-center align-items-center position-relative z-1 text-center"></div>
 
 <!-- Content + Registration Form -->
-<section class="py-5">
+<section class="py-0">
   <div class="container">
     <div class="row align-items-start">
-      
+      <div class="container text-center py-5"
+     data-aos="fade-up"
+     data-aos-duration="1200"
+     data-aos-easing="ease-out-cubic"
+     data-aos-delay="100">
+  <h1 class="display-5 fw-bold text-uppercase"
+    style="padding-top: 20px; color: blue;">
+  Exhibit at World AI Technology Expo
+</h1>
+  <br>
+</div>
       <!-- Left Content -->
       <div class="col-lg-7 mb-4 mb-lg-0" data-aos="fade-right">
         <h2 class="fw-bold mb-4">7 Reasons to Exhibit at World AI Technology Expo</h2>
@@ -181,6 +189,12 @@ form .btn-dark:hover {
       successModal.show();
     }
   });
+</script>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
 </script>
 
 {% endblock %}
