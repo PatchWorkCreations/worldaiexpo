@@ -275,44 +275,17 @@
 
 
 
+
+  {% if form_success %}
 <script>
   $(document).ready(function() {
-    $('#isd_code').select2({
-      placeholder: "ISD",
-      width: 'resolve'
-    });
-  });
-
-  $(document).ready(function () {
-  $('#isd_code').select2({
-    placeholder: "Search...",
-    width: 'resolve'
-  });
-});
-
-
-  $('#isd_code').on('select2:open', function () {
-    // Wait for dropdown DOM to render
-    setTimeout(() => {
-      $('.select2-search__field').attr('placeholder', 'Search...');
-    }, 0);
-  });
-
-  // Show modal if ?success=1 is in URL
-$(document).ready(function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('success') === '1') {
     $('#successModal').modal('show');
-  }
-});
-
-// Optional: remove ?success=1 from URL after showing the modal
-if (window.history.replaceState) {
-  const url = window.location.origin + window.location.pathname;
-  window.history.replaceState({}, document.title, url);
-}
-
-
+  });
 </script>
+{% endif %}
+
+
+
+
 
 {% endblock %}

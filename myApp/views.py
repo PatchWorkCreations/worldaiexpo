@@ -139,6 +139,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import SpeakerApplication
 
+from django.shortcuts import render
+from django.contrib import messages
+from .models import SpeakerApplication
+
 def apply_speaker_view(request):
     if request.method == 'POST':
         data = request.POST
@@ -153,8 +157,9 @@ def apply_speaker_view(request):
             linkedin=data.get('linkedin'),
             slot=data.get('slot')
         )
-        messages.success(request, "Your application has been received! Our team will get in touch soon.")
-        return redirect('/apply-as-speaker/?success=1')  # Redirect with param for modal
+        # Pass flag to template instead of redirecting
+        return render(request, 'apply_speaker.html', {'form_success': True})
+
     return render(request, 'apply_speaker.html')
 
 
