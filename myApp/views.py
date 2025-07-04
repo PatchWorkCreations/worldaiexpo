@@ -427,3 +427,22 @@ New Registration Submitted:
 
     return JsonResponse({"status": "ok", "message": "Registration successful."})
 
+from django.shortcuts import render
+
+def refund_policy(request):
+    return render(request, 'legal/refund_policy.html')
+
+def visitor_terms(request):
+    return render(request, 'legal/visitor_terms.html')
+
+def sponsorship_terms(request):
+    return render(request, 'legal/sponsorship_terms.html')
+
+def speaker_conditions(request):
+    return render(request, 'legal/speaker_conditions.html')
+
+def exhibitor_conditions(request):
+    return render(request, 'legal/exhibitor_conditions.html')
+
+def general_terms(request):
+    return render(request, 'legal/terms_and_conditions.html')

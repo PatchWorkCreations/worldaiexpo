@@ -17,11 +17,20 @@
           The World AI x Summit in Manila stands as the largest and most comprehensive AI exhibition and seminar globally, offering an unparalleled platform for innovation and collaboration.
         </p>
         <div class="d-flex justify-content-md-start justify-content-center mt-3">
-          <a href="#" class="me-3 text-white"><i class="fa fa-facebook fa-lg"></i></a>
-          <a href="#" class="me-3 text-white"><i class="fa fa-twitter fa-lg"></i></a>
-          <a href="#" class="me-3 text-white"><i class="fa fa-youtube-play fa-lg"></i></a>
-          <a href="#" class="text-white"><i class="fa fa-linkedin fa-lg"></i></a>
-        </div>
+  <a href="https://www.facebook.com/iRiseupGroup" target="_blank" class="me-3 text-white">
+    <i class="fa fa-facebook fa-lg"></i>
+  </a>
+  <a href="https://www.instagram.com/i_riseupllc/" target="_blank" class="me-3 text-white">
+    <i class="fa fa-instagram fa-lg"></i>
+  </a>
+  <a href="https://www.tiktok.com/@iriseup.llc?lang=en" target="_blank" class="me-3 text-white">
+    <i class="fa fa-music fa-lg"></i> <!-- Font Awesome doesn't have an official TikTok icon, so 'music' is a good sub -->
+  </a>
+  <a href="https://www.linkedin.com/company/iriseupllc/" target="_blank" class="me-3 text-white">
+    <i class="fa fa-linkedin fa-lg"></i>
+  </a>
+</div>
+
       </div>
 
       <!-- Quick Links -->
@@ -31,8 +40,8 @@
           <li><a href="{% url 'index' %}" class="text-white text-decoration-none">Home</a></li>
           <li><a href="{% url 'speaker_list' %}" class="text-white text-decoration-none">Speakers</a></li>
           <li><a href="{% url 'event_list' %}" class="text-white text-decoration-none">Event Details</a></li>
-          <li><a href="#" class="text-white text-decoration-none">Agenda</a></li>
-          <li><a href="#" class="text-white text-decoration-none">Ticket Pricing</a></li>
+          <li><a href="{% url 'event_list' %}" class="text-white text-decoration-none">Agenda</a></li>
+          <li><a href="{% url 'pricing' %}" class="text-white text-decoration-none">Ticket Pricing</a></li>
         </ul>
       </div>
 
@@ -40,11 +49,12 @@
       <div class="col-md-3 mb-4 text-md-start text-center">
         <h6 class="text-uppercase fw-bold mb-3">Legal</h6>
         <ul class="list-unstyled small">
-          <li><a href="#" class="text-white text-decoration-none">Refund Policy</a></li>
-          <li><a href="#" class="text-white text-decoration-none">Visitor Terms & Conditions</a></li>
-          <li><a href="#" class="text-white text-decoration-none">Sponsorship Terms</a></li>
-          <li><a href="#" class="text-white text-decoration-none">Speaker Conditions</a></li>
-          <li><a href="#" class="text-white text-decoration-none">Terms and Conditions</a></li>
+          <li><a href="{% url 'refund_policy' %}" class="text-white text-decoration-none">Refund Policy</a></li>
+  <li><a href="{% url 'visitor_terms' %}" class="text-white text-decoration-none">Visitor Terms & Conditions</a></li>
+  <li><a href="{% url 'sponsorship_terms' %}" class="text-white text-decoration-none">Sponsorship Terms and Conditions</a></li>
+  <li><a href="{% url 'speaker_conditions' %}" class="text-white text-decoration-none">Speaker Terms and Conditions</a></li>
+  <li><a href="{% url 'exhibitor_conditions' %}" class="text-white text-decoration-none">Exhibitor Terms and Conditions</a></li>
+  <li><a href="{% url 'general_terms' %}" class="text-white text-decoration-none">Terms and Conditions</a></li>
         </ul>
       </div>
 
@@ -53,9 +63,9 @@
         <h6 class="text-uppercase fw-bold mb-3">Contact Us</h6>
         <p class="small text-white mb-1">iRiseUp Group of Companies, LLC</p>
         <p class="small text-white mb-1">9th Floor Office No 903-03</p>
-        <p class="small text-white mb-1">MISA Business Center, Iris Bay, Business Bay – Manila, UAE</p>
-        <p class="small text-white mb-1">📞 +971 5585 72014</p>
-        <p class="small text-white mb-1">📞 +971 5585 62014</p>
+        <p class="small text-white mb-1">MISA Business Center, Iris Bay, Business Bay – Manila, PH</p>
+        <p class="small text-white mb-1">📞 +1740 583 0770</p>
+        <p class="small text-white mb-1">📞 +63 96373 86001</p>
         <p class="small text-white">📧 iriseupgroupofcompanies@gmail.com</p>
       </div>
     </div>

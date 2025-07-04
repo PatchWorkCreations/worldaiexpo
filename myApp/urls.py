@@ -38,4 +38,11 @@ urlpatterns = [
     path('send-message/', views.send_message_view, name='send_message'),
     path('submit-registration/', registration_form, name='submit_registration'),
 
+    path('legal/refund-policy/', views.refund_policy, name='refund_policy'),
+    path('legal/visitor-terms/', views.visitor_terms, name='visitor_terms'),
+    path('legal/sponsorship-terms/', views.sponsorship_terms, name='sponsorship_terms'),
+    path('legal/speaker-conditions/', views.speaker_conditions, name='speaker_conditions'),
+    path('legal/exhibitor-conditions/', views.exhibitor_conditions, name='exhibitor_conditions'),
+    path('legal/terms-and-conditions/', views.general_terms, name='general_terms'),
+
 ]
