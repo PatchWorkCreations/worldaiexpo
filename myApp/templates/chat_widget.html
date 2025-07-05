@@ -208,7 +208,8 @@
   box-shadow: 0 3px 10px rgba(0,0,0,0.1);
   z-index: 9998;
   opacity: 0;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
   transition: opacity 0.5s ease;
 ">
   💬 Need help?
@@ -254,6 +255,13 @@
     chatbox.classList.add('hidden');
     toggle.classList.add('pulse');
     preview.style.opacity = 1;
+  };
+
+  // 👇 ADDED: Make preview bubble open the chatbot
+  preview.onclick = () => {
+    chatbox.classList.remove('hidden');
+    toggle.classList.remove('pulse');
+    preview.style.opacity = 0;
   };
 
   send.onclick = sendMessage;

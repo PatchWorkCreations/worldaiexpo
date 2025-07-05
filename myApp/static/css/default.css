@@ -669,7 +669,7 @@ input::placeholder, textarea::placeholder {
 
 /* Overlay for other pages*/
 .page-banner .overlay{
-  background-image: linear-gradient(180deg,#24369C 0%, #00bfff 100%);
+  background-image: linear-gradient(180deg,#0026ff 0%, #00bfff 100%);
  }
 
 @media (min-width: 1400px) {
