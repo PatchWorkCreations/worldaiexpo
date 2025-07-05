@@ -37,14 +37,14 @@
 
 /* === RIGHT COLUMN (Form Section) === */
 #registrationModal .modal-right {
-  background-color: #ffffff;
+  background-color: #7ad7ff;
   padding: 2rem;
   position: relative;
 }
 
 #registrationModal .modal-right h4 {
   font-weight: 800;
-  color: #d90000;
+  color: #0073ff;
 }
 
 #registrationModal .modal-right p {
@@ -135,6 +135,18 @@
     max-width: 200px;
   }
 }
+
+.btn-submit-blue,
+.btn-submit-dark,
+.btn-submit-green,
+.btn-submit-red {
+  padding: 0.5rem 1.5rem;   /* Same as px-4 py-2 */
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
 </style>
 
 <!-- === REGISTRATION MODAL === -->
@@ -151,7 +163,7 @@
         <!-- Form Section -->
         <div class="modal-right w-100">
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          <h4 class="text-danger fw-bold text-center mb-2">Registration Form</h4>
+          <h4 class=" fw-bold text-center mb-2">Registration Form</h4>
           <p class="text-center">Please fill the form to complete registration</p>
 
           <form method="POST" id="registrationForm">
@@ -241,7 +253,7 @@
             </div>
 
             <div class="text-center mt-4">
-              <button type="submit" class="btn btn-dark px-4 py-2 fw-bold">SUBMIT</button>
+              <button type="submit" class="btn btn px-4 py-2 fw-bold">SUBMIT</button>
             </div>
           </form>
         </div>
