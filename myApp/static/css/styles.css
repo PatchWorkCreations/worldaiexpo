@@ -244,7 +244,7 @@
 }
 
 .banner-image{
-  background-image: url(../images/pattern/3.png);
+  background-image: url(../images/pattern/3.webp);
   background-size: contain;
   background-repeat: no-repeat;
  background-position: center ;
@@ -353,7 +353,7 @@
 
 /*Feature CSS*/
 .feature{
-  background-image: url(../images/background/1.jpg);
+  background-image: url(../images/background/1.webp);
   background-size:auto;
   background-position: top center;
 }
@@ -457,7 +457,7 @@
 
 /*Ticket CSS*/
 .ticket, .next-sponser{
-  background-image: url(../images/background/1.jpg);
+  background-image: url(../images/background/1.webp);
   background-repeat: no-repeat;
   background-size:cover;
 }
@@ -588,7 +588,7 @@ h1:hover .spin, h2:hover .spin {
 /* Gallery */
 
 .gallery {
-  background-image: url(../images/background/6.png);
+  background-image: url(../images/background/6.webp);
   background-position: center;
   background-repeat: repeat;
   background-size: contain;
@@ -645,7 +645,7 @@ h1:hover .spin, h2:hover .spin {
 }
 
 .testimonial{
-  background-image: url(../images/background/4.png);
+  background-image: url(../images/background/4.webp);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -653,7 +653,7 @@ h1:hover .spin, h2:hover .spin {
 
 /* FAQ */
 .faq{
-  background-image: url(../images/background/5.jpg);
+  background-image: url(../images/background/5.webp);
   background-repeat: no-repeat;
   background-size:cover;
 }
@@ -721,7 +721,7 @@ box-shadow: none;
 /* footer */
 
 footer{
-  background-image: url(../images/background/.jpg);
+  background-image: url(../images/background/.webp);
   background-repeat: no-repeat;
   background-size:auto;
   background-position: top center;
@@ -784,13 +784,13 @@ footer .overlay {
 
 /* conference css */
 .conference {
-  background-image: url(../images/background/4.png);
+  background-image: url(../images/background/4.webp);
   background-repeat: no-repeat;
   background-position: center center;
 }
 
 .conference-left{
-  background-image: url(../images/pattern/3.png);
+  background-image: url(../images/pattern/3.webp);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -904,7 +904,7 @@ footer .overlay {
 
 .contact-us-outer
 {
-  background-image: url(../images/background/3.jpg);
+  background-image: url(../images/background/3.webp);
   background-repeat: no-repeat;
   background-size:cover;
   z-index: 0;
@@ -920,14 +920,14 @@ footer .overlay {
 /* ========================================= */
 
 .ticket2 {
-  background-image: url(../images/background/6.png);
+  background-image: url(../images/background/6.webp);
   background-position: center;
   background-repeat: repeat;
   background-size: contain;
 }
 
 .ticket-right{
-  background-image: url(../images/pattern/3.png);
+  background-image: url(../images/pattern/3.webp);
   background-size: contain;
   background-repeat: no-repeat;
  background-position: center ;
@@ -941,7 +941,7 @@ footer .overlay {
 /* faq general css */
 
 .general-ques-image{
-  background-image: url(../images/pattern/3.png);
+  background-image: url(../images/pattern/3.webp);
   background-size: contain;
   background-repeat: no-repeat;
  background-position: center ;
@@ -1004,7 +1004,7 @@ right: -25px;
 
 /* ticket-booking section*/
 .ticket-booking {
-  background-image: url(../images/background/4.png);
+  background-image: url(../images/background/4.webp);
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -1077,14 +1077,14 @@ right: -25px;
 
 /* error section */
 .error{
-  background-image: url(../images/background/6.png);
+  background-image: url(../images/background/6.webp);
   background-position: center;
   background-repeat: repeat;
   background-size: contain;
 }
 
 .error .overlay {
-  background-image: url(../images/pattern/3.png);
+  background-image: url(../images/pattern/3.webp);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center ;
@@ -1132,7 +1132,7 @@ right: -25px;
 /* coming-soon secton css */
 
 .coming-soon{
-  background-image: url(../images/background/1.jpg);
+  background-image: url(../images/background/1.webp);
   background-position: bottom right;
   background-repeat: no-repeat;
   background-size:cover;
@@ -1240,7 +1240,7 @@ right: -25px;
 /* contact secton css */
 
 .contact {
-  background-image: url(../images/background/4.png);
+  background-image: url(../images/background/4.webp);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;

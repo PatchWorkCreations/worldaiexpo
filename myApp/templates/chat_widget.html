@@ -150,24 +150,7 @@
     color: #1e3a8a;
   }
 
-  .typing {
-    width: 100px;
-    font-size: 14px;
-    font-style: italic;
-    padding: 8px 12px;
-    border-radius: 16px;
-    background: #dbeafe;
-    color: #1e3a8a;
-    align-self: flex-start;
-    animation: blink 1.4s infinite;
-  }
-
-  @keyframes blink {
-    0% { opacity: 0.3; }
-    50% { opacity: 1; }
-    100% { opacity: 0.3; }
-  }
-
+  
 #chat-preview {
   position: fixed;
   bottom: 140px;
@@ -189,6 +172,48 @@
   50% { opacity: 1; }
   100% { opacity: 0.3; }
 }
+
+.typing {
+  display: flex;
+  gap: 6px;
+  padding: 8px 12px;
+  align-self: flex-start;
+  background: #dbeafe;
+  border-radius: 16px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
+.typing .dot {
+  width: 8px;
+  height: 8px;
+  background-color: #1e3a8a;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing .dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+.typing .dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+.typing .dot:nth-child(3) {
+  animation-delay: 0;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
 
 </style>
 
@@ -218,13 +243,16 @@
 <!-- Chatbox Container -->
 <div id="chatbox" class="chatbox hidden">
   <div class="chatbox-header">
-    <h2 class="chatbox-title"<strong>Hi I'm Ari 👋</strong></h2>
+    <h2 class="chatbox-title"><strong>Hi I'm Ari 👋</strong></h2>
     <button id="chat-close" class="chatbox-close">&times;</button>
   </div>
 
   <!-- Messages -->
   <div id="chat-messages" class="chat-messages">
     <div class="message ai"><strong>Hi there! 👋</strong><br>I'm <em>Ari</em>, your AI assistant. What can I help you with today?</div>
+
+    <!-- Modern Typing Indicator -->
+    
   </div>
 
   <!-- Input -->
@@ -235,6 +263,7 @@
   </div>
 </div>
 
+
 <script>
   const toggle = document.getElementById('chat-toggle');
   const chatbox = document.getElementById('chatbox');
@@ -244,7 +273,7 @@
   const messages = document.getElementById('chat-messages');
   const micBtn = document.getElementById('mic-btn');
   const preview = document.getElementById('chat-preview');
-
+  
   toggle.onclick = () => {
     chatbox.classList.toggle('hidden');
     toggle.classList.toggle('pulse');
@@ -257,7 +286,6 @@
     preview.style.opacity = 1;
   };
 
-  // 👇 ADDED: Make preview bubble open the chatbot
   preview.onclick = () => {
     chatbox.classList.remove('hidden');
     toggle.classList.remove('pulse');
@@ -269,52 +297,111 @@
     if (e.key === 'Enter') sendMessage();
   });
 
-  function appendMessage(text, type = 'ai') {
-    const msg = document.createElement('div');
-    msg.className = type === 'user' ? 'message user' : 'message ai';
-    msg.innerHTML = marked.parse(text);
-    messages.appendChild(msg);
-    messages.scrollTop = messages.scrollHeight;
-  }
+  function addMessage(sender, text) {
+    const messageClass = sender === 'You' ? 'user' : 'ai';
+    const messageContainer = document.createElement('div');
+    messageContainer.classList.add('message', messageClass);
 
-  async function sendMessage() {
-    const text = input.value.trim();
-    if (!text) return;
+    if (sender === 'Ari') {
+      const messageContent = document.createElement('div');
+      messageContent.classList.add('message-text');
+      messageContainer.appendChild(messageContent);
+      messages.appendChild(messageContainer);
+      messages.scrollTop = messages.scrollHeight;
 
-    appendMessage(text, 'user');
-    input.value = '';
-
-    const typing = document.createElement('div');
-    typing.className = 'typing';
-    typing.textContent = 'Ari is thinking...';
-    messages.appendChild(typing);
-    messages.scrollTop = messages.scrollHeight;
-
-    try {
-      const response = await fetch('/chatbot-response/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': getCSRFToken(),
-        },
-        body: JSON.stringify({ message: text })
-      });
-
-      const data = await response.json();
-      typing.remove();
-      appendMessage(data.reply || 'Hmm... something went wrong.');
-    } catch (error) {
-      typing.remove();
-      appendMessage("Sorry, I couldn't reach Ari 😔");
+      typeWriterMessage(messageContent, marked.parse(text));
+    } else {
+      messageContainer.innerHTML = marked.parse(text);
+      messages.appendChild(messageContainer);
+      messages.scrollTop = messages.scrollHeight;
     }
   }
+
+function typeWriterMessage(element, htmlText, delay = 25, done = null) {
+  const typingIndicators = messages.querySelectorAll('.typing');
+  typingIndicators.forEach(dot => dot.remove()); // Remove any leftover dots
+
+
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlText;
+
+    const nodes = Array.from(tempDiv.childNodes);
+    element.innerHTML = '';
+
+    function typeNodes(i = 0) {
+      if (i >= nodes.length) {
+        typingIndicator.classList.add('hidden');
+        if (done) done();
+        return;
+      }
+
+      const node = nodes[i];
+
+      if (node.nodeType === Node.TEXT_NODE) {
+        typeText(node.textContent, 0, () => typeNodes(i + 1), element);
+      } else {
+        const clone = node.cloneNode();
+        element.appendChild(clone);
+        typeWriterMessage(clone, node.innerHTML, delay, () => typeNodes(i + 1));
+      }
+    }
+
+    typeNodes();
+  }
+
+  function typeText(text, i, cb, element) {
+    if (i < text.length) {
+      element.append(text.charAt(i));
+      setTimeout(() => typeText(text, i + 1, cb, element), 20);
+    } else {
+      cb();
+    }
+  }
+
+async function sendMessage() {
+  const text = input.value.trim();
+  if (!text) return;
+
+  // Add user message
+  addMessage('You', text);
+  input.value = '';
+
+  // Add typing indicator directly in chat
+  const typingIndicator = document.createElement('div');
+  typingIndicator.className = 'typing';
+  typingIndicator.innerHTML = `
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  `;
+  messages.appendChild(typingIndicator);
+  messages.scrollTop = messages.scrollHeight;
+
+  try {
+    const response = await fetch('/chatbot-response/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCSRFToken(),
+      },
+      body: JSON.stringify({ message: text })
+    });
+
+    const data = await response.json();
+    typingIndicator.remove(); // Remove dots BEFORE typing reply
+    addMessage('Ari', data.reply || 'Hmm... something went wrong.');
+  } catch (error) {
+    typingIndicator.remove();
+    addMessage('Ari', "Sorry, I couldn't reach Ari 😔");
+  }
+}
+
 
   function getCSRFToken() {
     const match = document.cookie.match(/csrftoken=([^;]+)/);
     return match ? match[1] : '';
   }
 
-  // Voice Input Setup 🎤
   if ('webkitSpeechRecognition' in window) {
     const recognition = new webkitSpeechRecognition();
     recognition.continuous = false;
@@ -343,14 +430,13 @@
     micBtn.style.display = 'none';
   }
 
-  // Show "Need help?" preview bubble
   setTimeout(() => {
     if (chatbox.classList.contains('hidden')) {
       preview.style.opacity = 1;
     }
-  }, 2000); // show after 2s
+  }, 2000);
 
   setTimeout(() => {
     preview.style.opacity = 0;
-  }, 7000); // hide after 7s
+  }, 7000);
 </script>
