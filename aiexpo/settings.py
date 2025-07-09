@@ -82,6 +82,9 @@ ALLOWED_HOSTS = [
     'worldaiexpo-production.up.railway.app',
     'www.worldaixsummit.com',
     'worldaixsummit.com',
+    'worldaiexpo-production-d926.up.railway.app',
+    'inventionconvention.ai',
+    'www.inventionconvention.ai',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
