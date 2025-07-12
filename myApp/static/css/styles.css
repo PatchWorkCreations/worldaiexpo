@@ -1,9 +1,4 @@
-/*------------------------------------------------------------------
-* Project:        Eventen - Event Conference HTML Templates
-* Author:         HtmlDesign Templates
-* URL:            https://themeforest.net/user/htmldesigntemplates/portfolio
-* Created:        06/26/2024
--------------------------------------------------------------------*/
+
 
 /**Header content CSS**/
 .main_header_area{
@@ -244,7 +239,7 @@
 }
 
 .banner-image{
-  background-image: url(../images/pattern/3.webp);
+  background-image: url(../images/pattern/3.png);
   background-size: contain;
   background-repeat: no-repeat;
  background-position: center ;
@@ -790,7 +785,7 @@ footer .overlay {
 }
 
 .conference-left{
-  background-image: url(../images/pattern/3.webp);
+  background-image: url(../images/pattern/3.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -927,7 +922,7 @@ footer .overlay {
 }
 
 .ticket-right{
-  background-image: url(../images/pattern/3.webp);
+  background-image: url(../images/pattern/3.png);
   background-size: contain;
   background-repeat: no-repeat;
  background-position: center ;
@@ -941,7 +936,7 @@ footer .overlay {
 /* faq general css */
 
 .general-ques-image{
-  background-image: url(../images/pattern/3.webp);
+  background-image: url(../images/pattern/3.png);
   background-size: contain;
   background-repeat: no-repeat;
  background-position: center ;
@@ -1084,7 +1079,7 @@ right: -25px;
 }
 
 .error .overlay {
-  background-image: url(../images/pattern/3.webp);
+  background-image: url(../images/pattern/3.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center ;
@@ -1240,7 +1235,7 @@ right: -25px;
 /* contact secton css */
 
 .contact {
-  background-image: url(../images/background/4.webp);
+  background-image: url(../images/background/4.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;

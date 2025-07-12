@@ -1,13 +1,5 @@
 
-/*------------------------------------------------------------------
-* Project:        Eventen - Event Conference HTML Templates
-* Author:         HtmlDesignTemplates
-* URL:            https://themeforest.net/user/htmldesigntemplates
-* Created:        05/10/2024
--------------------------------------------------------------------
-
-
- TABLE OF CONTENT
+/*TABLE OF CONTENT
   
   1. Slicknav
   2.jquery-ui
