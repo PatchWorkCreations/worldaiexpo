@@ -203,3 +203,54 @@ class GeneralRegistration(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.role})"
+
+#intern and ojt
+
+class InternshipApplication(models.Model):
+    DEPARTMENT_CHOICES = [
+        ('Marketing', 'Marketing'),
+        ('Tech', 'Tech / Development'),
+        ('Events', 'Events'),
+        ('Design', 'Design'),
+        ('Other', 'Other'),
+    ]
+
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    contact = models.CharField(max_length=50)
+    school = models.CharField(max_length=255)
+    program = models.CharField(max_length=255)
+    department = models.CharField(max_length=50, choices=DEPARTMENT_CHOICES)
+    motivation = models.TextField()
+    resume = models.FileField(upload_to='internship_resumes/')
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.department})"
+    
+#for ojt
+
+from django.db import models
+
+class InternshipApplication(models.Model):
+    DEPARTMENT_CHOICES = [
+        ('Marketing', 'Marketing'),
+        ('Tech', 'Tech / Development'),
+        ('Events', 'Events'),
+        ('Design', 'Design'),
+        ('Other', 'Other'),
+    ]
+
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    contact = models.CharField(max_length=50)
+    school = models.CharField(max_length=255)
+    program = models.CharField(max_length=255)
+    department = models.CharField(max_length=50, choices=DEPARTMENT_CHOICES)
+    motivation = models.TextField()
+    resume = models.FileField(upload_to='internship_resumes/')
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.department})"
+

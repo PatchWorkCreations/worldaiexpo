@@ -46,4 +46,5 @@ urlpatterns = [
     path('legal/terms-and-conditions/', views.general_terms, name='general_terms'),
 
     path('chatbot-response/', views.chatbot_response, name='chatbot_response'),
+    path('internship/', views.internship_application_view, name='internship_form'),
 ]

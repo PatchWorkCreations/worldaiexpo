@@ -590,3 +590,86 @@ def chatbot_response(request):
 
         except Exception as e:
             return JsonResponse({'reply': f'Sorry, an error occurred: {str(e)}'})
+
+#forojt
+
+from .models import InternshipApplication
+from django.contrib import messages
+from django.core.mail import EmailMessage, EmailMultiAlternatives
+from django.conf import settings
+from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
+
+def internship_application_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        contact = request.POST.get('contact')
+        school = request.POST.get('school')
+        program = request.POST.get('program')
+        department = request.POST.get('department')
+        motivation = request.POST.get('motivation')
+        resume = request.FILES.get('resume')
+
+        # ✅ Save to database
+        InternshipApplication.objects.create(
+            name=name,
+            email=email,
+            contact=contact,
+            school=school,
+            program=program,
+            department=department,
+            resume=resume,
+            motivation=motivation
+        )
+
+        # === 📨 Email to Admin (with resume attached) ===
+        admin_subject = f"[OJT] New Application: {name}"
+        admin_body = f"""
+New Internship Application Received:
+
+• Name: {name}
+• Email: {email}
+• Contact: {contact}
+• School: {school}
+• Program: {program}
+• Department: {department}
+• Motivation: {motivation}
+"""
+        admin_email = EmailMessage(
+            subject=admin_subject,
+            body=admin_body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[settings.CONTACT_RECEIVER_EMAIL],
+        )
+
+        # 📎 Fix: Ensure the file is readable
+        if resume:
+            resume.seek(0)
+            admin_email.attach(resume.name, resume.read(), resume.content_type)
+
+        admin_email.send(fail_silently=False)
+
+        # === 🎨 Confirmation Email to Applicant (styled) ===
+        html_message = render_to_string('emails/internship_confirmation.html', {
+            'name': name,
+            'department': department,
+            'program': program,
+            'school': school
+        })
+
+        confirmation_email = EmailMultiAlternatives(
+            subject="✅ Your Internship Application Was Received!",
+            body="Thank you for applying!",  # fallback plain text
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[email],
+        )
+        confirmation_email.attach_alternative(html_message, "text/html")
+        confirmation_email.send()
+
+        messages.success(request, "🎉 Application submitted successfully! We’ll be in touch.")
+        return redirect('internship_form')
+
+    return render(request, 'internship_form.html')
+
+
