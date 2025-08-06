@@ -672,4 +672,60 @@ New Internship Application Received:
 
     return render(request, 'internship_form.html')
 
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.shortcuts import render
+from django.conf import settings
+import qrcode
+from io import BytesIO
+from .models import FreePassRegistrant
+import base64  # for QR display
+
+def free_pass_signup(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+
+        # Save to DB
+        registrant = FreePassRegistrant.objects.create(
+            name=name, email=email, phone=phone
+        )
+
+        # Generate QR code with unique data
+        qr = qrcode.make(f"{registrant.id}|{name}|{email}")
+        buffer = BytesIO()
+        qr.save(buffer, format='PNG')
+        qr_image = buffer.getvalue()
+
+        # Encode QR for embedding in thank you page and email
+        qr_base64 = base64.b64encode(qr_image).decode()
+
+        # --- Email Setup ---
+        subject = "🎟️ Your AI Summit Free Community Pass"
+        from_email = settings.DEFAULT_FROM_EMAIL
+        to_email = [email]
+
+        context = {
+            'name': name,
+            'event': "World AI X Summit 2026",
+            'qr_code': qr_base64,
+        }
+
+        html_content = render_to_string("emails/freepass_email.html", context)
+        plain_text = f"Hi {name},\n\nThank you for registering for the World AI X Summit. Please find your QR code attached for event check-in."
+
+        email_message = EmailMultiAlternatives(subject, plain_text, from_email, to_email)
+        email_message.attach_alternative(html_content, "text/html")
+        email_message.attach('ticket.png', qr_image, 'image/png')
+        email_message.send()
+
+        # Render Thank You Page with QR
+        return render(request, 'freepass_thankyou.html', {
+            'name': name,
+            'qr_code': qr_base64
+        })
+
+    return render(request, 'free_pass_signup.html')
+
 

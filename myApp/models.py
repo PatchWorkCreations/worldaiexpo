@@ -254,3 +254,13 @@ class InternshipApplication(models.Model):
     def __str__(self):
         return f"{self.name} ({self.department})"
 
+from django.db import models
+
+class FreePassRegistrant(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    registered_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.email})"

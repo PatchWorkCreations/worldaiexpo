@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>World AI X Summit | Your Free Pass</title>
+</head>
+<body style="font-family: Arial, sans-serif; background: #f7f7f7; padding: 30px;">
+
+  <!-- Logo -->
+  <div style="text-align: center; margin-bottom: 20px;">
+    <a href="https://www.worldaixsummit.com" target="_blank">
+      <img src="https://www.worldaixsummit.com/static/images/logo/darklogo.webp" alt="World AI Summit Logo" style="height: 30px;">
+    </a>
+  </div>
+
+  <!-- Main Container -->
+  <div style="max-width: 600px; margin: auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+    
+    <h2 style="color: #4B0082;">🎟️ Your Official Free Pass</h2>
+
+    <p>Hi <strong>{{ name }}</strong>,</p>
+
+    <p>Thank you for registering for the <strong>{{ event }}</strong>!</p>
+
+    <p>Your official community pass is ready. Please present the QR code below at the entrance during the summit:</p>
+
+    <!-- QR Code -->
+    <div style="text-align: center; margin: 30px 0;">
+      <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code" style="max-width: 200px;" />
+    </div>
+
+    <p style="text-align: center; color: #888;"><small>This ticket is valid for 1 entry.</small></p>
+
+    <!-- CTA Button -->
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="https://www.worldaixsummit.com" 
+         style="background-color: #4B0082; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;"
+         target="_blank">
+         🌐 Visit the Summit Site
+      </a>
+    </div>
+
+    <p style="margin-top: 40px;">See you at the summit!<br><strong>The World AI X Summit Team</strong><br>
+    <a href="https://www.worldaixsummit.com" style="color: #4B0082;">www.worldaixsummit.com</a></p>
+
+  </div>
+
+</body>
+</html>

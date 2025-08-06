@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Free Community Pass | World AI X Summit{% endblock %}
+
+{% block content %}
+<style>
+  .card {
+      border-radius: 12px;
+      overflow: hidden;
+  }
+  .card-body {
+      background: #fff;
+      color: #000;
+  }
+  .form-label {
+      font-weight: 600;
+  }
+  .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+  }
+  @media (max-width: 768px) {
+      .section-title {
+          font-size: 1.5rem;
+      }
+  }
+</style>
+
+<section class="banner position-relative pb-4 pt-3 text-white" style="background: linear-gradient(to right, #00aaff, #00eeff); overflow: hidden;">
+  <div class="container">
+    <div class="inner-banner position-relative">
+      <div class="row align-items-center">
+        <div class="col-lg-6 banner-right text-center text-lg-start order-2 order-lg-1">
+          <div class="banner-title pb-3"> <br>
+            <h4 class="text-white pb-2">
+              World AI X Summit
+              <span class="text-warning">2026</span>
+            </h4>
+            <h1 class="text-white fw-bold">
+              Claim Your Free
+              <span class="text-warning">Community Pass</span>
+            </h1>
+          </div>
+          <p class="pb-4 m-0">
+            Register below and receive your official QR ticket for free entry to the summit. Be part of the AI revolution!
+          </p>
+        </div>
+        <div class="col-lg-6 banner-left text-center order-1 order-lg-2">
+          <img src="{% static 'images/team/robot2.webp' %}" alt="AI QR Pass" class="w-75 img-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br> <br>
+<div class="container pb-5">
+  <div class="section-title text-primary">🎟️ Get Your Free Pass</div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="card shadow">
+        <div class="card-header bg-success text-white fw-bold">Free Registration Form</div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone</label>
+              <input type="text" name="phone" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Register & Receive Ticket</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
