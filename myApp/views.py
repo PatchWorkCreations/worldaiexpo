@@ -86,6 +86,9 @@ def contact_view(request):
 def contact_thanks(request):
     return render(request, 'contact_thanks.html')
 
+def try_html(request):
+    return render(request, 'try.html')
+
 
 def error_page(request):
     return render(request, "error.html")
@@ -266,44 +269,74 @@ def book_ticket(request):
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives, send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 from .models import SponsorInquiry  # Import model
 
 def become_a_sponsor(request):
     if request.method == 'POST':
-        company = request.POST.get('company')
-        name = request.POST.get('name')
-        whatsapp = request.POST.get('whatsapp')
-        email = request.POST.get('email')
+        company = request.POST.get('company', '').strip()
+        name = request.POST.get('name', '').strip()
+        whatsapp = request.POST.get('whatsapp', '').strip()
+        email = request.POST.get('email', '').strip()
+        tier = request.POST.get('tier', '').strip()  # ← new
+
+        # (Optional) basic whitelist for tier values
+        valid_tiers = {'Diamond', 'Platinum', 'Gold', 'Silver'}
+        if tier not in valid_tiers:
+            tier = ''  # or set a default like 'Gold'
 
         # Save to DB
         SponsorInquiry.objects.create(
             company=company,
             name=name,
             whatsapp=whatsapp,
-            email=email
+            email=email,
+            tier=tier,  # ← save tier
         )
 
-        # ✅ Send polite confirmation email
+        # ✅ Confirmation email to the user (HTML)
         html_message = render_to_string('emails/sponsor_application_received.html', {
             'name': name,
             'company': company,
+            'tier': tier,  # ← include tier in template
         })
 
-        email_msg = EmailMultiAlternatives(
-            subject="📥 We've Received Your Sponsorship Inquiry",
+        user_email = EmailMultiAlternatives(
+            subject=f"📥 We've Received Your Sponsorship Inquiry{f' – {tier}' if tier else ''}",
             body="Thank you for your interest in becoming a sponsor.",
             from_email=settings.DEFAULT_FROM_EMAIL,
             to=[email],
         )
-        email_msg.attach_alternative(html_message, "text/html")
-        email_msg.send()
+        user_email.attach_alternative(html_message, "text/html")
+        user_email.send()
+
+        # ✅ Admin notification (plain text)
+        admin_subject = f"[Sponsor Inquiry]{f' {tier}' if tier else ''}: {name} – {company}"
+        admin_body = f"""
+A new sponsorship inquiry has been submitted.
+
+Name: {name}
+Company: {company}
+WhatsApp: {whatsapp}
+Email: {email}
+Tier: {tier or '—'}
+
+This was generated automatically by the website.
+"""
+        send_mail(
+            subject=admin_subject,
+            message=admin_body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.CONTACT_RECEIVER_EMAIL],  # ensure set in settings.py
+            fail_silently=False,
+        )
 
         messages.success(request, "Thank you for submitting your sponsor application!")
         return redirect('become_a_sponsor')
 
+    # GET: reasons list (unchanged)
     reasons = [
         {"text": "Worldwide Promotions", "icon": "fa-globe"},
         {"text": "Priority Branding Before the Expo", "icon": "fa-star-half-alt"},
@@ -322,10 +355,7 @@ def become_a_sponsor(request):
         {"text": "Prefix Appointments Before the Event", "icon": "fa-calendar-alt"},
     ]
 
-    return render(request, 'become_a_sponsor.html', {
-        "reasons": reasons,
-    })
-
+    return render(request, 'become_a_sponsor.html', {"reasons": reasons})
 
 
 
@@ -681,7 +711,7 @@ from io import BytesIO
 from .models import FreePassRegistrant
 import base64  # for QR display
 
-def free_pass_signup(request):
+def free_pass(request):
     if request.method == 'POST':
         name = request.POST['name']
         email = request.POST['email']
@@ -727,5 +757,3 @@ def free_pass_signup(request):
         })
 
     return render(request, 'free_pass_signup.html')
-
-

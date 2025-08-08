@@ -56,3 +56,21 @@ from django.contrib import admin
 from .models import InternshipApplication
 
 admin.site.register(InternshipApplication)
+
+# myApp/admin.py
+from django.contrib import admin
+from .models import SponsorInquiry, InternshipApplication  # add any others you register
+
+@admin.register(SponsorInquiry)
+class SponsorInquiryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'company', 'tier', 'email', 'whatsapp', 'created_at')
+    list_filter = ('tier', 'created_at')
+    search_fields = ('name', 'company', 'email', 'whatsapp')
+
+from .models import ExhibitRegistration
+
+@admin.register(ExhibitRegistration)
+class ExhibitRegistrationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'company_name', 'type', 'email', 'whatsapp', 'submitted_at')
+    list_filter = ('type', 'submitted_at')
+    search_fields = ('name', 'company_name', 'email', 'whatsapp')

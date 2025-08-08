@@ -5,128 +5,102 @@
 
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
-
-    /* Section spacing */
-section {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-/* Hero title */
-section .display-5 {
-  font-weight: 800;
-  letter-spacing: 0.5px;
-}
-
-/* Numbered list style */
-ul.list-unstyled li .rounded-circle {
-  font-size: 1.1rem;
-  width: 45px;
-  height: 45px;
-  flex-shrink: 0;
-  background-color: #000;
-  color: #fff;
-  font-weight: bold;
-  margin-top: 4px;
-}
-
-/* Registration form */
-.bg-info.bg-opacity-75 {
-  background-color: rgba(13, 110, 253, 0.8) !important;
-}
-
-form .form-label {
-  font-weight: 500;
-}
-
-form .form-control, 
-form .form-select {
-  border-radius: 8px;
-  border: none;
-  padding: 0.75rem 1rem;
-}
-
-form .btn-dark {
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-form .btn-dark:hover {
-  background-color: #000;
-  opacity: 0.85;
-}
-
-/* AOS anims for smooth fade */
-[data-aos] {
-  transition-duration: 0.8s !important;
-  transition-timing-function: ease-in-out !important;
-}
-
-/* Responsive tweak */
-@media (max-width: 768px) {
-  .rounded-circle {
-    width: 35px;
-    height: 35px;
-    font-size: 0.9rem;
+  section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
-  h2, h4 {
-    font-size: 1.5rem;
+  .exhibit-tier {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease-in-out;
+    height: 100%;
   }
-}
 
+  .exhibit-tier:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  }
+
+  .exhibit-tier h5 {
+    font-weight: 700;
+  }
+
+  .exhibit-tier .price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2563eb;
+  }
+
+  .exhibit-section-title {
+    font-weight: 800;
+    font-size: 2.5rem;
+  }
 </style>
-<!-- Hero Section -->
-
-  <section class="banner position-relative overflow-hidden text-white"></section><div  data-aos="fade-up">
-    <div class="container h-100 d-flex flex-column justify-content-center align-items-center position-relative z-1 text-center"></div>
-
-<!-- Content + Registration Form -->
-<section class="py-0">
+<br>
+<section class="banner position-relative overflow-hidden text-white"></section>
+<section class="text-center py-5">
   <div class="container">
-    <div class="row align-items-start">
-      <div class="container text-center py-5"
-     data-aos="fade-up"
-     data-aos-duration="1200"
-     data-aos-easing="ease-out-cubic"
-     data-aos-delay="100">
-  <h1 class="display-5 fw-bold text-uppercase"
-    style="padding-top: 20px; color: blue;">
-  Exhibit at World AI X Summit 2026
-</h1>
-  <br>
-</div>
-      <!-- Left Content -->
-      <div class="col-lg-7 mb-4 mb-lg-0" data-aos="fade-right">
-        <h2 class="fw-bold mb-4">7 Reasons to Exhibit at World AI World AI X Summit 2026</h2>
-        <ul class="list-unstyled">
-          {% for reason in reasons %}
-          <li class="d-flex align-items-start mb-4">
-            <div class="rounded-circle text-white fw-bold d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px; background-color: {{ reason.color }}">
-              {{ forloop.counter }}
+    <h1 class="exhibit-section-title mb-2">BECOME AN EXHIBITOR</h1>
+    <p class="lead mb-0">Showcase your company to thousands of innovators, founders, and decision-makers</p>
+  </div>
+</section>
+
+<section class="sponsor-wrap">
+  <div class="container">
+    <div class="row g-4 align-items-stretch">
+      <!-- Left: Tier Cards -->
+      <div class="col-lg-7">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="exhibit-tier">
+              <h5>🚀 Startup Booth</h5>
+              <p><strong>Audience:</strong> 1–20 employees / &lt;₱5M asset</p>
+              <p><strong>Booth:</strong> 4sqm (2x2m)</p>
+              <p><strong>Inclusions:</strong> 2 passes, listing on site, basic table + backdrop</p>
+              <p class="price">₱28,880 (Early) / ₱35,880</p>
             </div>
-            <p class="mb-0 fs-5">{{ reason.text }}</p>
-          </li>
-          {% endfor %}
-        </ul>
+          </div>
+
+          <div class="col-md-6">
+            <div class="exhibit-tier">
+              <h5>📈 Growth Booth</h5>
+              <p><strong>Audience:</strong> 21–100 employees / &lt;₱15M asset</p>
+              <p><strong>Booth:</strong> 6sqm (2x3m)</p>
+              <p><strong>Inclusions:</strong> 3 passes, logo in digital flyers, 10-sec AVP</p>
+              <p class="price">₱47,880 (Early) / ₱52,880</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="exhibit-tier">
+              <h5>🏢 Enterprise Booth</h5>
+              <p><strong>Audience:</strong> 100+ employees / &gt;₱50M asset</p>
+              <p><strong>Booth:</strong> 9sqm (3x3m)</p>
+              <p><strong>Inclusions:</strong> 5 passes, logo in all promo, 20-sec AVP, ID logo</p>
+              <p class="price">₱66,880 (Early) / ₱77,880</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Right Form -->
-      <div class="col-lg-5" data-aos="fade-left">
+      <!-- Right: Registration Form -->
+      <div class="col-lg-5">
         <div class="bg-info bg-opacity-75 p-4 rounded-4 shadow">
-          <h4 class="text-white fw-bold mb-3 text-center">Registration Form</h4>
+          <h4 class="text-black fw-bold mb-3 text-center">Registration Form</h4>
           <p class="text-white text-center">Please fill the form to complete registration</p>
-          
           <form method="post" action="{% url 'exhibit' %}">
             {% csrf_token %}
             <div class="mb-3">
-              <label class="form-label text-white">I want to be a *</label>
               <select name="type" class="form-select" required>
-                <option value="">Select Type</option>
-                <option value="Exhibitor">Exhibitor</option>
-                <option value="Sponsor">Sponsor</option>
-              </select>
+              <option value="">Select Type</option>
+              <option value="Startup Booth">Startup Booth</option>
+              <option value="Growth Booth">Growth Booth</option>
+              <option value="Enterprise Booth">Enterprise Booth</option>
+            </select>
+
             </div>
             <div class="mb-3">
               <label class="form-label text-white">Your Company Name *</label>
@@ -150,11 +124,9 @@ form .btn-dark:hover {
           </form>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
 
 {% if messages %}
   <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
@@ -174,14 +146,9 @@ form .btn-dark:hover {
       </div>
     </div>
   </div>
-
-
 {% endif %}
 
-
-<!-- AOS Init -->
 <script>
-
   document.addEventListener('DOMContentLoaded', function () {
     const modalElement = document.getElementById('successModal');
     if (modalElement) {
@@ -190,11 +157,6 @@ form .btn-dark:hover {
     }
   });
 </script>
-
-<!-- AOS JS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-
+<script> AOS.init(); </script>
 {% endblock %}

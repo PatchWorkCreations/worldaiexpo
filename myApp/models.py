@@ -89,9 +89,10 @@ from django.db import models
 
 class ExhibitRegistration(models.Model):
     EXHIBIT_TYPE_CHOICES = [
-        ('Exhibitor', 'Exhibitor'),
-        ('Sponsor', 'Sponsor'),
-    ]
+    ('Startup Booth', 'Startup Booth'),
+    ('Growth Booth', 'Growth Booth'),
+    ('Enterprise Booth', 'Enterprise Booth'),
+]
 
     type = models.CharField(max_length=50, choices=EXHIBIT_TYPE_CHOICES)
     company_name = models.CharField(max_length=255)
@@ -155,15 +156,30 @@ class MediaPartnerApplication(models.Model):
 from django.db import models
 
 class SponsorInquiry(models.Model):
+    TIER_CHOICES = [
+        ('Diamond', 'Diamond'),
+        ('Platinum', 'Platinum'),
+        ('Gold', 'Gold'),
+        ('Silver', 'Silver'),
+    ]
+
     company = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     whatsapp = models.CharField(max_length=50)
     email = models.EmailField()
+    tier = models.CharField(
+        max_length=20,
+        choices=TIER_CHOICES,
+        blank=True,   # keeps migration painless
+        null=True     # keeps migration painless
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} from {self.company}"
+        # show tier in admin list if available
+        return f"{self.name} from {self.company}" + (f" – {self.tier}" if self.tier else "")
+
 
 
 from django.db import models
@@ -205,32 +221,6 @@ class GeneralRegistration(models.Model):
         return f"{self.name} ({self.role})"
 
 #intern and ojt
-
-class InternshipApplication(models.Model):
-    DEPARTMENT_CHOICES = [
-        ('Marketing', 'Marketing'),
-        ('Tech', 'Tech / Development'),
-        ('Events', 'Events'),
-        ('Design', 'Design'),
-        ('Other', 'Other'),
-    ]
-
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
-    contact = models.CharField(max_length=50)
-    school = models.CharField(max_length=255)
-    program = models.CharField(max_length=255)
-    department = models.CharField(max_length=50, choices=DEPARTMENT_CHOICES)
-    motivation = models.TextField()
-    resume = models.FileField(upload_to='internship_resumes/')
-    submitted_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.name} ({self.department})"
-    
-#for ojt
-
-from django.db import models
 
 class InternshipApplication(models.Model):
     DEPARTMENT_CHOICES = [

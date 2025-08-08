@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sponsor | World AI X Summit{% endblock %}
+
+{% block content %}
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+
+
+<body class="bg-gradient-to-br from-indigo-100 via-white to-indigo-200 min-h-screen p-6 font-sans">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
+    
+    <!-- Left Section: Sponsorship Cards -->
+    <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      
+      <!-- CARD COMPONENT -->
+      <div onclick="selectTier('Diamond')" class="cursor-pointer bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-l-8 border-yellow-400 transition hover:scale-105 hover:shadow-2xl">
+        <div class="flex items-center gap-3 mb-4">
+          <i class="fas fa-gem text-yellow-500 text-2xl"></i>
+          <h2 class="text-xl font-bold text-gray-800">Diamond</h2>
+        </div>
+        <p class="text-sm"><strong>Booth:</strong> 30sqm (5x6m)</p>
+        <p class="text-sm"><strong>Perks:</strong> Keynote slot, logo in banners/ID/bags, 10 passes, AVP on loop</p>
+        <p class="text-lg font-semibold text-gray-700 mt-2">₱1,200,000</p>
+      </div>
+
+      <div onclick="selectTier('Platinum')" class="cursor-pointer bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-l-8 border-gray-500 transition hover:scale-105 hover:shadow-2xl">
+        <div class="flex items-center gap-3 mb-4">
+          <i class="fas fa-crown text-gray-600 text-2xl"></i>
+          <h2 class="text-xl font-bold text-gray-800">Platinum</h2>
+        </div>
+        <p class="text-sm"><strong>Booth:</strong> 25sqm (5x5m)</p>
+        <p class="text-sm"><strong>Perks:</strong> Workshop slot, flyer/bag logo, 7 passes, social media feature</p>
+        <p class="text-lg font-semibold text-gray-700 mt-2">₱598,000</p>
+      </div>
+
+      <div onclick="selectTier('Gold')" class="cursor-pointer bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-l-8 border-yellow-300 transition hover:scale-105 hover:shadow-2xl">
+        <div class="flex items-center gap-3 mb-4">
+          <i class="fas fa-medal text-yellow-400 text-2xl"></i>
+          <h2 class="text-xl font-bold text-gray-800">Gold</h2>
+        </div>
+        <p class="text-sm"><strong>Booth:</strong> 16sqm (4x4m)</p>
+        <p class="text-sm"><strong>Perks:</strong> Panel slot, flyer inclusion, 5 passes, ad on website</p>
+        <p class="text-lg font-semibold text-gray-700 mt-2">₱398,000</p>
+      </div>
+
+      <div onclick="selectTier('Silver')" class="cursor-pointer bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg border-l-8 border-gray-300 transition hover:scale-105 hover:shadow-2xl">
+        <div class="flex items-center gap-3 mb-4">
+          <i class="fas fa-star text-gray-400 text-2xl"></i>
+          <h2 class="text-xl font-bold text-gray-800">Silver</h2>
+        </div>
+        <p class="text-sm"><strong>Booth:</strong> 12sqm (4x3m)</p>
+        <p class="text-sm"><strong>Perks:</strong> Logo on flyer, 3 passes, exhibitor mention in newsletter</p>
+        <p class="text-lg font-semibold text-gray-700 mt-2">₱228,000</p>
+      </div>
+    </div>
+
+    <!-- Right Section: Form -->
+    <div class="bg-white/90 backdrop-blur-xl p-8 rounded-2xl shadow-xl border-t-8 border-indigo-400 animate-fade-in">
+      <h3 class="text-2xl font-bold mb-6 text-indigo-700 flex items-center gap-2"><i class="fas fa-file-signature"></i> Reserve Your Spot</h3>
+      <form class="space-y-4">
+        <div>
+          <label class="block text-sm font-semibold text-gray-600">Name</label>
+          <input type="text" name="name" class="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300" required>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-600">Company</label>
+          <input type="text" name="company" class="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300" required>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-600">Email</label>
+          <input type="email" name="email" class="w-full mt-1 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300" required>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-600">Sponsorship Tier</label>
+          <input type="text" id="sponsorshipTier" name="tier" readonly class="w-full mt-1 px-4 py-2 border bg-gray-100 text-gray-600 rounded-lg">
+        </div>
+        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-lg shadow-md transition">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    .animate-fade-in {
+      animation: fadeIn 1.2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <script>
+    function selectTier(tier) {
+      document.getElementById('sponsorshipTier').value = tier;
+    }
+
+    
+  </script>
+
+   <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
+
+{% endblock %}

@@ -47,5 +47,8 @@ urlpatterns = [
 
     path('chatbot-response/', views.chatbot_response, name='chatbot_response'),
     path('internship/', views.internship_application_view, name='internship_form'),
-    path('free-pass/', views.free_pass_signup, name='free_pass_signup'),
+    path('free-pass/', views.free_pass, name='free_pass_signup'),
+    path('try/', views.try_html, name='try'),
+
+   
 ]

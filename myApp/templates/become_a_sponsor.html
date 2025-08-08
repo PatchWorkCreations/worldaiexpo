@@ -5,222 +5,296 @@
 {% block content %}
 
 <style>
-  section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+  /* --- Local styles (namespaced to avoid Bootstrap collisions) --- */
+  .sponsor-wrap {
+    background: linear-gradient(135deg, #f4f7fb 0%, #ffffff 100%);
+    padding: 2.5rem 0 3.5rem;
   }
 
-  .display-5 {
-    font-weight: 800;
-    letter-spacing: 0.5px;
+  .sponsor-grid {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  .sponsor-section {
-    background: linear-gradient(to right, #0d4599, #ffffff);
-    padding-top: 140px;
+  /* Typography slimming (only inside this section) */
+  .sponsor-wrap h1,
+  .sponsor-wrap h2,
+  .sponsor-wrap h3,
+  .sponsor-wrap h4,
+  .sponsor-wrap h5 {
+    font-weight: 600; /* was too thick */
+    letter-spacing: 0.2px;
   }
 
-  .reason-box {
-    background: white;
+  /* --- Tier Cards --- */
+  .tier-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(18, 38, 63, 0.06);
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: transform 0.3s ease;
+    width: 100%;
+    height: 100%;                 /* <— makes all cards equal height in their grid cells */
+    box-sizing: border-box;
+    transition: transform .15s ease, box-shadow .15s ease;
+    cursor: pointer;
+    border-left: 6px solid transparent;
   }
-
-  .reason-box:hover {
-    transform: translateY(-5px);
+  .tier-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px rgba(18, 38, 63, 0.10);
   }
-
-  .reason-box i {
-    font-size: 1.4rem;
-    color: #4b00b5;
+  .tier-card h3 {
+    margin-top: 0;
+    font-size: 1.15rem;
+    display: flex; align-items: center; gap: 8px;
   }
+  .tier-card p { margin: 6px 0; color: #475569; }
+  .tier-card strong { color: #0f172a; }
+  .tier-price { font-weight: 700; margin-top: 10px; color: #0f172a; }
 
+  .tier-diamond { border-left-color: #f5c542; }
+  .tier-platinum { border-left-color: #c7c9ce; }
+  .tier-gold { border-left-color: #f59e0b; }
+  .tier-silver { border-left-color: #94a3b8; }
+
+  /* --- Form Card (modern, clean) --- */
   .sponsor-form-card {
-    background-color: #3093f0;
+    background: #ffffff;
     border-radius: 16px;
-    padding: 30px;
-    color: white;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 0;                   /* we’ll use inner section for spacing */
+    color: #0f172a;
+    box-shadow: 0 14px 36px rgba(18, 38, 63, 0.12);
+    height: 100%;                 /* <— match tiers column height */
+    display: flex; flex-direction: column;
+    overflow: hidden;
   }
-
+  .sponsor-form-card .form-head {
+    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+    color: #fff;
+    padding: 22px 26px;
+  }
+  .sponsor-form-card .form-body {
+    padding: 24px 26px 28px;
+  }
   .sponsor-form-card .form-control,
   .sponsor-form-card .form-select,
   .sponsor-form-card textarea {
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    border: none;
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e5e7eb;
     margin-bottom: 1rem;
+    background: #fff;
+    box-shadow: 0 2px 0 rgba(2,6,23,0.02) inset;
+  }
+  .sponsor-form-card .form-control:focus,
+  .sponsor-form-card .form-select:focus,
+  .sponsor-form-card textarea:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 0.2rem rgba(59,130,246,0.15);
+    outline: none;
+  }
+  .sponsor-form-card label.form-label {
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
   }
 
   .sponsor-form-card .btn-submit {
-    background-color: #0000cc;
-    color: white;
+    background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
+    color: #fff;
     font-weight: 600;
-    font-size: 1rem;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: none;
+    transition: transform .08s ease, opacity .15s ease;
+  }
+  .sponsor-form-card .btn-submit:hover { opacity: .92; }
+  .sponsor-form-card .btn-submit:active { transform: translateY(1px); }
+
+  /* Small niceties */
+  .banner { min-height: 0; } /* keep your banner slot but remove extra height if any */
+  @media (min-width: 992px) {
+    .sponsor-form-card { position: sticky; top: 96px; } /* keeps form visible while scrolling tiers */
   }
 
-  .sponsor-form-card .btn-submit:hover {
-    opacity: 0.85;
-  }
-
-  @media (max-width: 768px) {
-    .hero-text h1 {
-      font-size: 2rem;
-    }
-  }
-
-  .sponsor-section-modern {
-  background: linear-gradient(135deg, #0d47a1, #1976d2);
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 0;
+  .sponsor-header {
+  background-color: #f8fafc;
+  padding: 60px 0;
+  text-align: center;
 }
 
-.sponsor-section-modern .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(12, 12, 12, 0.4); /* Glassy dark overlay */
-  backdrop-filter: blur(4px);
-  z-index: 0;
+.sponsor-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0.5rem;
 }
 
-.sponsor-section-modern .container {
-  z-index: 1;
-}
-
-@media (max-width: 768px) {
-  .sponsor-section-modern h1 {
-    font-size: 2rem;
-  }
-  .sponsor-section-modern p {
-    font-size: 1rem;
-  }
+.sponsor-header p {
+  font-size: 1.125rem;
+  color: #4b5563;
 }
 
 </style>
 
-<!-- Hero: Become a Sponsor -->
-<section class="banner position-relative overflow-hidden text-white"></section><div  data-aos="fade-up">
-    <div class="container h-100 d-flex flex-column justify-content-center align-items-center position-relative z-1 text-center"></div>
+<!-- Optional banner/hero can stay if you want -->
+<section class="banner position-relative overflow-hidden text-white"></section>
 
-
-
-<!-- Reasons & Form -->
-<section>
-  <div class="container py-5 position-relative z-1" data-aos="fade-up">
-    <h1 class="display-4 fw-bold text-uppercase mb-3 text-warning text-center">Become a Sponsor</h1>
-    <p class="lead fw-medium fs-5 text-center">Partner with us to shape the future of AI in Southeast Asia.</p>
-    
-  </div>
+<section class="sponsor-header text-center py-5">
   <div class="container">
-    <div class="row g-5 align-items-start">
-      
-      <!-- Reasons List -->
-      <div class="col-md-6">
-        <h2 class="fw-bold mb-4">15 Reasons to Become a Sponsor</h2>
-        <div class="d-grid gap-3">
-          {% for reason in reasons %}
-          <div class="reason-box">
-            <i class="fa {{ reason.icon }}"></i>
-            <span>{{ reason.text }}</span>
+    <h2 class="fw-bold display-5 mb-2">BECOME A SPONSOR</h2>
+    <p class="lead mb-0" style="opacity: .85;">Showcase your brand to thousands of tech innovators, founders, and decision-makers.</p>
+  </div>
+</section>
+
+
+<section class="sponsor-wrap">
+  <div class="container sponsor-grid">
+    <!-- was: align-items-start -->
+    <div class="row g-4 align-items-stretch"><!-- ✅ equal heights -->
+      <!-- Left: 4 Tier Cards -->
+      <div class="col-lg-7">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="tier-card tier-diamond" data-tier="Diamond">
+              <h3>💎 Diamond</h3>
+              <p><strong>Booth:</strong> 30sqm (5x6m)</p>
+              <p><strong>Perks:</strong> Keynote slot, logo in banners/ID/bags, 10 passes, AVP on loop</p>
+              <p class="tier-price">₱1,200,000</p>
+            </div>
           </div>
-          {% endfor %}
+          <div class="col-sm-6">
+            <div class="tier-card tier-platinum" data-tier="Platinum">
+              <h3>♛ Platinum</h3>
+              <p><strong>Booth:</strong> 25sqm (5x5m)</p>
+              <p><strong>Perks:</strong> Workshop slot, flyer/bag logo, 7 passes, social media feature</p>
+              <p class="tier-price">₱598,000</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="tier-card tier-gold" data-tier="Gold">
+              <h3>🏅 Gold</h3>
+              <p><strong>Booth:</strong> 16sqm (4x4m)</p>
+              <p><strong>Perks:</strong> Panel slot, flyer inclusion, 5 passes, ad on website</p>
+              <p class="tier-price">₱398,000</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="tier-card tier-silver" data-tier="Silver">
+              <h3>🥈 Silver</h3>
+              <p><strong>Booth:</strong> 12sqm (4x3m)</p>
+              <p><strong>Perks:</strong> Logo on flyer, 3 passes, exhibitor mention in newsletter</p>
+              <p class="tier-price">₱228,000</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Sponsor Form -->
-      <div class="col-md-6">
-        <div class="sponsor-form-card" data-aos="fade-up">
-          <h4 class="fw-bold text-center mb-2">REGISTRATION FORM</h4>
-          <p class="text-center mb-4">Please fill out the form and we’ll get back to you shortly.</p>
+      <!-- Right: Form -->
+      <div class="col-lg-5">
+        <div class="sponsor-form-card">
+          <!-- NEW: slim header / same title -->
+          <div class="form-head">
+            <h4 class="fw-semibold text-center mb-1">REGISTRATION FORM</h4>
+            <p class="text-center mb-0" style="opacity:.9">Please fill out the form and we’ll get back to you shortly.</p>
+          </div>
 
-          <form method="POST" action="{% url 'become_a_sponsor' %}">
-            {% csrf_token %}
-            <div class="mb-3">
-              <label class="form-label text-white">Your Company Name *</label>
-              <input type="text" name="company" class="form-control" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label text-white">Your Name *</label>
-              <input type="text" name="name" class="form-control" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label text-white">Your WhatsApp Number *</label>
-              <input type="text" name="whatsapp" class="form-control" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label text-white">Your Email ID *</label>
-              <input type="email" name="email" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-dark w-100 fw-bold">SUBMIT</button>
-          </form>
-          
+          <div class="form-body">
+            <form method="POST" action="{% url 'become_a_sponsor' %}">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label class="form-label">Your Company Name *</label>
+                <input type="text" name="company" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Your Name *</label>
+                <input type="text" name="name" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Your WhatsApp Number *</label>
+                <input type="text" name="whatsapp" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Your Email ID *</label>
+                <input type="email" name="email" class="form-control" required>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Sponsorship Tier *</label>
+                <select name="tier" id="tierSelect" class="form-select" required>
+                  <option value="">Select a tier</option>
+                  <option value="Diamond">Diamond</option>
+                  <option value="Platinum">Platinum</option>
+                  <option value="Gold">Gold</option>
+                  <option value="Silver">Silver</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-submit">SUBMIT</button>
+            </form>
+          </div>
         </div>
       </div>
+      <!-- /Right -->
     </div>
   </div>
 </section>
 
-<!-- Success Modal -->
+
+<!-- Success Modal (unchanged, just made JS safe) -->
 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content text-center shadow-lg border-0 rounded-4">
-
-      <!-- Gradient Header -->
-      <div class="modal-header text-white" 
+      <div class="modal-header text-white"
            style="background: linear-gradient(to right, #4b00b5, #9300ff); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
         <h5 class="modal-title w-100 fw-bold" id="successModalLabel">🎉 Thank You!</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
-      <!-- Modal Body -->
       <div class="modal-body py-4 px-5">
         {% for message in messages %}
           <p class="mb-0 text-dark fs-6">{{ message }}</p>
         {% endfor %}
       </div>
-
-      <!-- Modal Footer -->
       <div class="modal-footer justify-content-center border-0 pb-4">
         <button type="button" class="btn btn-primary px-4 rounded-pill fw-semibold" data-bs-dismiss="modal" style="background-color: #4b00b5;">
           Close
         </button>
       </div>
-
     </div>
   </div>
 </div>
 
+{% endblock %}
 
-<!-- Include Bootstrap JS (if not already) -->
+{% block extra_js %}
+<!-- Bootstrap bundle if not already included in base.html -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    {% if messages %}
-      var successModal = new bootstrap.Modal(document.getElementById('successModal'));
-      successModal.show();
-    {% endif %}
+  // Auto-select tier when a card is clicked
+  document.querySelectorAll('.tier-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      var tier = this.getAttribute('data-tier');
+      var sel = document.getElementById('tierSelect');
+      if (sel) {
+        sel.value = tier;
+        sel.dispatchEvent(new Event('change'));
+        // Smooth scroll to form on mobile
+        document.querySelector('.sponsor-form-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   });
 
-  successModal.show();
-setTimeout(() => successModal.hide(), 5000);  // Auto-close in 5s
-
+  // Safe modal show/hide when there are Django messages
+  document.addEventListener('DOMContentLoaded', function () {
+    {% if messages %}
+      var modalEl = document.getElementById('successModal');
+      if (modalEl) {
+        var successModal = new bootstrap.Modal(modalEl);
+        successModal.show();
+        setTimeout(function(){ successModal.hide(); }, 5000);
+      }
+    {% endif %}
+  });
 </script>
-
-
 {% endblock %}
