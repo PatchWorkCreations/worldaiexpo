@@ -1,6 +1,11 @@
 from django.urls import path
 from . import views
 from .views import registration_form
+from django.contrib import admin
+from . import views  # or whatever views you’re using
+from django.urls import path, include
+
+
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -49,6 +54,8 @@ urlpatterns = [
     path('internship/', views.internship_application_view, name='internship_form'),
     path('free-pass/', views.free_pass, name='free_pass_signup'),
     path('try/', views.try_html, name='try'),
-
+    path("admin/", admin.site.urls),
+    path("apply/", views.exhibitor_apply, name="exhibitor-apply"),
+    path("exhibitor-terms/", views.exhibitor_terms, name="exhibitor-terms"),
    
 ]

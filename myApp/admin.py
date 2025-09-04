@@ -67,10 +67,28 @@ class SponsorInquiryAdmin(admin.ModelAdmin):
     list_filter = ('tier', 'created_at')
     search_fields = ('name', 'company', 'email', 'whatsapp')
 
-from .models import ExhibitRegistration
+from django.contrib import admin
+from .models import ExhibitRegistration2  # import both
 
-@admin.register(ExhibitRegistration)
-class ExhibitRegistrationAdmin(admin.ModelAdmin):
-    list_display = ('name', 'company_name', 'type', 'email', 'whatsapp', 'submitted_at')
-    list_filter = ('type', 'submitted_at')
-    search_fields = ('name', 'company_name', 'email', 'whatsapp')
+@admin.register(ExhibitRegistration2)
+class ExhibitRegistration2Admin(admin.ModelAdmin):
+    list_display = (
+        "company_name", "contact_name", "email",
+        "tier", "pricing_mode",
+        "base_price_peso", "total_price_peso",
+        "created_at",
+    )
+    list_display_links = ("company_name", "contact_name")
+    list_filter = ("tier", "pricing_mode", "company_size", "created_at")
+    search_fields = ("company_name", "contact_name", "email", "phone", "industry", "website")
+    ordering = ("-created_at",)
+    readonly_fields = ("created_at", "updated_at")
+    fieldsets = (
+        ("Company", {"fields": ("company_name", "company_size", "industry", "website")}),
+        ("Primary Contact", {"fields": ("contact_name", "email", "phone")}),
+        ("Package", {"fields": ("tier", "pricing_mode")}),
+        ("Pricing (PHP)", {"fields": ("base_price", "total_price")}),
+        ("Add-ons", {"fields": ("add_logo", "add_power", "add_leads")}),
+        ("Other", {"fields": ("notes", "agree")}),
+        ("Timestamps", {"fields": ("created_at", "updated_at")}),
+    )

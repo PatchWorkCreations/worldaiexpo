@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exhibitor Terms & Conditions | World AI X Summit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Tighten typography without Tailwind Typography plugin */
+    .content h3{
+      margin-top: 2rem; margin-bottom: .5rem;
+      font-weight: 800; letter-spacing:.02em; color:#0f172a;
+      font-size: 1.05rem;
+    }
+    @media (min-width:768px){ .content h3{ font-size:1.15rem } }
+    .content p, .content li{ color:#334155; line-height:1.75 }
+    .content ul{ padding-left:1.25rem; margin-top:.25rem; }
+    @media print {
+      .noprint{display:none!important}
+      body{background:white!important}
+      .card{box-shadow:none!important;border:1px solid #e5e7eb}
+      footer{display:none}
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white antialiased">
+  <!-- background to match apply.html -->
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-blue-50"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(1200px_600px_at_80%_-10%,rgba(29,78,216,0.10),transparent)]"></div>
+    <div class="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(0deg,transparent_24%,rgba(0,0,0,.08)_25%,rgba(0,0,0,.08)_26%,transparent_27%,transparent_74%,rgba(0,0,0,.08)_75%,rgba(0,0,0,.08)_76%,transparent_77%),linear-gradient(90deg,transparent_24%,rgba(0,0,0,.08)_25%,rgba(0,0,0,.08)_26%,transparent_27%,transparent_74%,rgba(0,0,0,.08)_75%,rgba(0,0,0,.08)_76%,transparent_77%)] bg-[size:24px_24px]"></div>
+  </div>
+
+  <main class="mx-auto max-w-5xl px-4 py-14">
+    <!-- Title -->
+    <div class="mx-auto max-w-3xl text-center">
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-blue-700">
+        Exhibitor Terms and Conditions
+      </h1>
+      <p class="mt-3 text-slate-600">
+        Please carefully review these terms before participating as an exhibitor at World AI X Summit.
+      </p>
+      <div class="noprint mt-6 flex items-center justify-center gap-3">
+        <a href="{% url 'exhibitor-apply' %}" class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">Back to Application</a>
+        <button onclick="window.print()" class="rounded-xl bg-blue-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800">Print</button>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <article class="card mt-8 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur shadow-2xl ring-1 ring-black/5">
+      <div class="border-b border-blue-100 bg-gradient-to-r from-blue-50 to-white px-6 py-4 text-sm font-semibold text-blue-800 rounded-t-3xl">
+        World AI X Summit — Exhibitor Agreement
+      </div>
+
+      <div class="content max-w-none p-6 md:p-10 lg:p-12">
+        <h3 class="!mt-0">RECITALS</h3>
+        <p>World AI X Summit organizes the AI event scheduled for February 1 to 3, 2026. The Exhibitor agrees to participate and showcase products or services under this Agreement.</p>
+
+        <h3>1. TERM</h3>
+        <p>This Agreement begins on the Effective Date and ends February 15, 2026, unless extended in writing or terminated earlier.</p>
+
+        <h3>2. CONSIDERATION</h3>
+        <p>All fees are due upon execution. Full payment is required 45 days prior to the event. Failure to pay may result in loss of space or benefits.</p>
+
+        <h3>3. BOOKING TERMS</h3>
+        <p>Exhibition space is confirmed only after full payment and a signed agreement are received.</p>
+
+        <h3>4. EXHIBITION SPACE ALLOCATION</h3>
+        <p>Space allocation is at the sole discretion of World AI X Summit. No specific preferences will be entertained. Setup must be completed by 6:00 PM on January 31, 2026. Unauthorized items or layouts are prohibited.</p>
+
+        <h3>5. LICENSE TO USE EXHIBITOR'S BRANDING</h3>
+        <p>The Exhibitor grants a perpetual, global, royalty-free license for World AI X Summit to use exhibitor materials for promotional purposes across platforms, unless revoked in writing.</p>
+
+        <h3>6. NO GUARANTEE OF VISIBILITY</h3>
+        <p>World AI X Summit does not guarantee specific foot traffic or attention to any stall.</p>
+
+        <h3>7. NO GUARANTEES AND WARRANTIES</h3>
+        <p>All services are provided “as is.” Estimated figures (e.g., footfall) are not guarantees. Exhibitors are responsible for their own insurance. The organizer is not liable for property loss or damage.</p>
+
+        <h3>8. NON-TRANSFERABILITY OF SPACE</h3>
+        <p>Stall spaces may not be shared, transferred, or subleased without written consent.</p>
+
+        <h3>9. LIMITATION OF LIABILITY</h3>
+        <p>World AI X Summit is not liable for incidental or indirect damages. Exhibitors are responsible for their own operations.</p>
+
+        <h3>10. DESIGNATED VENDOR COORDINATION</h3>
+        <p>Exhibitors must use designated vendors for printing and setup. Using third-party vendors is not allowed and may result in removal without refund.</p>
+
+        <h3>11. SAFETY REGULATIONS</h3>
+        <p>Exhibitors must follow safety regulations. Repeated violations may result in stall lockdown or removal with no refund.</p>
+
+        <h3>12. INDEMNIFICATION</h3>
+        <p>Exhibitors agree to indemnify World AI X Summit against any claims arising from booth use or violations. The organizer is not liable for layout changes.</p>
+
+        <h3>13. REFUNDS</h3>
+        <p>No refunds will be provided. If the event is cancelled by World AI X Summit, equivalent services may be offered in the following year.</p>
+
+        <h3>14. TERMINATION</h3>
+        <p>Either party may terminate with written notice. World AI X Summit may terminate and revoke stalls if terms are breached. No refunds apply in such cases.</p>
+
+        <h3>15. MISCELLANEOUS</h3>
+        <ul class="list-disc">
+          <li>Exhibitor setup begins one day before the event. Dismantling must be done by 11:00 PM on February 15, 2026.</li>
+          <li>Stalls must remain clean and orderly at all times.</li>
+          <li>Prohibited items include explosives, radioactive materials, illegal substances, and explicit images.</li>
+          <li>This Agreement constitutes the full understanding between both parties.</li>
+          <li>Governing law: Manila, Philippines</li>
+          <li>Agreement is binding to successors and assigns</li>
+          <li>Electronic signatures are accepted</li>
+          <li>Each party bears their own taxes</li>
+          <li>Exhibitors must submit logos and promotional materials at least one month prior to the event</li>
+        </ul>
+
+        <p class="italic mt-6">By signing or agreeing electronically, the Exhibitor accepts all terms of participation at World AI X Summit.</p>
+
+        <div class="noprint mt-10 flex flex-wrap items-center justify-between gap-3">
+          <a href="{% url 'exhibitor-apply' %}" class="text-sm font-semibold text-blue-700 hover:underline underline-offset-4">Back to Application</a>
+          <button onclick="window.print()" class="rounded-xl bg-blue-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800">Print</button>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 bg-blue-100/70">
+    <div class="mx-auto max-w-7xl px-4 py-6 text-center text-xs text-slate-700">
+      Powered by <span class="font-semibold tracking-wide text-slate-700 bg-blue-50">iRiseUp</span>
+    </div>
+  </footer>
+</body>
+</html>

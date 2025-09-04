@@ -1,0 +1,416 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exhibitor Application — World AI Expo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="{% static 'favicon.ico' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-white antialiased">
+  <!-- Premium background -->
+  <div class="pointer-events-none fixed inset-0 -z-10">
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-blue-50"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(1200px_600px_at_80%_-10%,rgba(29,78,216,0.10),transparent)]"></div>
+    <div class="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(0deg,transparent_24%,rgba(0,0,0,.08)_25%,rgba(0,0,0,.08)_26%,transparent_27%,transparent_74%,rgba(0,0,0,.08)_75%,rgba(0,0,0,.08)_76%,transparent_77%),linear-gradient(90deg,transparent_24%,rgba(0,0,0,.08)_25%,rgba(0,0,0,.08)_26%,transparent_27%,transparent_74%,rgba(0,0,0,.08)_75%,rgba(0,0,0,.08)_76%,transparent_77%)] bg-[size:24px_24px]"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="mx-auto max-w-7xl px-4 pt-10 pb-6 text-center">
+    <img src="{% static 'images/logo/darklogo.webp' %}" class="mx-auto h-75 w-auto" alt="World AI Expo">
+    <h1 class="mt-4 text-3xl font-bold tracking-tight text-blue-700">Exhibitor Application</h1>
+    <p class="mt-2 text-slate-600">Meet qualified buyers, founders, and media — and turn demos into deals.</p>
+
+    <!-- trust strip -->
+    <div class="mx-auto mt-5 flex max-w-4xl flex-wrap items-center justify-center gap-4 text-xs text-slate-500">
+      <span class="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-blue-700">Secure &amp; verified organizers</span>
+      <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1">Media coverage guaranteed*</span>
+      <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1">Lead report after event</span>
+    </div>
+  </header>
+
+  {% if messages %}
+    <div class="mx-auto max-w-3xl px-4">
+      {% for message in messages %}
+        <div class="mb-4 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-blue-800">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <main class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pb-20 lg:grid-cols-3">
+    <!-- LEFT: Tiers -->
+    <section class="lg:col-span-2">
+      <div class="mb-3 flex items-center justify-between">
+        <h2 class="text-xl font-semibold text-slate-900">Choose your booth tier</h2>
+
+        <!-- Early / Regular toggle -->
+        <label class="flex items-center gap-3 text-sm text-slate-700 select-none">
+          <span>Early</span>
+          <span class="relative inline-flex h-6 w-11 items-center">
+            <input id="priceToggle" type="checkbox" class="peer sr-only" />
+            <span class="absolute inset-0 rounded-full bg-blue-200 transition peer-checked:bg-blue-600"></span>
+            <span class="absolute left-1 top-1 h-4 w-4 rounded-full bg-white transition peer-checked:translate-x-5"></span>
+          </span>
+          <span>Regular</span>
+        </label>
+      </div>
+      <p class="mb-6 text-sm text-slate-600">Prices shown below; your total updates in the summary.</p>
+
+      <form id="exhibitor-form" method="post" novalidate class="space-y-8">
+        {% csrf_token %}
+        <!-- Hidden fields populated by JS -->
+        <input type="hidden" name="{{ form.pricing_mode.name }}" id="pricing_mode" value="early">
+        <input type="hidden" name="{{ form.total_price.name }}"  id="total_price"  value="0">
+
+        <!-- Radio + Cards -->
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+
+          <!-- STARTUP -->
+<label class="group relative cursor-pointer rounded-2xl border border-slate-200 bg-white p-6 shadow-md ring-1 ring-transparent transition hover:shadow-lg has-[:checked]:ring-blue-500/40">
+  <div class="absolute right-4 top-1 rounded-full bg-blue-50 px-2 py-1 text-[11px] font-semibold text-blue-700">Best for new launches</div>
+  <div class="flex items-start justify-between gap-3">
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🚀</span>
+        <h3 class="text-lg font-bold text-slate-900">Startup Booth</h3>
+      </div>
+      <p class="mt-1 text-sm text-slate-600"><span class="font-medium">Best for:</span> Lean teams &amp; first-time exhibitors</p>
+      <p class="mt-1 text-sm text-slate-600"><span class="font-medium">Booth:</span> 4sqm (2×2m)</p>
+      <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-700">
+        <li>2 Full-Access Passes</li>
+        <li>Website listing + logo</li>
+        <li>Branded backdrop &amp; table</li>
+        <li>Access to 50+ angels &amp; seed VCs</li>
+      </ul>
+    </div>
+    <div class="text-right">
+      <div class="text-base font-bold text-blue-700">₱28,880</div>
+      <div class="text-[11px] text-slate-500">(Early) / ₱35,880</div>
+    </div>
+  </div>
+  <input class="sr-only tier-input"
+         type="radio"
+         name="{{ form.tier.name }}"
+         value="startup"
+         data-price-early="28880"
+         data-price-regular="35880"
+         checked>
+</label>
+
+<!-- GROWTH -->
+<label class="group relative cursor-pointer rounded-2xl border border-slate-200 bg-white p-6 shadow-md ring-1 ring-transparent transition hover:shadow-lg has-[:checked]:ring-blue-500/40">
+  <div class="absolute right-4 top-1 rounded-full bg-emerald-50 px-2 py-1 text-[11px] font-semibold text-emerald-700">Most popular</div>
+  <div class="flex items-start justify-between gap-3">
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="text-xl">📈</span>
+        <h3 class="text-lg font-bold text-slate-900">Growth Booth</h3>
+      </div>
+      <p class="mt-1 text-sm text-slate-600"><span class="font-medium">Best for:</span> Scaling teams (21–100)</p>
+      <p class="mt-1 text-sm text-slate-600"><span class="font-medium">Booth:</span> 6sqm (2×3m)</p>
+      <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-700">
+        <li>3 Full-Access Passes</li>
+        <li>Logo on digital flyers (10k+ reach)</li>
+        <li>10-sec AVP on event screens</li>
+        <li>Priority client &amp; partner networking</li>
+      </ul>
+    </div>
+    <div class="text-right">
+      <div class="text-base font-bold text-blue-700">₱47,880</div>
+      <div class="text-[11px] text-slate-500">(Early) / ₱52,880</div>
+    </div>
+  </div>
+  <input class="sr-only tier-input"
+         type="radio"
+         name="{{ form.tier.name }}"
+         value="growth"
+         data-price-early="47880"
+         data-price-regular="52880">
+</label>
+
+<!-- ENTERPRISE -->
+<label class="group relative cursor-pointer rounded-2xl border border-slate-200 bg-white p-6 shadow-md ring-1 ring-transparent transition hover:shadow-lg has-[:checked]:ring-blue-500/40 md:col-span-2">
+  <div class="absolute right-4 top-1 rounded-full bg-blue-600 px-2 py-1 text-[11px] font-semibold text-white">Max visibility</div>
+  <div class="flex items-start justify-between gap-3">
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🏢</span>
+        <h3 class="text-lg font-bold text-slate-900">Enterprise Booth</h3>
+      </div>
+      <p class="mt-1 text-sm text-slate-600"><span class="font-medium">Best for:</span> Established brands (100+)</p>
+      <p class="mt-1 text-sm text-slate-600"><span class="font-medium">Booth:</span> 9sqm (3×3m)</p>
+      <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-700">
+        <li>5 Executive Passes</li>
+        <li>Prominent logo in all promos</li>
+        <li>20-sec AVP on main screens (peak hours)</li>
+        <li>VIP investor mixer + full VC/angel list</li>
+      </ul>
+    </div>
+    <div class="text-right">
+      <div class="text-base font-bold text-blue-700">₱66,880</div>
+      <div class="text-[11px] text-slate-500">(Early) / ₱77,880</div>
+    </div>
+  </div>
+  <input class="sr-only tier-input"
+         type="radio"
+         name="{{ form.tier.name }}"
+         value="enterprise"
+         data-price-early="66880"
+         data-price-regular="77880">
+</label>
+        </div>
+
+        <!-- Company details -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-xl">
+          <h2 class="mb-4 text-xl font-semibold text-slate-900">Company details</h2>
+
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700" for="{{ form.company_name.id_for_label }}">Company name</label>
+              <input class="block w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-200"
+                     type="text" name="{{ form.company_name.name }}" id="{{ form.company_name.id_for_label }}"
+                     value="{{ form.company_name.value|default_if_none:'' }}" placeholder="Acme Robotics" autocomplete="organization" required>
+            </div>
+
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700" for="{{ form.company_size.id_for_label }}">People on your team</label>
+              <select class="block w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-200"
+                      name="{{ form.company_size.name }}" id="{{ form.company_size.id_for_label }}" required>
+                <option value="">Select…</option>
+                <option value="1-20">1–20</option>
+                <option value="21-100">21–100</option>
+                <option value="100+">100+</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700" for="{{ form.industry.id_for_label }}">Industry</label>
+              <input class="block w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-200"
+                     type="text" name="{{ form.industry.name }}" id="{{ form.industry.id_for_label }}"
+                     value="{{ form.industry.value|default_if_none:'' }}" placeholder="AI/ML, SaaS, Hardware…">
+            </div>
+
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700" for="{{ form.website.id_for_label }}">Website</label>
+              <input class="block w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-200"
+                     type="url" name="{{ form.website.name }}" id="{{ form.website.id_for_label }}"
+                     value="{{ form.website.value|default_if_none:'' }}" placeholder="https://" inputmode="url" autocomplete="url">
+            </div>
+          </div>
+
+          <h3 class="mt-6 mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Primary contact</h3>
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700" for="{{ form.contact_name.id_for_label }}">Full name</label>
+              <input class="block w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-200"
+                     type="text" name="{{ form.contact_name.name }}" id="{{ form.contact_name.id_for_label }}"
+                     value="{{ form.contact_name.value|default_if_none:'' }}" placeholder="Jane Doe" autocomplete="name" required>
+            </div>
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700" for="{{ form.phone.id_for_label }}">Phone</label>
+              <input class="block w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-200"
+                     type="tel" name="{{ form.phone.name }}" id="{{ form.phone.id_for_label }}"
+                     value="{{ form.phone.value|default_if_none:'' }}" placeholder="+63…" inputmode="tel" autocomplete="tel">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="mb-1 block text-sm font-medium text-slate-700" for="{{ form.email.id_for_label }}">Email</label>
+              <input class="block w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-200"
+                     type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}"
+                     value="{{ form.email.value|default_if_none:'' }}" placeholder="you@company.com" autocomplete="email" required>
+            </div>
+          </div>
+
+          <h3 class="mt-6 mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Add-ons</h3>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2" id="addons">
+            <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700">
+              <span class="flex items-center gap-3">
+                <input type="checkbox" name="{{ form.add_logo.name }}" class="h-4 w-4 rounded border-slate-300 text-blue-700 focus:ring-blue-200 addon-input" data-price="0">
+                Logo on website & stage screen
+              </span>
+              <span class="text-slate-500">Included</span>
+            </label>
+            <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700">
+              <span class="flex items-center gap-3">
+                <input type="checkbox" name="{{ form.add_power.name }}" class="h-4 w-4 rounded border-slate-300 text-blue-700 focus:ring-blue-200 addon-input" data-price="1500">
+                Power outlet & extension
+              </span>
+              <span class="text-slate-500">+ ₱1,500</span>
+            </label>
+            <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700">
+              <span class="flex items-center gap-3">
+                <input type="checkbox" name="{{ form.add_leads.name }}" class="h-4 w-4 rounded border-slate-300 text-blue-700 focus:ring-blue-200 addon-input" data-price="2500">
+                Lead scanner access
+              </span>
+              <span class="text-slate-500">+ ₱2,500</span>
+            </label>
+          </div>
+
+          <div class="mt-5">
+            <label class="mb-1 block text-sm font-medium text-slate-700" for="{{ form.notes.id_for_label }}">Notes / requests</label>
+            <textarea id="{{ form.notes.id_for_label }}" name="{{ form.notes.name }}" rows="4"
+                      class="block w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-200"
+                      placeholder="Goals, booth preferences, demo needs…">{{ form.notes.value|default_if_none:'' }}</textarea>
+          </div>
+
+          <div class="mt-5 flex items-start gap-3">
+            <input id="agree" type="checkbox" name="{{ form.agree.name }}" required
+                   class="mt-1 h-4 w-4 rounded border-slate-300 text-blue-700 focus:ring-blue-200">
+            <label for="agree" class="text-sm text-slate-700">
+              I agree to the <a href="{% url 'exhibitor-terms' %}" class="font-medium text-blue-700 underline underline-offset-4">Exhibitor Terms &amp; Privacy</a>.
+            </label>
+          </div>
+
+          <button type="submit"
+                  class="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-200">
+            Submit application
+          </button>
+
+          <p class="mt-3 text-center text-xs text-slate-500">No payment due now. Our team will confirm availability and next steps.</p>
+        </div>
+      </form>
+    </section>
+
+    <!-- RIGHT: Sticky Order Summary & Social Proof -->
+    <aside class="lg:col-span-1">
+      <div class="top-6 space-y-6 lg:sticky">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+          <div class="mb-3 flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-slate-900">Order summary</h3>
+            <span id="slotBadge" class="rounded-full bg-amber-100 px-2 py-1 text-[11px] font-semibold text-amber-800">Limited slots</span>
+          </div>
+          <dl class="space-y-2 text-sm text-slate-700">
+            <div class="flex items-center justify-between">
+              <dt id="summaryTier">Startup Booth (Early)</dt>
+              <dd id="summaryTierPrice" class="font-semibold text-slate-900">₱28,880</dd>
+            </div>
+            <div id="summaryAddons" class="hidden space-y-1"></div>
+            <div class="mt-3 border-t border-slate-200 pt-3 text-base font-semibold text-slate-900">
+              <div class="flex items-center justify-between">
+                <span>Total</span>
+                <span id="summaryTotal">₱28,880</span>
+              </div>
+            </div>
+          </dl>
+          <p class="mt-3 text-xs text-slate-500">Switch Early/Regular using the toggle above.</p>
+          <button form="exhibitor-form"
+                  class="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-blue-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-200">
+            Submit application
+          </button>
+          <p class="mt-2 text-center text-[11px] text-slate-500">60-second apply. No commitment until contract signed.</p>
+        </div>
+
+        <div class="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-6 shadow-lg">
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-blue-700">You’re in good company</h3>
+          <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-700">
+            <li>Decision-maker foot traffic (buyers, CTOs, founders)</li>
+            <li>Stage &amp; screen visibility for brand recall</li>
+            <li>Warm intros to partners and media</li>
+            <li>Post-event lead report</li>
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+          <h3 class="text-lg font-semibold text-slate-900">FAQ</h3>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-sm font-medium text-slate-800">When is payment due?</summary>
+            <p class="mt-2 text-sm text-slate-600">After we confirm booth availability. We’ll send an invoice with bank/online options.</p>
+          </details>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-sm font-medium text-slate-800">Can I upgrade later?</summary>
+            <p class="mt-2 text-sm text-slate-600">Yes, subject to space. Your coordinator will assist.</p>
+          </details>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-sm font-medium text-slate-800">Do you offer custom booths?</summary>
+            <p class="mt-2 text-sm text-slate-600">We can arrange custom fabrication upon request.</p>
+          </details>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    // Currency formatter
+    function peso(n){ return '₱' + Number(n).toLocaleString('en-PH'); }
+
+    const toggle = document.getElementById('priceToggle');
+    const tierInputs = document.querySelectorAll('.tier-input');
+    const addonInputs = document.querySelectorAll('.addon-input');
+
+    const summaryTier = document.getElementById('summaryTier');
+    const summaryTierPrice = document.getElementById('summaryTierPrice');
+    const summaryAddons = document.getElementById('summaryAddons');
+    const summaryTotal = document.getElementById('summaryTotal');
+
+    const hiddenPricing = document.getElementById('pricing_mode');
+    const hiddenTotal   = document.getElementById('total_price');
+
+    function currentTier(){
+      const checked = [...tierInputs].find(i => i.checked);
+      if(!checked) return { name: 'Startup Booth', early: 28880, regular: 35880, value:'startup' };
+      const label = checked.closest('label').querySelector('h3')?.textContent?.trim() || 'Booth';
+      const early = Number(checked.dataset.priceEarly);
+      const regular = Number(checked.dataset.priceRegular);
+      return { name: label, early, regular, value: checked.value };
+    }
+
+    function selectedAddons(){
+      return [...addonInputs].filter(i => i.checked).map(i => ({
+        label: i.closest('label').innerText.trim().split('\n')[0],
+        price: Number(i.dataset.price || 0)
+      }));
+    }
+
+    function repaint(){
+      const tier = currentTier();
+      const isRegular = toggle?.checked;
+      const base = isRegular ? tier.regular : tier.early;
+
+      summaryTier.textContent = `${tier.name} (${isRegular ? 'Regular' : 'Early'})`;
+      summaryTierPrice.textContent = peso(base);
+
+      const adds = selectedAddons();
+      summaryAddons.innerHTML = '';
+      if(adds.length){
+        summaryAddons.classList.remove('hidden');
+        adds.forEach(a=>{
+          const row = document.createElement('div');
+          row.className = 'flex items-center justify-between text-sm';
+          row.innerHTML = `<span>${a.label}</span><span>${peso(a.price)}</span>`;
+          summaryAddons.appendChild(row);
+        });
+      } else {
+        summaryAddons.classList.add('hidden');
+      }
+
+      const total = base + adds.reduce((s,a)=>s+a.price,0);
+      summaryTotal.textContent = peso(total);
+
+      // keep hidden fields in sync so backend receives pricing_mode + total
+      if(hiddenPricing) hiddenPricing.value = isRegular ? 'regular' : 'early';
+      if(hiddenTotal)   hiddenTotal.value   = total;
+    }
+
+    toggle?.addEventListener('change', repaint);
+    tierInputs.forEach(i => i.addEventListener('change', repaint));
+    addonInputs.forEach(i => i.addEventListener('change', repaint));
+    repaint();
+
+    // Make whole tier card select its radio
+    document.querySelectorAll('label.group').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        const input = card.querySelector('input[type="radio"]');
+        if(input){ input.checked = true; repaint(); }
+      });
+    });
+  </script>
+
+  <footer class="border-t border-slate-200 bg-blue-100/70">
+    <div class="mx-auto max-w-7xl px-4 py-6 text-center text-xs text-slate-700">
+      Powered by <span class="font-semibold tracking-wide text-slate-700 bg-blue-50 ">iRiseup</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -48,6 +48,9 @@ def book_now(request):
 def coming_soon(request):
     return render(request, "coming-soon.html")
 
+def exhibitor_terms(request):
+    return render(request, "legal/exhibitor_terms.html")
+
 
 
 from django.shortcuts import render, redirect
@@ -757,3 +760,154 @@ def free_pass(request):
         })
 
     return render(request, 'free_pass_signup.html')
+
+# separate exhibition form
+from decimal import Decimal
+from django.conf import settings
+from django.contrib import messages
+from django.core.mail import EmailMultiAlternatives
+from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
+from .forms import ExhibitorApplicationForm
+from .models import ExhibitRegistration2  # <-- use the new model
+
+TIER_LABELS = {
+    "startup": "Startup Booth",
+    "growth": "Growth Booth",
+    "enterprise": "Enterprise Booth",
+}
+
+PRICE_TABLE = {
+    "startup":    {"early": 28880, "regular": 35880},
+    "growth":     {"early": 47880, "regular": 52880},
+    "enterprise": {"early": 66880, "regular": 77880},
+}
+
+ADDON_PRICES = {"add_logo": 0, "add_power": 1500, "add_leads": 2500}
+
+def peso(n: int | Decimal) -> str:
+    return f"₱{int(n):,}"
+
+def exhibitor_apply(request):
+    if request.method == "POST":
+        form = ExhibitorApplicationForm(request.POST, request.FILES)
+        if form.is_valid():
+            data = form.cleaned_data
+
+            # === Compute pricing (server-side) ===
+            tier_key = data.get("tier")  # startup/growth/enterprise
+            pricing_mode = data.get("pricing_mode") or ("regular" if request.POST.get("pricing_mode") == "regular" else "early")
+            if pricing_mode not in ("early", "regular"):
+                pricing_mode = "early"
+
+            tier_label = TIER_LABELS.get(tier_key, tier_key or "Booth")
+            base_price = PRICE_TABLE.get(tier_key, {}).get(pricing_mode, 0)
+
+            has_logo  = bool(data.get("add_logo"))
+            has_power = bool(data.get("add_power"))
+            has_leads = bool(data.get("add_leads"))
+
+            addons_total = 0
+            if has_power: addons_total += ADDON_PRICES["add_power"]
+            if has_leads: addons_total += ADDON_PRICES["add_leads"]
+            server_total = base_price + addons_total
+
+            # For emails
+            addons_lines = []
+            if has_logo:  addons_lines.append("Logo on website & stage screen (Included)")
+            if has_power: addons_lines.append("Power outlet & extension (+₱1,500)")
+            if has_leads: addons_lines.append("Lead scanner access (+₱2,500)")
+            has_any_addon = bool(addons_lines)
+            addons_selected = {
+                "Logo on website & stage screen": has_logo,
+                "Power outlet & extension": has_power,
+                "Lead scanner access": has_leads,
+            }
+
+            # === SAVE to DB (correct model) ===
+            ExhibitRegistration2.objects.create(
+                company_name=data.get("company_name", ""),
+                company_size=data.get("company_size", ""),
+                industry=data.get("industry", ""),
+                website=data.get("website", ""),
+                contact_name=data.get("contact_name", ""),
+                email=data.get("email", ""),
+                phone=data.get("phone", ""),
+                tier=tier_key or "",
+                pricing_mode=pricing_mode,
+                base_price=base_price,
+                total_price=server_total,
+                add_logo=has_logo,
+                add_power=has_power,
+                add_leads=has_leads,
+                notes=data.get("notes", ""),
+                agree=bool(data.get("agree")),
+            )
+
+            # === Email: Applicant ===
+            ctx = {
+                "name": data.get("contact_name") or data.get("company_name") or "there",
+                "company": data.get("company_name") or "",
+                "tier_label": tier_label,
+                "pricing_mode": pricing_mode.title(),
+                "base_price": peso(base_price),
+                "addons_selected": addons_selected,   # old template style (dict of booleans)
+                "addons_lines": addons_lines,         # new template style (list of strings)
+                "has_any_addon": has_any_addon,
+                "addons_total": peso(addons_total),
+                "total_price": peso(server_total),
+            }
+            html_to_client = render_to_string("emails/exhibitor_confirmation.html", ctx)
+            txt_to_client = strip_tags(html_to_client)
+
+            from_email = getattr(settings, "DEFAULT_FROM_EMAIL", None) or settings.EMAIL_HOST_USER
+            msg_client = EmailMultiAlternatives(
+                subject=f"📥 We've received your Exhibitor Application — {tier_label} ({pricing_mode.title()})",
+                body=txt_to_client,
+                from_email=from_email,
+                to=[data.get("email")],
+            )
+            msg_client.attach_alternative(html_to_client, "text/html")
+            msg_client.send(fail_silently=False)
+
+            # === Email: Admin ===
+            admin_ctx = {
+                "company_name": data.get("company_name", ""),
+                "company_size": data.get("company_size", ""),
+                "industry": data.get("industry", ""),
+                "website": data.get("website", ""),
+                "contact_name": data.get("contact_name", ""),
+                "email": data.get("email", ""),
+                "phone": data.get("phone", ""),
+                "tier_label": tier_label,
+                "pricing_mode": pricing_mode.title(),
+                "base_price": peso(base_price),
+                "addons_selected": addons_selected,
+                "addons_lines": addons_lines,
+                "has_any_addon": has_any_addon,
+                "addons_total": peso(addons_total),
+                "total_price": peso(server_total),
+            }
+            html_admin = render_to_string("emails/admin_exhibitor_alert.html", admin_ctx)
+            txt_admin = strip_tags(html_admin)
+
+            admin_to = [getattr(settings, "CONTACT_RECEIVER_EMAIL", None) or from_email]
+            msg_admin = EmailMultiAlternatives(
+                subject=f"[Exhibitor Application] {admin_ctx['company_name']} — {tier_label} ({pricing_mode.title()}) {peso(server_total)}",
+                body=txt_admin,
+                from_email=from_email,
+                to=admin_to,
+            )
+            msg_admin.attach_alternative(html_admin, "text/html")
+            msg_admin.send(fail_silently=False)
+
+            messages.success(request, "🎉 Thank you! Your exhibitor application was received. A confirmation email has been sent.")
+            return redirect("exhibitor-apply")
+        else:
+            messages.error(request, "Please correct the errors below.")
+    else:
+        form = ExhibitorApplicationForm()
+
+    return render(request, "apply.html", {"form": form})

@@ -254,3 +254,79 @@ class FreePassRegistrant(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.email})"
+
+from django.db import models
+
+class ExhibitRegistration2(models.Model):
+    # ----- Choices -----
+    TIER_CHOICES = [
+        ("startup", "Startup Booth"),
+        ("growth", "Growth Booth"),
+        ("enterprise", "Enterprise Booth"),
+    ]
+    COMPANY_SIZE_CHOICES = [
+        ("1-20", "1–20"),
+        ("21-100", "21–100"),
+        ("100+", "100+"),
+    ]
+    PRICING_MODE_CHOICES = [
+        ("early", "Early"),
+        ("regular", "Regular"),
+    ]
+
+    # ----- Company & contact -----
+    company_name  = models.CharField(max_length=150)
+    company_size  = models.CharField(max_length=16, choices=COMPANY_SIZE_CHOICES)
+    industry      = models.CharField(max_length=120, blank=True)
+    website       = models.URLField(blank=True)
+    contact_name  = models.CharField(max_length=120)
+    email         = models.EmailField()
+    phone         = models.CharField(max_length=40, blank=True)
+
+    # ----- Package & pricing -----
+    tier          = models.CharField(max_length=20, choices=TIER_CHOICES)
+    pricing_mode  = models.CharField(max_length=10, choices=PRICING_MODE_CHOICES, default="early")
+    base_price    = models.PositiveIntegerField(default=0, help_text="PHP, no decimals")
+    total_price   = models.PositiveIntegerField(default=0, help_text="PHP, no decimals")
+
+    # ----- Add-ons -----
+    add_logo      = models.BooleanField(default=False)
+    add_power     = models.BooleanField(default=False)
+    add_leads     = models.BooleanField(default=False)
+
+    # ----- Misc -----
+    notes         = models.TextField(blank=True)
+    agree         = models.BooleanField(default=False)
+
+    # ----- Timestamps -----
+    created_at    = models.DateTimeField(auto_now_add=True)
+    updated_at    = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Exhibit Registration"
+        verbose_name_plural = "Exhibit Registrations"
+
+    def __str__(self):
+        return f"{self.company_name} — {self.get_tier_display()} ({self.get_pricing_mode_display()})"
+
+    # Pretty pesos for admin/list views
+    @staticmethod
+    def _peso(n: int) -> str:
+        return f"₱{n:,}"
+
+    @property
+    def base_price_peso(self) -> str:
+        return self._peso(self.base_price or 0)
+
+    @property
+    def total_price_peso(self) -> str:
+        return self._peso(self.total_price or 0)
+
+    @property
+    def addons_selected_list(self) -> list[str]:
+        items = []
+        if self.add_logo:  items.append("Logo on website & stage screen")
+        if self.add_power: items.append("Power outlet & extension")
+        if self.add_leads: items.append("Lead scanner access")
+        return items
