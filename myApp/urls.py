@@ -57,5 +57,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("apply/", views.exhibitor_apply, name="exhibitor-apply"),
     path("exhibitor-terms/", views.exhibitor_terms, name="exhibitor-terms"),
+    path("exhibitors/tiers/<slug:slug>/", views.tier_detail, name="exhibitor-tier-detail"),
    
 ]

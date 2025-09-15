@@ -86,10 +86,18 @@
         <li>Access to 50+ Investors and Partnerships</li>
       </ul>
     </div>
-    <div class="text-right">
-      <div class="text-base font-bold text-blue-700">₱28,880</div>
-      <div class="text-[11px] text-slate-500">(Early) / ₱35,880</div>
-    </div>
+   <div class="flex flex-col items-end gap-2 text-right">
+  <div class="text-base font-bold text-blue-700">₱28,880</div>
+  <div class="text-[11px] text-slate-500 whitespace-nowrap">(Early) / ₱35,880</div>
+
+  <a href="/exhibitors/tiers/startup/"
+     class="mt-1 inline-flex w-28 items-center justify-between rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+     onclick="event.stopPropagation();">
+    <span>See details</span><span aria-hidden>→</span>
+  </a>
+</div>
+
+
   </div>
   <input class="sr-only tier-input"
          type="radio"
@@ -118,10 +126,18 @@
         <li>Priority client &amp; partner networking</li>
       </ul>
     </div>
-    <div class="text-right">
-      <div class="text-base font-bold text-blue-700">₱47,880</div>
-      <div class="text-[11px] text-slate-500">(Early) / ₱52,880</div>
-    </div>
+    <div class="flex flex-col items-end gap-2 text-right">
+  <div class="text-base font-bold text-blue-700">₱47,880</div>
+  <div class="text-[11px] text-slate-500 whitespace-nowrap">(Early) / ₱52,880</div>
+
+  <a href="/exhibitors/tiers/growth/"
+     class="mt-1 inline-flex w-28 items-center justify-between rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+     onclick="event.stopPropagation();">
+    <span>See details</span><span aria-hidden>→</span>
+  </a>
+</div>
+
+
   </div>
   <input class="sr-only tier-input"
          type="radio"
@@ -149,10 +165,18 @@
         <li>VIP investor mixer + full Investors list</li>
       </ul>
     </div>
-    <div class="text-right">
-      <div class="text-base font-bold text-blue-700">₱66,880</div>
-      <div class="text-[11px] text-slate-500">(Early) / ₱77,880</div>
-    </div>
+    <div class="flex flex-col items-end gap-2 text-right">
+  <div class="text-base font-bold text-blue-700">₱66,880</div>
+  <div class="text-[11px] text-slate-500 whitespace-nowrap">(Early) / ₱77,880</div>
+
+  <a href="/exhibitors/tiers/enterprise/"
+     class="mt-1 inline-flex w-28 items-center justify-between rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+     onclick="event.stopPropagation();">
+    <span>See details</span><span aria-hidden>→</span>
+  </a>
+</div>
+
+
   </div>
   <input class="sr-only tier-input"
          type="radio"
@@ -405,6 +429,20 @@
         if(input){ input.checked = true; repaint(); }
       });
     });
+
+    // Preselect via ?tier=startup&mode=regular
+  (function presetFromQuery(){
+    const p = new URLSearchParams(window.location.search);
+    const tier = p.get('tier');       // startup|growth|enterprise
+    const mode = p.get('mode');       // early|regular
+    if (mode === 'regular' && toggle) { toggle.checked = true; }
+    if (tier) {
+      const match = [...tierInputs].find(i => i.value === tier);
+      if (match) match.checked = true;
+    }
+    repaint();
+  })();
+
   </script>
 
   <footer class="border-t border-slate-200 bg-blue-100/70">

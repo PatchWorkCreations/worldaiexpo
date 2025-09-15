@@ -911,3 +911,84 @@ def exhibitor_apply(request):
         form = ExhibitorApplicationForm()
 
     return render(request, "apply.html", {"form": form})
+
+from django.shortcuts import render, redirect
+from django.http import Http404
+
+TIER_DATA = {
+    "startup": {
+        "emoji": "🚀",
+        "badge": ("Best for new launches", "bg-blue-50 text-blue-700"),
+        "name": "Startup Booth",
+        "best_for": "Lean teams & first-time exhibitors",
+        "size": "4sqm (2×2m)",
+        "early": 28880,
+        "regular": 35880,
+        "highlights": [
+            "2 Full-Access Passes",
+            "Website listing + logo",
+            "Branded backdrop & table",
+            "Access to 50+ investors & partnerships",
+        ],
+        "extras": [
+            "Lead scanner access (optional)",
+            "Power outlet & extension (optional)",
+            "Concierge intro to 3 relevant buyers",
+        ],
+        "reach": "Foot traffic in Launch Row; startup showcase callouts",
+    },
+    "growth": {
+        "emoji": "📈",
+        "badge": ("Most popular", "bg-emerald-50 text-emerald-700"),
+        "name": "Growth Booth",
+        "best_for": "Scaling teams (21–100)",
+        "size": "6sqm (2×3m)",
+        "early": 47880,
+        "regular": 52880,
+        "highlights": [
+            "3 Full-Access Passes",
+            "Logo on digital flyers (10k+ reach)",
+            "10-sec AVP on event screens",
+            "Priority client & partner networking",
+        ],
+        "extras": [
+            "Hosted buyer meetings (2 slots)",
+            "Media interview window (subject to availability)",
+            "Co-marketing post on official pages",
+        ],
+        "reach": "Aisle-end placement + screen mentions during sessions",
+    },
+    "enterprise": {
+        "emoji": "🏢",
+        "badge": ("Max visibility", "bg-blue-600 text-white"),
+        "name": "Enterprise Booth",
+        "best_for": "Established brands (100+)",
+        "size": "9sqm (3×3m)",
+        "early": 66880,
+        "regular": 77880,
+        "highlights": [
+            "5 Executive Passes",
+            "Prominent logo in all promos",
+            "20-sec AVP on main screens (peak hours)",
+            "VIP investor mixer + full Investors list",
+        ],
+        "extras": [
+            "Main-hall placement (subject to layout)",
+            "Private meeting pod (limited)",
+            "Custom stage readout during keynote block",
+        ],
+        "reach": "Peak-hour exposure + investor-heavy foot traffic",
+    },
+}
+
+def tier_detail(request, slug):
+    tier = TIER_DATA.get(slug)
+    if not tier:
+        raise Http404("Tier not found")
+    ctx = {
+        "slug": slug,
+        "tier": tier,
+        "early_fmt": f"₱{tier['early']:,}",
+        "regular_fmt": f"₱{tier['regular']:,}",
+    }
+    return render(request, "exhibitors/tier_detail.html", ctx)
