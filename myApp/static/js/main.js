@@ -30,16 +30,24 @@
         return;
     }
 
-    // Get current date and time
-    const currentTime = new Date();
-
-    // Set new date 30 days from now
-    const targetTime = new Date(currentTime.getTime() + (109 * 24 * 60 * 60 * 1000));
+    // Set target date: April 28, 2026 at 8:00 AM Philippines time (UTC+8)
+    // Using ISO string format for better compatibility
+    // April 28, 2026 08:00 UTC+8
+    const targetTime = new Date('2026-04-28T08:00:00+08:00');
 
     // Update countdown time
     function updateCountdown() {
         const currentTime = new Date();
         const diff = targetTime - currentTime;
+
+        // If the event has passed, show zeros
+        if (diff <= 0) {
+            if (days) days.innerHTML = '0';
+            if (hours) hours.innerHTML = '00';
+            if (minutes) minutes.innerHTML = '00';
+            if (seconds) seconds.innerHTML = '00';
+            return;
+        }
 
         const d = Math.floor(diff / 1000 / 60 / 60 / 24);
         const h = Math.floor((diff / 1000 / 60 / 60) % 24);
